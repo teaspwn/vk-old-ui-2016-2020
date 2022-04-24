@@ -1,4 +1,4 @@
-# <img src="https://i.ibb.co/PgwJjXX/128.png" alt="128" border="0">**Старый дизайн VK by RAD**
+# <img src="https://i.ibb.co/PgwJjXX/128.png" alt="128" border="0" height="2em">**Старый дизайн VK by RAD**
 ## Почему именно этот дизайн?
 - В этом дизане проработаны мелочи
 - Есть масса фишек убранных в 2021 году
