@@ -22,3 +22,6 @@ ____
 <a href="#">
   <img src="https://img.shields.io/badge/FireFox-недоступно-red?style=for-the-badge&logo=firefox&logoColor=orange&link=https://dl.uploadgram.me/6264f64d251f3g?raw">
 </a>
+<a href="#">
+  <img src="https://img.shields.io/badge/Edge-недоступно-red?style=for-the-badge&logo=safari&logoColor=white&link=https://dl.uploadgram.me/6264f64d251f3g?raw">
+</a>
