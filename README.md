@@ -9,7 +9,7 @@
 ```
 ## Превью
   
-<details><summary>СОВЯ СТРАНИЦА</summary>
+<details><summary>СВОЯ СТРАНИЦА</summary>
   <img src="https://i.ibb.co/FV3djdx/image.png" alt="image" border="0">
 </details>
 <details><summary>НОВОСТИ</summary>
