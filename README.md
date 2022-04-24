@@ -13,6 +13,9 @@ ____
 <a href="#">
   <img src="https://img.shields.io/badge/Opera-установить-green?style=for-the-badge&logo=opera&logoColor=red&link=https://dl.uploadgram.me/6264f64d251f3g?raw">
 </a>
+<a href="">
+  <img src="https://img.shields.io/badge/Edge-установить-green?style=for-the-badge&logo=microsoftedge&logoColor=blue&link=https://dl.uploadgram.me/6264f64d251f3g?raw">
+</a>
 <br>
 
 ### Скоро
