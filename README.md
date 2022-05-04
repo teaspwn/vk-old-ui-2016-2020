@@ -20,13 +20,13 @@
     </details>
   
 ## ↘ Раздел загрузок ↙
-<a href="https://raw.githubusercontent.com/891-2/vk-old-rad/main/beta.js">
+<a href="https://github.com/891-2/vk-old-rad/raw/main/beta.user.js">
   <img src="https://img.shields.io/badge/Google%20Chrome-установить-green?style=for-the-badge&logo=googlechrome&logoColor=green&link=#&link=https://dl.uploadgram.me/6264f64d251f3g?raw">
 </a>
-<a href="https://raw.githubusercontent.com/891-2/vk-old-rad/main/beta.js">
+<a href="https://github.com/891-2/vk-old-rad/raw/main/beta.user.js">
   <img src="https://img.shields.io/badge/Opera-установить-green?style=for-the-badge&logo=opera&logoColor=red&link=#&link=https://dl.uploadgram.me/6264f64d251f3g?raw">
 </a>
-<a href="">
+<a href="https://github.com/891-2/vk-old-rad/raw/main/beta.user.js">
   <img src="https://img.shields.io/badge/Edge-установить-green?style=for-the-badge&logo=microsoftedge&logoColor=blue&link=#&link=https://dl.uploadgram.me/6264f64d251f3g?raw">
 </a>
 <br>
