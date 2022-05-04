@@ -21,7 +21,6 @@ var styleNode = document.createElement("style");
 styleNode.id = 'Style'
 
 
-
 document.addEventListener('DOMContentLoaded', function() {
       var l = document.querySelector('button.FCPanel__add')
     l.addEventListener("click", chat, false);
