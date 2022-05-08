@@ -21,18 +21,18 @@
   
 ##  Раздел загрузок 
   ### Количество скачиваний
-<a href="https://github.com/891-2/vk-old-rad/releases/download/download/beta.user.js">
+<a href="https://github.com/891-2/vk-old-rad/releases/download/old_vk/beta.user.js">
   <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/891-2/vk-old-rad/total?color=green&label=%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8&style=for-the-badge">
   </a>
   
   ### Установить скрипт
-<a href="https://github.com/891-2/vk-old-rad/releases/download/download/beta.user.js">
+<a href="https://github.com/891-2/vk-old-rad/releases/download/old_vk/beta.user.js">
   <img src="https://img.shields.io/badge/Google%20Chrome-установить-green?style=for-the-badge&logo=googlechrome&logoColor=green&link=#&link=https://dl.uploadgram.me/6264f64d251f3g?raw">
 </a>
-<a href="https://github.com/891-2/vk-old-rad/releases/download/download/beta.user.js">
+<a href="https://github.com/891-2/vk-old-rad/releases/download/old_vk/beta.user.js">
   <img src="https://img.shields.io/badge/Opera-установить-green?style=for-the-badge&logo=opera&logoColor=red&link=#&link=https://dl.uploadgram.me/6264f64d251f3g?raw">
 </a>
-<a href="https://github.com/891-2/vk-old-rad/releases/download/download/beta.user.js">
+<a href="https://github.com/891-2/vk-old-rad/releases/download/old_vk/beta.user.js">
   <img src="https://img.shields.io/badge/Edge-установить-green?style=for-the-badge&logo=microsoftedge&logoColor=blue&link=#&link=https://dl.uploadgram.me/6264f64d251f3g?raw">
 </a>
 <br>
