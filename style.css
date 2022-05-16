@@ -208,13 +208,6 @@ body.new_header_design .TopSearch .input_back_content {
     margin-top: 0
 }
 
-[dir] .TopNavBtn.TopNavBtn__audio .TopNavBtn__icon {
-    background: url(https://svgshare.com/i/YeH.svg) no-repeat;
-    position: absolute;
-    margin-left: -10px;
-    margin-top: 2px!important
-}
-
 [dir] button.top_audio_player_btn.top_audio_player_next {
     background-image: url(https://dl.dropbox.com/s/m6nyau4f4w8rj3p/4.pngraw=1);
     background-repeat: no-repeat;
@@ -285,9 +278,13 @@ body.new_header_design .top_nav_btn {
 [dir] .TopNavBtn.TopNavBtn__audio .TopNavBtn__icon {
     background: url(https://raw.githubusercontent.com/891-2/vk-old-rad/main/icons/logo.png) no-repeat;
     width: 20px;
-    background-position: -5px -52px;
+    background-position: -36px -53px;
     height: 24px;
     overflow: hidden;
+}
+.TopNavBtn.TopNavBtn__audio.TopNavBtn--active span.TopNavBtn__icon {
+    background: url(https://raw.githubusercontent.com/891-2/vk-old-rad/main/icons/logo.png) no-repeat;
+    background-position: -66px -53px;
 }
 
 body.new_header_design .top_audio_player_title {
@@ -1556,15 +1553,6 @@ span.PostHeaderActionsButtonMoreIcon {
 /* background: aliceblue; */
 background: url("https://dl.dropbox.com/s/tpu0rnab8f6s4rn/SEo2.svgraw=1") no-repeat;
 margin-top: 0px!important;
-}
-
-.TopNavBtn.TopNavBtn__audio.TopNavBtn--active {
-background-image: url(https://svgshare.com/i/YeH.svg)!important;
-background-repeat: no-repeat;
-background-position: center;
-}
-.TopNavBtn.TopNavBtn__audio.TopNavBtn--active span.TopNavBtn__icon {
-    opacity: 0
 }
 
 [dir=ltr] .PostBottomActionLikeBtns .like_btns > .PostBottomAction:not(:first-child),
