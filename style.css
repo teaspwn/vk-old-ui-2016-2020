@@ -283,9 +283,11 @@ body.new_header_design .top_nav_btn {
 }
 
 [dir] .TopNavBtn.TopNavBtn__audio .TopNavBtn__icon {
-    background: url(https://dl.dropbox.com/s/tpu0rnab8f6s4rn/SEo2.svgraw=1) no-repeat;
+    background: url(https://raw.githubusercontent.com/891-2/vk-old-rad/main/logo.png) no-repeat;
     width: 20px;
-    margin-top: 3px
+    background-position: -5px -52px;
+    height: 24px;
+    overflow: hidden;
 }
 
 body.new_header_design .top_audio_player_title {
