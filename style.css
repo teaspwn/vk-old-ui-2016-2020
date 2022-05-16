@@ -278,13 +278,14 @@ body.new_header_design .top_nav_btn {
 [dir] .TopNavBtn.TopNavBtn__audio .TopNavBtn__icon {
     background: url(https://raw.githubusercontent.com/891-2/vk-old-rad/main/icons/logo.png) no-repeat;
     width: 20px;
-    background-position: -36px -53px;
+    background-position: -34px -53px;
     height: 24px;
     overflow: hidden;
+    padding-top: 0.7em;
 }
 .TopNavBtn.TopNavBtn__audio.TopNavBtn--active span.TopNavBtn__icon {
     background: url(https://raw.githubusercontent.com/891-2/vk-old-rad/main/icons/logo.png) no-repeat;
-    background-position: -66px -53px;
+    background-position: -64px -53px;
 }
 
 body.new_header_design .top_audio_player_title {
