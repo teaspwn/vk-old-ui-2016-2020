@@ -281,7 +281,7 @@ body.new_header_design .top_nav_btn {
     background-position: -34px -53px;
     height: 24px;
     overflow: hidden;
-    padding-top: 0.7em;
+    padding-top: 0.75em;
 }
 .TopNavBtn.TopNavBtn__audio.TopNavBtn--active span.TopNavBtn__icon {
     background: url(https://raw.githubusercontent.com/891-2/vk-old-rad/main/icons/logo.png) no-repeat;
