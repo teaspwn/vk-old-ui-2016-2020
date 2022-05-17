@@ -2419,6 +2419,12 @@ button.audio_page__main_tabs_btn.audio_page__add_playlist_btn > svg > g {
     opacity: 0;
 }
 
+.audio_row__cover > svg {
+    opacity: 1;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoBAMAAAB+0KVeAAAAKlBMVEXn7vbf6fPJ2eu1y+OhvNuNrtOJrNN1nstvmcja5PCZt9h7oc14n8t7os1SyURbAAAAQElEQVR4AWMYzkDIJAxTsKKjA1OwA7tgOxZBZ0UsgkA8mAQ5V+/CFJyDzZMrsAnuICyI0N6LzaKT2Jw0YRgnNQD3vBu6V0sXEQAAAABJRU5ErkJggg==');
+    background-position: center;
+}
+
 button.audio_page__main_tabs_btn.audio_page__add_audio_btn > svg {
     background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20height%3D%2219%22%20viewBox%3D%220%200%2026%2019%22%20width%3D%2226%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(1%20-3)%22%3E%3Cpath%20d%3D%22m0%200h24v24h-24z%22%2F%3E%3Cg%20stroke%3D%22%23828a99%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m7%2019h-3.5c-1.93299662%200-3.5-1.5670034-3.5-3.5s1.56700338-3.5%203.5-3.5c.17635542%200%20.34966443.0130432.51901498.0382177-.01260511-.1777657-.01901498-.3572432-.01901498-.5382177%200-4.14213562%203.35786438-7.5%207.5-7.5%203.6444251%200%206.6817285%202.59939677%207.3590229%206.0453029.2093602-.0298564.4233648-.0453029.6409771-.0453029%202.4852814%200%204.5%202.0147186%204.5%204.5s-2.0147186%204.5-4.5%204.5h-2.5%22%2F%3E%3Cpath%20d%3D%22m9%2014%203-3%203%203%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22m12%2012v9%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E');
     background-repeat: no-repeat;
