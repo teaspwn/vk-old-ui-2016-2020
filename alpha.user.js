@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By RAM
 // @namespace    https://github.com/891-2/vk-old-rad/
-// @version      3.8.2
+// @version      3.8.1
 // @description  Вернём старый дизайн вместе
 // @author       RAM
 // @match        *://*.vk.com/*
@@ -208,7 +208,7 @@ function title() {
 // Реклама
 function ads() {
     var ad_blocks, a
-    ad_blocks = document.querySelectorAll('div#ads_left>div,[data-ad-view],div[data-ad-disabled-stat-impression],div#feed_filters');
+    ad_blocks = document.querySelectorAll('div#ads_left>div,[data-ad-view],div[data-ad-disabled-stat-impression],div#feed_filters a,.page_block.apps_feedRightAppsBlock.apps_feedRightAppsBlock_single_mini_app');
     for (a = 0; a < ad_blocks.length; a++) {
         ad_blocks[a].outerHTML = '';
     }
