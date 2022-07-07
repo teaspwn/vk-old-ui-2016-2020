@@ -17,8 +17,8 @@
 // @webRequest   [{"selector":"*://ad.mail.ru/*","action":"cancel"}]
 // @webRequest   [{"selector":"https://vk.com/ads_rotate.php?act=al_update_ad","action":"cancel"}]
 // @require http://code.jquery.com/jquery-3.4.1.min.js
-// @downloadURL  https://github.com/891-2/vk_ad_block/raw/main/ad_block_js.user.js
-// @updateURL    https://github.com/891-2/vk_ad_block/raw/main/ad_block_js.user.js
+// @downloadURL  https://github.com/891-2/vk-old-rad/raw/main/beta.user.js
+// @updateURL    https://github.com/891-2/vk-old-rad/raw/main/beta.user.js
 // @license MIT
 // ==/UserScript==
 var i, i2, vd, theme_hash_number, theme,j
