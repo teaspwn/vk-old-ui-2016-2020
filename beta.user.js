@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By RAM
 // @namespace    https://github.com/891-2/vk-old-rad/
-// @version      3.8.6
+// @version      3.9.0
 // @description  Вернём старый дизайн вместе
 // @author       RAM
 // @match        *://*.vk.com/*
@@ -123,10 +123,41 @@ function initial() {
     setInterval(title, 2000);
     setInterval(ads, 2000);
     setInterval(check, 1000);
+    setInterval(video_minim,500)
     fix_name();
    document.body.appendChild(styleNode2);
     beta();
     }
+function video_minim(){
+var video_arr = document.querySelectorAll('.im-mess--text.wall_module._im_log_body a#post_media_lnk_0')
+video_arr.forEach(function(elem){
+    let minimaze = document.createElement('div')
+    minimaze.classList='videoplayer_controls_item videoplayer_btn videoplayer_btn_expand old_icon pizda'
+    minimaze.setAttribute('role','button')
+    minimaze.setAttribute('patched','true')
+    minimaze.setAttribute('tabindex',0)
+    minimaze.setAttribute('expand_btn',"true")
+
+
+    let closet = elem.closest('.im-mess--text.wall_module._im_log_body')
+    let onclick = elem.getAttribute('onclick')
+    let info = onclick.replace('return','')
+    info = info.replace('"minimized":0','"minimized":1')
+    let video = closet.querySelector('.videoplayer_controls_item.videoplayer_btn.videoplayer_btn_fullscreen')
+    minimaze.setAttribute('onclick',info)
+
+    var pizda = closet.querySelector('.pizda')
+    if (video!==null&&pizda==null){
+        video.insertAdjacentElement('beforeBegin',minimaze)
+         pizda = closet.querySelector('.pizda')
+    }
+
+
+
+    //console.log(video)
+});
+}
+
 
 function beta(){
     var beta = document.createElement("div")
@@ -228,17 +259,20 @@ function title() {
         document.title = 'Сообщения'
     }else if (document.title == 'Реакции'){
         document.title = 'Понравилось'
-    }else if (document.title == 'Приложения'){
+    }else if (document.title == 'Приложения'||document.title == 'Разработчикам'){
         let side = document.querySelector('div#side_bar')
         side.style.setProperty("display", "none", "important")
         //console.log('test')
+   }else{
+       let side = document.querySelector('div#side_bar')
+       side.style.setProperty("display", "block", "important")
    }
 }
 
 // Реклама
 function ads() {
     var ad_blocks, a
-    ad_blocks = document.querySelectorAll('div#ads_left>div,[data-ad-view],div[data-ad-disabled-stat-impression],div#feed_filters a,.page_block.apps_feedRightAppsBlock.apps_feedRightAppsBlock_single_mini_app');
+    ad_blocks = document.querySelectorAll('div#ads_left>div,[data-ad-view],div[data-ad-disabled-stat-impression],div#feed_filters a,.page_block.apps_feedRightAppsBlock.apps_feedRightAppsBlock_single_mini_app,.page_block.feed_groups_recomm.feed_groups_likes_block,.page_block.feed_groups_recomm.js-feed_groups_recomm.feed_groups_recomm_friends');
     for (a = 0; a < ad_blocks.length; a++) {
         ad_blocks[a].outerHTML = '';
     }
@@ -328,8 +362,29 @@ function fix_name() {
   <span>
     <div class="TopProfileItem__colorSchemeLabel">
   Тема:
-  <div class="idd_wrap SettingsColorSchemeDropdown" id="" data-items="[[&quot;light&quot;,&quot;Светлая&quot;],[&quot;dark&quot;,&quot;Тёмная&quot;],[&quot;auto&quot;,&quot;Системная&quot;]]" data-value="light" hash="`+ theme_hash_number + `" data-inited="1"><div class="idd_selected_value " tabindex="0" role="link" onclick="var _0x1f3c4d=_0x378f;function _0x378f(_0x180bda,_0x12aab0){var _0x311094=_0x3110();return _0x378f=function(_0x378f3d,_0x18bc68){_0x378f3d=_0x378f3d-0x1c4;var _0x45cf40=_0x311094[_0x378f3d];return _0x45cf40;},_0x378f(_0x180bda,_0x12aab0);}(function(_0x3d1cdd,_0x2b13f7){var _0x5f4411=_0x378f,_0x771221=_0x3d1cdd();while(!![]){try{var _0x4f7fe0=-parseInt(_0x5f4411(0x1c8))/0x1*(-parseInt(_0x5f4411(0x1cc))/0x2)+parseInt(_0x5f4411(0x1cf))/0x3*(parseInt(_0x5f4411(0x1c5))/0x4)+-parseInt(_0x5f4411(0x1ce))/0x5+parseInt(_0x5f4411(0x1c6))/0x6+parseInt(_0x5f4411(0x1d4))/0x7+-parseInt(_0x5f4411(0x1cb))/0x8+parseInt(_0x5f4411(0x1d0))/0x9*(parseInt(_0x5f4411(0x1c7))/0xa);if(_0x4f7fe0===_0x2b13f7)break;else _0x771221['push'](_0x771221['shift']());}catch(_0x33a418){_0x771221['push'](_0x771221['shift']());}}}(_0x3110,0x75614));var popup=document[_0x1f3c4d(0x1d2)](_0x1f3c4d(0x1c4));popup[_0x1f3c4d(0x1d3)][_0x1f3c4d(0x1d1)]==_0x1f3c4d(0x1ca)?(popup['style']['visibility']=_0x1f3c4d(0x1c9),popup[_0x1f3c4d(0x1d3)][_0x1f3c4d(0x1cd)]=0x0):(popup['style'][_0x1f3c4d(0x1d1)]='visible',popup[_0x1f3c4d(0x1d3)]['opacity']=0x1);function _0x3110(){var _0x4eedfb=['2884540aBpruY','15yFpoBU','8854335jZstqP','visibility','querySelector','style','3644676tGYTNH','div#idd_','143324fcSUfg','1022250KCdzbz','10KQUtXB','87209nmtjjy','hidden','visible','7068208kTYFHI','2cgQghY','opacity'];_0x3110=function(){return _0x4eedfb;};return _0x3110();}">Светлая</div><input type="hidden" id="_input" name="" value="light"><div class="idd_popup" id="idd_" style="margin-top: -21px;width: 94.75px;opacity: 0;margin-left: -10px;visibility:hidden;"><div class="idd_header_wrap " onclick="var _0x1f3c4d=_0x378f;function _0x378f(_0x180bda,_0x12aab0){var _0x311094=_0x3110();return _0x378f=function(_0x378f3d,_0x18bc68){_0x378f3d=_0x378f3d-0x1c4;var _0x45cf40=_0x311094[_0x378f3d];return _0x45cf40;},_0x378f(_0x180bda,_0x12aab0);}(function(_0x3d1cdd,_0x2b13f7){var _0x5f4411=_0x378f,_0x771221=_0x3d1cdd();while(!![]){try{var _0x4f7fe0=-parseInt(_0x5f4411(0x1c8))/0x1*(-parseInt(_0x5f4411(0x1cc))/0x2)+parseInt(_0x5f4411(0x1cf))/0x3*(parseInt(_0x5f4411(0x1c5))/0x4)+-parseInt(_0x5f4411(0x1ce))/0x5+parseInt(_0x5f4411(0x1c6))/0x6+parseInt(_0x5f4411(0x1d4))/0x7+-parseInt(_0x5f4411(0x1cb))/0x8+parseInt(_0x5f4411(0x1d0))/0x9*(parseInt(_0x5f4411(0x1c7))/0xa);if(_0x4f7fe0===_0x2b13f7)break;else _0x771221['push'](_0x771221['shift']());}catch(_0x33a418){_0x771221['push'](_0x771221['shift']());}}}(_0x3110,0x75614));var popup=document[_0x1f3c4d(0x1d2)](_0x1f3c4d(0x1c4));popup[_0x1f3c4d(0x1d3)][_0x1f3c4d(0x1d1)]==_0x1f3c4d(0x1ca)?(popup['style']['visibility']=_0x1f3c4d(0x1c9),popup[_0x1f3c4d(0x1d3)][_0x1f3c4d(0x1cd)]=0x0):(popup['style'][_0x1f3c4d(0x1d1)]='visible',popup[_0x1f3c4d(0x1d3)]['opacity']=0x1);function _0x3110(){var _0x4eedfb=['2884540aBpruY','15yFpoBU','8854335jZstqP','visibility','querySelector','style','3644676tGYTNH','div#idd_','143324fcSUfg','1022250KCdzbz','10KQUtXB','87209nmtjjy','hidden','visible','7068208kTYFHI','2cgQghY','opacity'];_0x3110=function(){return _0x4eedfb;};return _0x3110();}"><div class="idd_header " id="light">Светлая</div></div><div class="idd_items_wrap"><div class="idd_items_content"><div class="idd_item idd_hl" id="idd_item_light" onclick="" data-id="light" tabindex="0" role="button"><div class="idd_item_name" onclick="var _0x2b4b8c=_0x5db1;function _0xc4b2(){var _0x106c94=['511648DTrZaU','onreadystatechange','9DyWBRA','.idd_wrap.SettingsColorSchemeDropdown','querySelector','4106291YEleCl','open','6XVRymM','&mode=light','al=1&hash=','244725aNpImE','hash','setRequestHeader','Content-Type','3300fqSGRV','1198oczrhX','send','body','scheme','setAttribute','/al_settings.php?act=a_save_color_scheme_mode','692248ztyZYF','56090LKDbyQ','application/x-www-form-urlencoded','1067xAAoDh','296025tIMmYP','log'];_0xc4b2=function(){return _0x106c94;};return _0xc4b2();}(function(_0x1ad865,_0x5f2e32){var _0x172656=_0x5db1,_0x504c32=_0x1ad865();while(!![]){try{var _0x613c99=parseInt(_0x172656(0x93))/0x1+parseInt(_0x172656(0x98))/0x2*(-parseInt(_0x172656(0x97))/0x3)+-parseInt(_0x172656(0x9e))/0x4+parseInt(_0x172656(0x87))/0x5*(-parseInt(_0x172656(0x90))/0x6)+parseInt(_0x172656(0x8e))/0x7+-parseInt(_0x172656(0x89))/0x8*(parseInt(_0x172656(0x8b))/0x9)+parseInt(_0x172656(0x9f))/0xa*(parseInt(_0x172656(0x86))/0xb);if(_0x613c99===_0x5f2e32)break;else _0x504c32['push'](_0x504c32['shift']());}catch(_0x14f101){_0x504c32['push'](_0x504c32['shift']());}}}(_0xc4b2,0x669c0));function test(_0x31234c){var _0x1be468=_0x5db1,_0x39b21a=new XMLHttpRequest(),_0xf4d047=_0x1be468(0x92)+_0x31234c+_0x1be468(0x91);_0x39b21a[_0x1be468(0x8f)]('POST',_0x1be468(0x9d),!![]),_0x39b21a[_0x1be468(0x95)](_0x1be468(0x96),_0x1be468(0xa0)),_0x39b21a[_0x1be468(0x8a)]=console[_0x1be468(0x88)]('test'),_0x39b21a[_0x1be468(0x99)](_0xf4d047);}var j=document[_0x2b4b8c(0x8d)](_0x2b4b8c(0x8c)),k=j['getAttribute'](_0x2b4b8c(0x94));function _0x5db1(_0x58ef69,_0x2134d3){var _0xc4b2e9=_0xc4b2();return _0x5db1=function(_0x5db1cb,_0x470053){_0x5db1cb=_0x5db1cb-0x86;var _0x2efb24=_0xc4b2e9[_0x5db1cb];return _0x2efb24;},_0x5db1(_0x58ef69,_0x2134d3);}test(k),document[_0x2b4b8c(0x9a)][_0x2b4b8c(0x9c)](_0x2b4b8c(0x9b),'vk_light');var _0x1f3c4d=_0x378f;function _0x378f(_0x180bda,_0x12aab0){var _0x311094=_0x3110();return _0x378f=function(_0x378f3d,_0x18bc68){_0x378f3d=_0x378f3d-0x1c4;var _0x45cf40=_0x311094[_0x378f3d];return _0x45cf40;},_0x378f(_0x180bda,_0x12aab0);}(function(_0x3d1cdd,_0x2b13f7){var _0x5f4411=_0x378f,_0x771221=_0x3d1cdd();while(!![]){try{var _0x4f7fe0=-parseInt(_0x5f4411(0x1c8))/0x1*(-parseInt(_0x5f4411(0x1cc))/0x2)+parseInt(_0x5f4411(0x1cf))/0x3*(parseInt(_0x5f4411(0x1c5))/0x4)+-parseInt(_0x5f4411(0x1ce))/0x5+parseInt(_0x5f4411(0x1c6))/0x6+parseInt(_0x5f4411(0x1d4))/0x7+-parseInt(_0x5f4411(0x1cb))/0x8+parseInt(_0x5f4411(0x1d0))/0x9*(parseInt(_0x5f4411(0x1c7))/0xa);if(_0x4f7fe0===_0x2b13f7)break;else _0x771221['push'](_0x771221['shift']());}catch(_0x33a418){_0x771221['push'](_0x771221['shift']());}}}(_0x3110,0x75614));var popup=document[_0x1f3c4d(0x1d2)](_0x1f3c4d(0x1c4));popup[_0x1f3c4d(0x1d3)][_0x1f3c4d(0x1d1)]==_0x1f3c4d(0x1ca)?(popup['style']['visibility']=_0x1f3c4d(0x1c9),popup[_0x1f3c4d(0x1d3)][_0x1f3c4d(0x1cd)]=0x0):(popup['style'][_0x1f3c4d(0x1d1)]='visible',popup[_0x1f3c4d(0x1d3)]['opacity']=0x1);function _0x3110(){var _0x4eedfb=['2884540aBpruY','15yFpoBU','8854335jZstqP','visibility','querySelector','style','3644676tGYTNH','div#idd_','143324fcSUfg','1022250KCdzbz','10KQUtXB','87209nmtjjy','hidden','visible','7068208kTYFHI','2cgQghY','opacity'];_0x3110=function(){return _0x4eedfb;};return _0x3110();}">Светлая</div></div><div class="idd_item" id="idd_item_dark" data-id="dark" tabindex="0" role="button" onclick="function _0x4d94(_0xfba19e,_0x131f73){var _0x199c45=_0x199c();return _0x4d94=function(_0x4d947d,_0x26dba8){_0x4d947d=_0x4d947d-0xc0;var _0x21ce78=_0x199c45[_0x4d947d];return _0x21ce78;},_0x4d94(_0xfba19e,_0x131f73);}var _0x40767b=_0x4d94;function _0x199c(){var _0x4bc41a=['11971939MmatJb','getAttribute','4633815PDsZfT','vkcom_dark','1417068hGXDZV','Content-Type','374171ZQPtuF','body','scheme','setRequestHeader','40tiZcqQ','test','2tLKYmZ','application/x-www-form-urlencoded','7461306XgFAGI','.idd_wrap.SettingsColorSchemeDropdown','&mode=dark','4272544VjQjOc','/al_settings.php?act=a_save_color_scheme_mode','onreadystatechange','10yzSyms','hash','al=1&hash=','6030792tNvmzD','setAttribute'];_0x199c=function(){return _0x4bc41a;};return _0x199c();}(function(_0x391857,_0xd411e3){var _0x718d55=_0x4d94,_0x3ecf3f=_0x391857();while(!![]){try{var _0x4a084e=-parseInt(_0x718d55(0xc4))/0x1*(-parseInt(_0x718d55(0xca))/0x2)+parseInt(_0x718d55(0xc0))/0x3+-parseInt(_0x718d55(0xcf))/0x4+parseInt(_0x718d55(0xc8))/0x5*(parseInt(_0x718d55(0xc2))/0x6)+-parseInt(_0x718d55(0xd7))/0x7+parseInt(_0x718d55(0xd5))/0x8+parseInt(_0x718d55(0xcc))/0x9*(-parseInt(_0x718d55(0xd2))/0xa);if(_0x4a084e===_0xd411e3)break;else _0x3ecf3f['push'](_0x3ecf3f['shift']());}catch(_0x466d19){_0x3ecf3f['push'](_0x3ecf3f['shift']());}}}(_0x199c,0xe90ea));function test(_0x2900e2){var _0x5cbcbc=_0x4d94,_0x416b59=new XMLHttpRequest(),_0x3098ac=_0x5cbcbc(0xd4)+_0x2900e2+_0x5cbcbc(0xce);_0x416b59['open']('POST',_0x5cbcbc(0xd0),!![]),_0x416b59[_0x5cbcbc(0xc7)](_0x5cbcbc(0xc3),_0x5cbcbc(0xcb)),_0x416b59[_0x5cbcbc(0xd1)]=console['log'](_0x5cbcbc(0xc9)),_0x416b59['send'](_0x3098ac);}var j=document['querySelector'](_0x40767b(0xcd)),k=j[_0x40767b(0xd8)](_0x40767b(0xd3));test(k),document[_0x40767b(0xc5)][_0x40767b(0xd6)](_0x40767b(0xc6),_0x40767b(0xc1));var _0x1f3c4d=_0x378f;function _0x378f(_0x180bda,_0x12aab0){var _0x311094=_0x3110();return _0x378f=function(_0x378f3d,_0x18bc68){_0x378f3d=_0x378f3d-0x1c4;var _0x45cf40=_0x311094[_0x378f3d];return _0x45cf40;},_0x378f(_0x180bda,_0x12aab0);}(function(_0x3d1cdd,_0x2b13f7){var _0x5f4411=_0x378f,_0x771221=_0x3d1cdd();while(!![]){try{var _0x4f7fe0=-parseInt(_0x5f4411(0x1c8))/0x1*(-parseInt(_0x5f4411(0x1cc))/0x2)+parseInt(_0x5f4411(0x1cf))/0x3*(parseInt(_0x5f4411(0x1c5))/0x4)+-parseInt(_0x5f4411(0x1ce))/0x5+parseInt(_0x5f4411(0x1c6))/0x6+parseInt(_0x5f4411(0x1d4))/0x7+-parseInt(_0x5f4411(0x1cb))/0x8+parseInt(_0x5f4411(0x1d0))/0x9*(parseInt(_0x5f4411(0x1c7))/0xa);if(_0x4f7fe0===_0x2b13f7)break;else _0x771221['push'](_0x771221['shift']());}catch(_0x33a418){_0x771221['push'](_0x771221['shift']());}}}(_0x3110,0x75614));var popup=document[_0x1f3c4d(0x1d2)](_0x1f3c4d(0x1c4));popup[_0x1f3c4d(0x1d3)][_0x1f3c4d(0x1d1)]==_0x1f3c4d(0x1ca)?(popup['style']['visibility']=_0x1f3c4d(0x1c9),popup[_0x1f3c4d(0x1d3)][_0x1f3c4d(0x1cd)]=0x0):(popup['style'][_0x1f3c4d(0x1d1)]='visible',popup[_0x1f3c4d(0x1d3)]['opacity']=0x1);function _0x3110(){var _0x4eedfb=['2884540aBpruY','15yFpoBU','8854335jZstqP','visibility','querySelector','style','3644676tGYTNH','div#idd_','143324fcSUfg','1022250KCdzbz','10KQUtXB','87209nmtjjy','hidden','visible','7068208kTYFHI','2cgQghY','opacity'];_0x3110=function(){return _0x4eedfb;};return _0x3110();}"><div class="idd_item_name">Тёмная</div></div><div class="idd_item" id="idd_item_auto" data-id="auto" tabindex="0" role="button"><div class="idd_item_name">Системная</div></div></div></div></div></div>
-</div>
+  <div class="idd_wrap SettingsColorSchemeDropdown" id="" data-items="[[&quot;light&quot;,&quot;Светлая&quot;],[&quot;dark&quot;,&quot;Тёмная&quot;],[&quot;auto&quot;,&quot;Системная&quot;]]" data-value="light" hash="`+ theme_hash_number + `" data-inited="1">
+  <div class="idd_selected_value " tabindex="0" role="link" onclick="var _0x1f3c4d=_0x378f;function _0x378f(_0x180bda,_0x12aab0){var _0x311094=_0x3110();return _0x378f=function(_0x378f3d,_0x18bc68){_0x378f3d=_0x378f3d-0x1c4;var _0x45cf40=_0x311094[_0x378f3d];return _0x45cf40;},_0x378f(_0x180bda,_0x12aab0);}(function(_0x3d1cdd,_0x2b13f7){var _0x5f4411=_0x378f,_0x771221=_0x3d1cdd();while(!![]){try{var _0x4f7fe0=-parseInt(_0x5f4411(0x1c8))/0x1*(-parseInt(_0x5f4411(0x1cc))/0x2)+parseInt(_0x5f4411(0x1cf))/0x3*(parseInt(_0x5f4411(0x1c5))/0x4)+-parseInt(_0x5f4411(0x1ce))/0x5+parseInt(_0x5f4411(0x1c6))/0x6+parseInt(_0x5f4411(0x1d4))/0x7+-parseInt(_0x5f4411(0x1cb))/0x8+parseInt(_0x5f4411(0x1d0))/0x9*(parseInt(_0x5f4411(0x1c7))/0xa);if(_0x4f7fe0===_0x2b13f7)break;else _0x771221['push'](_0x771221['shift']());}catch(_0x33a418){_0x771221['push'](_0x771221['shift']());}}}(_0x3110,0x75614));var popup=document[_0x1f3c4d(0x1d2)](_0x1f3c4d(0x1c4));popup[_0x1f3c4d(0x1d3)][_0x1f3c4d(0x1d1)]==_0x1f3c4d(0x1ca)?(popup['style']['visibility']=_0x1f3c4d(0x1c9),popup[_0x1f3c4d(0x1d3)][_0x1f3c4d(0x1cd)]=0x0):(popup['style'][_0x1f3c4d(0x1d1)]='visible',popup[_0x1f3c4d(0x1d3)]['opacity']=0x1);function _0x3110(){var _0x4eedfb=['2884540aBpruY','15yFpoBU','8854335jZstqP','visibility','querySelector','style','3644676tGYTNH','div#idd_','143324fcSUfg','1022250KCdzbz','10KQUtXB','87209nmtjjy','hidden','visible','7068208kTYFHI','2cgQghY','opacity'];_0x3110=function(){return _0x4eedfb;};return _0x3110();}">Тёмная</div>
+  <input type="hidden" id="_input" name="" value="dark">
+  <div class="idd_popup" id="idd_" style="margin-top: -21px;width: 94.75px;opacity: 0;margin-left: -10px;visibility:hidden;">
+  <div class="idd_header_wrap " onclick="var _0x1f3c4d=_0x378f;function _0x378f(_0x180bda,_0x12aab0){var _0x311094=_0x3110();return _0x378f=function(_0x378f3d,_0x18bc68){_0x378f3d=_0x378f3d-0x1c4;var _0x45cf40=_0x311094[_0x378f3d];return _0x45cf40;},_0x378f(_0x180bda,_0x12aab0);}(function(_0x3d1cdd,_0x2b13f7){var _0x5f4411=_0x378f,_0x771221=_0x3d1cdd();while(!![]){try{var _0x4f7fe0=-parseInt(_0x5f4411(0x1c8))/0x1*(-parseInt(_0x5f4411(0x1cc))/0x2)+parseInt(_0x5f4411(0x1cf))/0x3*(parseInt(_0x5f4411(0x1c5))/0x4)+-parseInt(_0x5f4411(0x1ce))/0x5+parseInt(_0x5f4411(0x1c6))/0x6+parseInt(_0x5f4411(0x1d4))/0x7+-parseInt(_0x5f4411(0x1cb))/0x8+parseInt(_0x5f4411(0x1d0))/0x9*(parseInt(_0x5f4411(0x1c7))/0xa);if(_0x4f7fe0===_0x2b13f7)break;else _0x771221['push'](_0x771221['shift']());}catch(_0x33a418){_0x771221['push'](_0x771221['shift']());}}}(_0x3110,0x75614));var popup=document[_0x1f3c4d(0x1d2)](_0x1f3c4d(0x1c4));popup[_0x1f3c4d(0x1d3)][_0x1f3c4d(0x1d1)]==_0x1f3c4d(0x1ca)?(popup['style']['visibility']=_0x1f3c4d(0x1c9),popup[_0x1f3c4d(0x1d3)][_0x1f3c4d(0x1cd)]=0x0):(popup['style'][_0x1f3c4d(0x1d1)]='visible',popup[_0x1f3c4d(0x1d3)]['opacity']=0x1);function _0x3110(){var _0x4eedfb=['2884540aBpruY','15yFpoBU','8854335jZstqP','visibility','querySelector','style','3644676tGYTNH','div#idd_','143324fcSUfg','1022250KCdzbz','10KQUtXB','87209nmtjjy','hidden','visible','7068208kTYFHI','2cgQghY','opacity'];_0x3110=function(){return _0x4eedfb;};return _0x3110();}">
+  <div class="idd_header " id="light">Тёмная</div>
+  </div>
+  <div class="idd_items_wrap">
+  <div class="idd_items_content">
+  <div class="idd_item" id="idd_item_light" data-id="light" tabindex="0" role="button" onclick="var _0x2b4b8c=_0x5db1;function _0xc4b2(){var _0x106c94=['511648DTrZaU','onreadystatechange','9DyWBRA','.idd_wrap.SettingsColorSchemeDropdown','querySelector','4106291YEleCl','open','6XVRymM','&mode=light','al=1&hash=','244725aNpImE','hash','setRequestHeader','Content-Type','3300fqSGRV','1198oczrhX','send','body','scheme','setAttribute','/al_settings.php?act=a_save_color_scheme_mode','692248ztyZYF','56090LKDbyQ','application/x-www-form-urlencoded','1067xAAoDh','296025tIMmYP','log'];_0xc4b2=function(){return _0x106c94;};return _0xc4b2();}(function(_0x1ad865,_0x5f2e32){var _0x172656=_0x5db1,_0x504c32=_0x1ad865();while(!![]){try{var _0x613c99=parseInt(_0x172656(0x93))/0x1+parseInt(_0x172656(0x98))/0x2*(-parseInt(_0x172656(0x97))/0x3)+-parseInt(_0x172656(0x9e))/0x4+parseInt(_0x172656(0x87))/0x5*(-parseInt(_0x172656(0x90))/0x6)+parseInt(_0x172656(0x8e))/0x7+-parseInt(_0x172656(0x89))/0x8*(parseInt(_0x172656(0x8b))/0x9)+parseInt(_0x172656(0x9f))/0xa*(parseInt(_0x172656(0x86))/0xb);if(_0x613c99===_0x5f2e32)break;else _0x504c32['push'](_0x504c32['shift']());}catch(_0x14f101){_0x504c32['push'](_0x504c32['shift']());}}}(_0xc4b2,0x669c0));function test(_0x31234c){var _0x1be468=_0x5db1,_0x39b21a=new XMLHttpRequest(),_0xf4d047=_0x1be468(0x92)+_0x31234c+_0x1be468(0x91);_0x39b21a[_0x1be468(0x8f)]('POST',_0x1be468(0x9d),!![]),_0x39b21a[_0x1be468(0x95)](_0x1be468(0x96),_0x1be468(0xa0)),_0x39b21a[_0x1be468(0x8a)]=console[_0x1be468(0x88)]('test'),_0x39b21a[_0x1be468(0x99)](_0xf4d047);}var j=document[_0x2b4b8c(0x8d)](_0x2b4b8c(0x8c)),k=j['getAttribute'](_0x2b4b8c(0x94));function _0x5db1(_0x58ef69,_0x2134d3){var _0xc4b2e9=_0xc4b2();return _0x5db1=function(_0x5db1cb,_0x470053){_0x5db1cb=_0x5db1cb-0x86;var _0x2efb24=_0xc4b2e9[_0x5db1cb];return _0x2efb24;},_0x5db1(_0x58ef69,_0x2134d3);}test(k),document[_0x2b4b8c(0x9a)][_0x2b4b8c(0x9c)](_0x2b4b8c(0x9b),'vk_light');var _0x1f3c4d=_0x378f;function _0x378f(_0x180bda,_0x12aab0){var _0x311094=_0x3110();return _0x378f=function(_0x378f3d,_0x18bc68){_0x378f3d=_0x378f3d-0x1c4;var _0x45cf40=_0x311094[_0x378f3d];return _0x45cf40;},_0x378f(_0x180bda,_0x12aab0);}(function(_0x3d1cdd,_0x2b13f7){var _0x5f4411=_0x378f,_0x771221=_0x3d1cdd();while(!![]){try{var _0x4f7fe0=-parseInt(_0x5f4411(0x1c8))/0x1*(-parseInt(_0x5f4411(0x1cc))/0x2)+parseInt(_0x5f4411(0x1cf))/0x3*(parseInt(_0x5f4411(0x1c5))/0x4)+-parseInt(_0x5f4411(0x1ce))/0x5+parseInt(_0x5f4411(0x1c6))/0x6+parseInt(_0x5f4411(0x1d4))/0x7+-parseInt(_0x5f4411(0x1cb))/0x8+parseInt(_0x5f4411(0x1d0))/0x9*(parseInt(_0x5f4411(0x1c7))/0xa);if(_0x4f7fe0===_0x2b13f7)break;else _0x771221['push'](_0x771221['shift']());}catch(_0x33a418){_0x771221['push'](_0x771221['shift']());}}}(_0x3110,0x75614));var popup=document[_0x1f3c4d(0x1d2)](_0x1f3c4d(0x1c4));popup[_0x1f3c4d(0x1d3)][_0x1f3c4d(0x1d1)]==_0x1f3c4d(0x1ca)?(popup['style']['visibility']=_0x1f3c4d(0x1c9),popup[_0x1f3c4d(0x1d3)][_0x1f3c4d(0x1cd)]=0x0):(popup['style'][_0x1f3c4d(0x1d1)]='visible',popup[_0x1f3c4d(0x1d3)]['opacity']=0x1);function _0x3110(){var _0x4eedfb=['2884540aBpruY','15yFpoBU','8854335jZstqP','visibility','querySelector','style','3644676tGYTNH','div#idd_','143324fcSUfg','1022250KCdzbz','10KQUtXB','87209nmtjjy','hidden','visible','7068208kTYFHI','2cgQghY','opacity'];_0x3110=function(){return _0x4eedfb;};return _0x3110();}">
+  <div class="idd_item_name" onclick="">Светлая</div>
+  </div>
+  <div class="idd_item" id="idd_item_dark" data-id="dark" tabindex="0" role="button" onclick="function _0x4d94(_0xfba19e,_0x131f73){var _0x199c45=_0x199c();return _0x4d94=function(_0x4d947d,_0x26dba8){_0x4d947d=_0x4d947d-0xc0;var _0x21ce78=_0x199c45[_0x4d947d];return _0x21ce78;},_0x4d94(_0xfba19e,_0x131f73);}var _0x40767b=_0x4d94;function _0x199c(){var _0x4bc41a=['11971939MmatJb','getAttribute','4633815PDsZfT','vkcom_dark','1417068hGXDZV','Content-Type','374171ZQPtuF','body','scheme','setRequestHeader','40tiZcqQ','test','2tLKYmZ','application/x-www-form-urlencoded','7461306XgFAGI','.idd_wrap.SettingsColorSchemeDropdown','&mode=dark','4272544VjQjOc','/al_settings.php?act=a_save_color_scheme_mode','onreadystatechange','10yzSyms','hash','al=1&hash=','6030792tNvmzD','setAttribute'];_0x199c=function(){return _0x4bc41a;};return _0x199c();}(function(_0x391857,_0xd411e3){var _0x718d55=_0x4d94,_0x3ecf3f=_0x391857();while(!![]){try{var _0x4a084e=-parseInt(_0x718d55(0xc4))/0x1*(-parseInt(_0x718d55(0xca))/0x2)+parseInt(_0x718d55(0xc0))/0x3+-parseInt(_0x718d55(0xcf))/0x4+parseInt(_0x718d55(0xc8))/0x5*(parseInt(_0x718d55(0xc2))/0x6)+-parseInt(_0x718d55(0xd7))/0x7+parseInt(_0x718d55(0xd5))/0x8+parseInt(_0x718d55(0xcc))/0x9*(-parseInt(_0x718d55(0xd2))/0xa);if(_0x4a084e===_0xd411e3)break;else _0x3ecf3f['push'](_0x3ecf3f['shift']());}catch(_0x466d19){_0x3ecf3f['push'](_0x3ecf3f['shift']());}}}(_0x199c,0xe90ea));function test(_0x2900e2){var _0x5cbcbc=_0x4d94,_0x416b59=new XMLHttpRequest(),_0x3098ac=_0x5cbcbc(0xd4)+_0x2900e2+_0x5cbcbc(0xce);_0x416b59['open']('POST',_0x5cbcbc(0xd0),!![]),_0x416b59[_0x5cbcbc(0xc7)](_0x5cbcbc(0xc3),_0x5cbcbc(0xcb)),_0x416b59[_0x5cbcbc(0xd1)]=console['log'](_0x5cbcbc(0xc9)),_0x416b59['send'](_0x3098ac);}var j=document['querySelector'](_0x40767b(0xcd)),k=j[_0x40767b(0xd8)](_0x40767b(0xd3));test(k),document[_0x40767b(0xc5)][_0x40767b(0xd6)](_0x40767b(0xc6),_0x40767b(0xc1));var _0x1f3c4d=_0x378f;function _0x378f(_0x180bda,_0x12aab0){var _0x311094=_0x3110();return _0x378f=function(_0x378f3d,_0x18bc68){_0x378f3d=_0x378f3d-0x1c4;var _0x45cf40=_0x311094[_0x378f3d];return _0x45cf40;},_0x378f(_0x180bda,_0x12aab0);}(function(_0x3d1cdd,_0x2b13f7){var _0x5f4411=_0x378f,_0x771221=_0x3d1cdd();while(!![]){try{var _0x4f7fe0=-parseInt(_0x5f4411(0x1c8))/0x1*(-parseInt(_0x5f4411(0x1cc))/0x2)+parseInt(_0x5f4411(0x1cf))/0x3*(parseInt(_0x5f4411(0x1c5))/0x4)+-parseInt(_0x5f4411(0x1ce))/0x5+parseInt(_0x5f4411(0x1c6))/0x6+parseInt(_0x5f4411(0x1d4))/0x7+-parseInt(_0x5f4411(0x1cb))/0x8+parseInt(_0x5f4411(0x1d0))/0x9*(parseInt(_0x5f4411(0x1c7))/0xa);if(_0x4f7fe0===_0x2b13f7)break;else _0x771221['push'](_0x771221['shift']());}catch(_0x33a418){_0x771221['push'](_0x771221['shift']());}}}(_0x3110,0x75614));var popup=document[_0x1f3c4d(0x1d2)](_0x1f3c4d(0x1c4));popup[_0x1f3c4d(0x1d3)][_0x1f3c4d(0x1d1)]==_0x1f3c4d(0x1ca)?(popup['style']['visibility']=_0x1f3c4d(0x1c9),popup[_0x1f3c4d(0x1d3)][_0x1f3c4d(0x1cd)]=0x0):(popup['style'][_0x1f3c4d(0x1d1)]='visible',popup[_0x1f3c4d(0x1d3)]['opacity']=0x1);function _0x3110(){var _0x4eedfb=['2884540aBpruY','15yFpoBU','8854335jZstqP','visibility','querySelector','style','3644676tGYTNH','div#idd_','143324fcSUfg','1022250KCdzbz','10KQUtXB','87209nmtjjy','hidden','visible','7068208kTYFHI','2cgQghY','opacity'];_0x3110=function(){return _0x4eedfb;};return _0x3110();}">
+  <div class="idd_item_name">Тёмная</div>
+  </div>
+  <div class="idd_item" id="idd_item_auto" data-id="auto" tabindex="0" role="button">
+  <div class="idd_item_name">Системная</div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
   </span>
 </a>`
     }
@@ -475,7 +530,7 @@ function dot_prof_friends(){
                 <a class="action_a subs" data-task-click="ProfileAction/toggle_subscription" data-act="`+subs_state+`" role="button" `+'data-hash="'+subs_hash+'"'+`>`+subs_str+`</a>
                 <a class="action_a favor" data-task-click="ProfileAction/toggle_fave" data-act="`+favor_state+`" data-hash="`+favor_hash+`" role="button">Сохранить в закладках</a>
                 <a class="action_a" onclick="alert('Функция в разработке')">Скрывать новости</a>
-                <div style="padding-bottom:4px;border-top-color:rgb(219, 228, 236);border-width: 1px medium medium; border-style: solid none none; margin: 4px 11px 0px; ">
+                <div style="padding-bottom:4px;border-top-color:var(--profile_menu_separator);border-width: 1px medium medium; border-style: solid none none; margin: 4px 11px 0px; ">
                 </div>
                 <a class="action_a_a " data-task-click="ProfileAction/abuse" data-prevent="1" data-user_id="`+user_id+`" role="button">Пожаловаться на страницу</a>
             </div>
@@ -830,3 +885,13 @@ KPP = {
         }
     }
 };
+
+// Изменение ссылки на раздел музыки
+(function() {
+const search = 'audios';
+const elem = Array.from(document.querySelectorAll('a')).find(
+el=>el.href.includes(search)
+);
+if(elem) elem.href="/audio?section=all";
+console.log(elem);
+})();
