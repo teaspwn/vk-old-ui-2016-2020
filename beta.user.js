@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By RAM
 // @namespace    https://github.com/891-2/vk-old-rad/
-// @version      3.9.0
+// @version      3.9.1
 // @description  Вернём старый дизайн вместе
 // @author       RAM
 // @match        *://*.vk.com/*
