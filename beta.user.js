@@ -44,6 +44,21 @@ class_add(`
 .beta_version {
     text-align: center;
 }
+div#dev_top_nav_wrap, .dev_top_link{
+    background: var(--page_header)!important;
+}
+[dir=ltr] body.dev input.dev_top_input {
+background-color: var(--TopSearch__input_background);
+background-image: var(--TopSearch__input_background_image);
+color: var(--TopSearch__input);
+background-position-y: center;
+}
+[dir] body.dev input.dev_top_input {
+    margin: 7px 0;
+}
+.dev_top_profile.fl_r {
+    margin-top: 7px!important;
+}
 `);
 
 var build = `<div class="beta_title">
@@ -129,8 +144,8 @@ function initial() {
     beta();
     }
 function video_minim(){
-var video_arr = document.querySelectorAll('.im-mess--text.wall_module._im_log_body a#post_media_lnk_0')
-video_arr.forEach(function(elem){
+    var video_arr = document.querySelectorAll('.im-mess-stack._im_mess_stack a#post_media_lnk_0')
+    video_arr.forEach(function(elem){
     let minimaze = document.createElement('div')
     minimaze.classList='videoplayer_controls_item videoplayer_btn videoplayer_btn_expand old_icon pizda'
     minimaze.setAttribute('role','button')
@@ -260,12 +275,12 @@ function title() {
     }else if (document.title == 'Реакции'){
         document.title = 'Понравилось'
     }else if (document.title == 'Приложения'||document.title == 'Разработчикам'){
-        let side = document.querySelector('div#side_bar')
-        side.style.setProperty("display", "none", "important")
+        //let side = document.querySelector('div#side_bar')
+        //side.style.setProperty("display", "none", "important")
         //console.log('test')
    }else{
-       let side = document.querySelector('div#side_bar')
-       side.style.setProperty("display", "block", "important")
+       //let side = document.querySelector('div#side_bar')
+       //side.style.setProperty("display", "block", "important")
    }
 }
 
