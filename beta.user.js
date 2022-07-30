@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By RAM
 // @namespace    https://github.com/891-2/vk-old-rad/
-// @version      3.9.2
+// @version      3.9.3
 // @description  Вернём старый дизайн вместе
 // @author       RAM
 // @match        *://*.vk.com/*
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
 }, false);
 
 window.onload = function () {
-    var login = document.querySelector('.VkIdForm')
+    var login = document.querySelector('.VkIdForm,form.VkIdForm__form')
     var login_btn = document.querySelector("button.FlatButton.FlatButton--primary.FlatButton--size-l.FlatButton--wide.VkIdForm__button.VkIdForm__signInButton")
     login==null||undefined?(
     initial(),
@@ -142,7 +142,106 @@ function initial() {
     fix_name();
    document.body.appendChild(styleNode2);
     beta();
+    setInterval(extra,1000);
     }
+function extra(){
+    var user = document.querySelector('img.page_avatar_img')
+    if (user!==null&&user!==undefined){
+         new MutationObserver(function () {
+    var vkProfilePage = document.body.querySelector('#profile_short:not(.display_additional_information_in_vk_profile)');
+    if (!vkProfilePage) return;
+    var vkScripts = document.body.querySelectorAll('script');
+    if (!vkScripts) return;
+    var vkProfileId = (vkScripts[vkScripts.length - 1].textContent.match(/("|')user_id("|'):( *)(|"|')(\d+)/i) || [])[5];
+    if (!vkProfileId) return;
+    vkProfilePage.className += ' display_additional_information_in_vk_profile';
+    var vkPageLang = document.body.querySelector('a.ui_actions_menu_item[onclick*="lang_dialog"]');
+    var vkCurrentLang;
+    if (vkPageLang) {
+      vkCurrentLang = vkPageLang.textContent;
+    } else {
+      vkCurrentLang = navigator.language.substring(0, 2);
+    }
+    var vkLang, vkMonthName;
+    if (vkCurrentLang === 'Language: english' || vkCurrentLang === 'en') {
+      vkLang = 'en';
+      vkMonthName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    } else if (vkCurrentLang === 'Язык: русский' || vkCurrentLang === 'ru') {
+      vkLang = 'ru';
+      vkMonthName = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+    } else if (vkCurrentLang === 'Мова: українська' || vkCurrentLang === 'uk') {
+      vkLang = 'uk';
+      vkMonthName = ['сiчня', 'лютого', 'березня', 'квiтня', 'травня', 'червня', 'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня'];
+    }
+    var i = 0;
+    while (i < 4) {
+      var vkProfilePageElement = document.createElement('div');
+      vkProfilePageElement.style.display = 'none';
+      vkProfilePage.insertBefore(vkProfilePageElement, vkProfilePage.firstChild);
+      i++;
+    }
+    var vkProfileIdElement = document.createElement('div');
+    vkProfileIdElement.className = 'clear_fix profile_info_row';
+    //if (vkLang === 'en') {
+     // vkProfileIdElement.innerHTML = '<div class="label fl_l">Profile ID:</div><div class="labeled">' + vkProfileId + '</div>';
+    //} else if (vkLang === 'ru') {
+    //  vkProfileIdElement.innerHTML = '<div class="label fl_l">Номер страницы:</div><div class="labeled">' + vkProfileId + '</div>';
+    //} else if (vkLang === 'uk') {
+    //  vkProfileIdElement.innerHTML = '<div class="label fl_l">Номер сторінки:</div><div class="labeled">' + vkProfileId + '</div>';
+    //} else {
+    //  vkProfileIdElement.innerHTML = '<div class="label fl_l">Profile ID:</div><div class="labeled">' + vkProfileId + '</div>';
+    //}
+    //vkProfilePage.replaceChild(vkProfileIdElement, vkProfilePage.childNodes[0]);
+    var requestVkFoaf = new XMLHttpRequest();
+    requestVkFoaf.onreadystatechange = function () {
+      if (this.readyState === 4 && this.status === 200) {
+        var vkFoafRegDate = (this.responseText.match(/ya:created dc:date="(.+)"/i) || [])[1];
+        var vkFoafLastProfileEditDate = (this.responseText.match(/ya:modified dc:date="(.+)"/i) || [])[1];
+        var vkFoafLastSeenDate = (this.responseText.match(/ya:lastLoggedIn dc:date="(.+)"/i) || [])[1];
+        if (vkFoafRegDate) {
+          var vkRegDate = new Date(vkFoafRegDate);
+          var vkRegDateElement = document.createElement('div');
+          vkRegDateElement.className = 'clear_fix profile_info_row';
+          if (vkLang === 'en') {
+            vkRegDateElement.innerHTML = '<div class="label fl_l">Registration date:</div><div class="labeled">' + vkMonthName[vkRegDate.getMonth()] + ' ' + vkRegDate.getDate() + ', ' + vkRegDate.getFullYear() + ' at ' + convert24HoursTo12Hours(vkRegDate.getHours()) + ':' + addLeadingZeroToDate(vkRegDate.getMinutes()) + ':' + addLeadingZeroToDate(vkRegDate.getSeconds()) + ' ' + convert24HoursToAmPmLc(vkRegDate.getHours()) + '</div>';
+          } else if (vkLang === 'ru') {
+            vkRegDateElement.innerHTML = '<div class="label fl_l">Дата регистрации:</div><div class="labeled">' + vkRegDate.getDate() + ' ' + vkMonthName[vkRegDate.getMonth()] + ' ' + vkRegDate.getFullYear() + ' в ' + vkRegDate.getHours() + ':' + addLeadingZeroToDate(vkRegDate.getMinutes()) + ':' + addLeadingZeroToDate(vkRegDate.getSeconds()) + '</div>';
+          } else if (vkLang === 'uk') {
+            vkRegDateElement.innerHTML = '<div class="label fl_l">Дата реєстрації:</div><div class="labeled">' + vkRegDate.getDate() + ' ' + vkMonthName[vkRegDate.getMonth()] + ' ' + vkRegDate.getFullYear() + ' о ' + vkRegDate.getHours() + ':' + addLeadingZeroToDate(vkRegDate.getMinutes()) + ':' + addLeadingZeroToDate(vkRegDate.getSeconds()) + '</div>';
+          } else {
+            vkRegDateElement.innerHTML = '<div class="label fl_l">Registration date:</div><div class="labeled">' + addLeadingZeroToDate(vkRegDate.getDate()) + '.' + addLeadingZeroToDate(vkRegDate.getMonth() + 1) + '.' + vkRegDate.getFullYear() + ' ' + addLeadingZeroToDate(vkRegDate.getHours()) + ':' + addLeadingZeroToDate(vkRegDate.getMinutes()) + ':' + addLeadingZeroToDate(vkRegDate.getSeconds()) + '</div>';
+          }
+          vkProfilePage.replaceChild(vkRegDateElement, vkProfilePage.childNodes[1]);
+        } else {
+          console.info('Registration date on VK FOAF profile is empty or unavailable');
+        }
+        if (vkFoafLastSeenDate) {
+          var vkLastSeenDate = new Date(vkFoafLastSeenDate);
+          var vkLastSeenDateElement = document.createElement('div');
+          vkLastSeenDateElement.className = 'clear_fix profile_info_row';
+          if (vkLang === 'en') {
+            vkLastSeenDateElement.innerHTML = '<div class="label fl_l">Last seen:</div><div class="labeled">' + vkMonthName[vkLastSeenDate.getMonth()] + ' ' + vkLastSeenDate.getDate() + ', ' + vkLastSeenDate.getFullYear() + ' at ' + convert24HoursTo12Hours(vkLastSeenDate.getHours()) + ':' + addLeadingZeroToDate(vkLastSeenDate.getMinutes()) + ':' + addLeadingZeroToDate(vkLastSeenDate.getSeconds()) + ' ' + convert24HoursToAmPmLc(vkLastSeenDate.getHours()) + '</div>';
+          } else if (vkLang === 'ru') {
+            vkLastSeenDateElement.innerHTML = '<div class="label fl_l">Последний заход:</div><div class="labeled">' + vkLastSeenDate.getDate() + ' ' + vkMonthName[vkLastSeenDate.getMonth()] + ' ' + vkLastSeenDate.getFullYear() + ' в ' + vkLastSeenDate.getHours() + ':' + addLeadingZeroToDate(vkLastSeenDate.getMinutes()) + ':' + addLeadingZeroToDate(vkLastSeenDate.getSeconds()) + '</div>';
+          } else if (vkLang === 'uk') {
+            vkLastSeenDateElement.innerHTML = '<div class="label fl_l">Останній візит:</div><div class="labeled">' + vkLastSeenDate.getDate() + ' ' + vkMonthName[vkLastSeenDate.getMonth()] + ' ' + vkLastSeenDate.getFullYear() + ' о ' + vkLastSeenDate.getHours() + ':' + addLeadingZeroToDate(vkLastSeenDate.getMinutes()) + ':' + addLeadingZeroToDate(vkLastSeenDate.getSeconds()) + '</div>';
+          } else {
+            vkLastSeenDateElement.innerHTML = '<div class="label fl_l">Last seen:</div><div class="labeled">' + addLeadingZeroToDate(vkLastSeenDate.getDate()) + '.' + addLeadingZeroToDate(vkLastSeenDate.getMonth() + 1) + '.' + vkLastSeenDate.getFullYear() + ' ' + addLeadingZeroToDate(vkLastSeenDate.getHours()) + ':' + addLeadingZeroToDate(vkLastSeenDate.getMinutes()) + ':' + addLeadingZeroToDate(vkLastSeenDate.getSeconds()) + '</div>';
+          }
+          vkProfilePage.replaceChild(vkLastSeenDateElement, vkProfilePage.childNodes[3]);
+        } else {
+          console.info('Last seen date on VK FOAF profile is empty or unavailable');
+        }
+      } else if (this.readyState === 4 && this.status !== 200) {
+        console.error('Failed to get VK FOAF profile (registration date, last profile edit date and last seen date): ' + this.status + ' ' + this.statusText);
+      }
+    };
+    requestVkFoaf.open('GET', '/foaf.php?id=' + vkProfileId, true);
+    requestVkFoaf.send();
+  }).observe(document.body, { childList: true, subtree: true });
+    }
+}
+
 function video_minim(){
     var video_arr = document.querySelectorAll('.im-mess-stack._im_mess_stack a#post_media_lnk_0')
     video_arr.forEach(function(elem){
@@ -244,6 +343,17 @@ function chat() {
     //   c = a[b].previousElementSibling.firstElementChild
     //  console.log(c.alt)
     //}
+}
+
+function addLeadingZeroToDate (date) {
+  return ('0' + date).slice(-2);
+}
+function convert24HoursTo12Hours (hours) {
+  hours = hours % 12;
+  return hours ? hours : 12;
+}
+function convert24HoursToAmPmLc (hours) {
+  return hours >= 12 ? 'pm' : 'am';
 }
 
 window.addEventListener('scroll', function () {
@@ -908,5 +1018,4 @@ const elem = Array.from(document.querySelectorAll('a')).find(
 el=>el.href.includes(search)
 );
 if(elem) elem.href="/audio?section=all";
-console.log(elem);
 })();
