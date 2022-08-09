@@ -256,19 +256,20 @@ div.PostButtonReactions__icon.PostButtonReactions__icon--custom.PostButtonReacti
     .vk_block_typing_btn .im-chat-input .im-chat-input--textarea:not(.im-chat-input_open-keyboard):not(.im-chat-input_close-keyboard):not(.im-chat-input--textarea_show-templates) .im-chat-input--text {
             padding-right: 130px !important;
     }
-    [dir=ltr] .im-chat-input .im-chat-input--textarea:not(.im-chat-input_open-keyboard):not(.im-chat-input_close-keyboard):not(.im-chat-input--textarea_show-templates) .im-chat-input--text::-webkit-scrollbar {
+    [dir=ltr] .im-chat-input .im-chat-input--textarea:not(.im-chat-input_open-keyboard):not(.im-chat-input_close-keyboard):not(.im-chat-input--textarea_show-templates) .im-chat-input--text::-webkit-scrollbar, div.im-chat-input--scroll::-webkit-scrollbar, div.olist.settings_menu_rows::-webkit-scrollbar, textarea#like_share_code.like_share_code.dark::-webkit-scrollbar {
             width: 8px;
     }
-    [dir=ltr] .im-chat-input .im-chat-input--textarea:not(.im-chat-input_open-keyboard):not(.im-chat-input_close-keyboard):not(.im-chat-input--textarea_show-templates) .im-chat-input--text::-webkit-scrollbar-track {
+    [dir=ltr] .im-chat-input .im-chat-input--textarea:not(.im-chat-input_open-keyboard):not(.im-chat-input_close-keyboard):not(.im-chat-input--textarea_show-templates) .im-chat-input--text::-webkit-scrollbar-track, div.im-chat-input--scroll::-webkit-scrollbar-track, div.olist.settings_menu_rows::-webkit-scrollbar-track, textarea#like_share_code.like_share_code.dark::-webkit-scrollbar-track {
             background-color: var(--scrollbar_track);
-            border-radius: 5px;
+            border-radius: 15px;
     }
-    [dir=ltr] .im-chat-input .im-chat-input--textarea:not(.im-chat-input_open-keyboard):not(.im-chat-input_close-keyboard):not(.im-chat-input--textarea_show-templates) .im-chat-input--text::-webkit-scrollbar-thumb {
+    [dir=ltr] .im-chat-input .im-chat-input--textarea:not(.im-chat-input_open-keyboard):not(.im-chat-input_close-keyboard):not(.im-chat-input--textarea_show-templates) .im-chat-input--text::-webkit-scrollbar-thumb, div.im-chat-input--scroll::-webkit-scrollbar-thumb, div.olist.settings_menu_rows::-webkit-scrollbar-thumb, textarea#like_share_code.like_share_code.dark::-webkit-scrollbar-thumb {
             background-color: var(--scrollbar_thumb);
-            border-radius: 5px;
+            border-radius: 15px;
     }
     body::-webkit-scrollbar {
             width: 1.2em;
+            height: 0;
             border-top: 42px solid var(--page_header);
             box-shadow: 0 1px var(--page_header_separator) inset;
     }
@@ -282,6 +283,7 @@ div.PostButtonReactions__icon.PostButtonReactions__icon--custom.PostButtonReacti
     }
     #wk_layer_wrap::-webkit-scrollbar, #layer_wrap::-webkit-scrollbar, #box_layer_wrap::-webkit-scrollbar, div.ap_layer_wrap::-webkit-scrollbar, div.article_layer._article_layer::-webkit-scrollbar, div#mv_layer_wrap::-webkit-scrollbar {
             width: 1.2em;
+            height: 0;
     }
     #wk_layer_wrap::-webkit-scrollbar-track, #layer_wrap::-webkit-scrollbar-track, #box_layer_wrap::-webkit-scrollbar-track, div.ap_layer_wrap::-webkit-scrollbar-track, div.article_layer._article_layer::-webkit-scrollbar-track, div#mv_layer_wrap::-webkit-scrollbar-track {
             background-color: transparent;
@@ -292,6 +294,7 @@ div.PostButtonReactions__icon.PostButtonReactions__icon--custom.PostButtonReacti
     }
     div.article_layer._article_layer::-webkit-scrollbar {
             width: 1.2em;
+            height: 0;
     }
     div.article_layer._article_layer::-webkit-scrollbar-track {
             background-color: transparent;
@@ -303,6 +306,17 @@ div.PostButtonReactions__icon.PostButtonReactions__icon--custom.PostButtonReacti
     div.article_layer._article_layer.article_dark::-webkit-scrollbar-thumb {
             background-color: #424242;
             border-radius: 5px;
+    }
+    span.like_link_value::-webkit-scrollbar {
+            height: 8px;
+    }
+    span.like_link_value::-webkit-scrollbar-track {
+            background-color: transparent;
+            border-radius: 15px;
+    }
+    span.like_link_value::-webkit-scrollbar-thumb {
+            background-color: var(--link_value_thumb);
+            border-radius: 15px;
     }
 div.box_title .group_link {
 	color: #f2f3f4 !important;
@@ -403,11 +417,29 @@ span.ui_box_header_cnt {
 	visibility: visible;
 }
 
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_mail > div > span.olist_item_name.fl_l {
+	visibility: hidden;
+}
+
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_mail > div > span.olist_item_name.fl_l:before {
+	content: 'Сообщения' !important;
+	visibility: visible;
+}
+
 #l_gr .left_label {
 	visibility: hidden;
 }
 
 #l_gr .left_label:before {
+	content: 'Группы' !important;
+	visibility: visible;
+}
+
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_groups > div > span.olist_item_name.fl_l {
+	visibility: hidden;
+}
+
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_groups > div > span.olist_item_name.fl_l:before {
 	content: 'Группы' !important;
 	visibility: visible;
 }
@@ -819,6 +851,10 @@ div.im-important-box--actions>div.im-important-box--default>button {
 	margin-top: -20px;
 }
 
+[dir] .photos_choose_upload_area {
+    background: var(--photos_choose_background);
+}
+
 /* Фикс расположения окна друзей при поиске */
 div#ts_cont_wrap.ts_cont_wrap {
 	top: 43px;
@@ -862,17 +898,18 @@ body.new_header_design #top_profile_menu {
 }
 
 /* Фикс SaveFrom.net */
-.savefrom_vk_download.sf-voice-btn,
-div#savefrom__yt_btn {
-	display: none !important;
+.savefrom_vk_download.sf-voice-btn, div#savefrom__yt_btn, #top_audio_player > div > div > a, #sf-muxer-parent {
+    display: none !important;
 }
-
-#top_audio_player>div>div>a {
-	fill: red !important;
+#top_audio_player > div > div > a {
+    fill: red !important;
 }
-
+#audio_layer_tt > div.eltt_content._eltt_content > div > div > div._audio_page_content_block_wrap.audio_page_content_block_wrap.ui_scroll_container.ui_scroll_default_theme > div.ui_scroll_overflow > div.ui_scroll_blocker > div > div > div.ui_scroll_content.clear_fix > div.audio_page_sections._audio_page_sections.clear_fix > div.audio_section.audio_w_covers._audio_section._audio_section__current.audio_section__current > div > div > div.CatalogBlock__content.CatalogBlock__placeholder_audios_wrapper.CatalogBlock__layout--list > div > div > div > div > div > div.audio_row.audio_row_with_cover._audio_row.audio_can_add.audio_row2.audio_row_playable.audio_row__current,
+#audio_layer_tt > div.eltt_content._eltt_content > div > div > div._audio_page_content_block_wrap.audio_page_content_block_wrap.ui_scroll_container.ui_scroll_default_theme > div.ui_scroll_overflow > div.ui_scroll_blocker > div > div > div.ui_scroll_content.clear_fix > div.audio_page_sections._audio_page_sections.clear_fix > div.audio_section.audio_w_covers._audio_section._audio_section__current.audio_section__current > div > div > div.CatalogBlock__content.CatalogBlock__placeholder_audios_wrapper.CatalogBlock__layout--list > div > div > div > div > div > div.audio_row.audio_row_with_cover._audio_row.audio_can_add.audio_row2.audio_row_playable {
+    background-color: transparent !important;
+}
 .video_showcase .TopHomeLink {
-	display: flex
+    display: flex
 }
 
 /* Серые точки в диалогах */
@@ -1014,7 +1051,7 @@ a.TopHomeLink rect {
 [dir] body.new_header_design #side_bar li#l_ca .left_row .LeftMenu__icon>svg {
 	background: var(--l_ca);
 	background-size: 17px;
-	/*opacity: 0.7;*/
+	opacity: var(--l_ca_svg_opacity);
 	background-position: 1px 1px;
 }
 
@@ -1070,6 +1107,7 @@ a.TopHomeLink rect {
 [dir] body.new_header_design #side_bar li#l_svd .left_row .LeftMenu__icon>svg {
 	background: var(--l_svd);
 	background-position: center;
+    filter: saturate(135%);
 }
 
 [dir] body.new_header_design #side_bar li#l_svd .left_row .LeftMenu__icon>svg path {
@@ -1088,6 +1126,7 @@ a.TopHomeLink rect {
 [dir] body.new_header_design #side_bar li#l_stickers .left_row .LeftMenu__icon>svg {
 	background: var(--l_stickers);
 	background-position: center;
+    filter: saturate(135%);
 }
 
 [dir] body.new_header_design #side_bar li#l_stickers .left_row .LeftMenu__icon>svg path {
@@ -1166,7 +1205,7 @@ a.TopHomeLink rect {
 }
 
 .ms_item.ms_item_gift._type_gift span.MediaSelector__mediaIcon {
-	background: url(https://i.imgur.com/FacOAVf.png);
+	background: var(--icon-gift);
 	background-repeat: no-repeat;
 	background-position: center;
 	opacity: .7;
@@ -1323,12 +1362,6 @@ a.ms_item.ms_item_article._type_article svg {
 
 a.ms_item.ms_item_article._type_article path {
 	opacity: 0;
-}
-
-.BestFriendsSettingsEntrypoint__button,
-.SitpostingEntrypoint__button {
-	color: #6d8bb4;
-	opacity: 0.8;
 }
 
 [dir] button.top_audio_player_btn.top_audio_player_next {
@@ -1527,9 +1560,8 @@ div#top_profile_menu {
 	border-color: var(--profile_menu_span) !important;
 }
 
-#top_profile_menu>div:nth-child(4)>div,
-#top_profile_menu>div:nth-child(10)>div {
-	border-top-color: var(--profile_menu_separator) !important;
+#top_profile_menu > div:nth-child(4) > div, #top_profile_menu > div:nth-child(10) > div, #top_profile_menu > div:nth-child(9) > div {
+    border-top-color: var(--profile_menu_separator) !important;
 }
 
 /* Старое меню действий на своей странице */
@@ -2014,7 +2046,7 @@ div#page_actions_wrap.page_actions_wrap.unshown,
 	box-shadow: rgba(0, 0, 0, 0.0976562) 0px 1px 3px;
 	font-size: 12.5px;
 	z-index: 20;
-	margin-top: 10px;
+    margin-top: -2.4em;
 	border-width: 1px;
 	border-style: solid;
 	border-color: var(--profile_aside_one_border);
@@ -2034,7 +2066,7 @@ div#page_actions_wrap.page_actions_wrap.unshown,
 	box-shadow: rgba(0, 0, 0, 0.0976562) 0px 1px 3px;
 	font-size: 12.5px;
 	z-index: 20;
-	margin-top: 10px;
+	margin-top: -2.4em;
 	border-width: 1px;
 	border-style: solid;
 	border-color: var(--profile_aside_one_border);
@@ -2374,9 +2406,15 @@ a.action_a_a:hover {
 
 /* Фикс полоски под разделами */
 [dir=ltr] .left_menu_nav_wrap {
-	border-top: 1px solid var(--steel_gray_100);
-	padding-top: 16px;
-	margin-right: 16px;
+    border-top: 1px solid var(--separator_common);
+    padding-top: 16px;
+    margin-right: 16px;
+}
+[dir] .left_menu_blocks_separator, #side_bar_inner > div.left_menu_mobile_app_promo_block {
+    display: none;
+}
+[dir] #side_bar .more_div {
+    border-top: none;
 }
 
 /* Отключение рекламы в разделе клипов */
@@ -2389,7 +2427,7 @@ div#react_rootShortVideoStub {
 	display: none;
 }
 
-#content>div>div._audio_page_content_block_wrap.audio_page_content_block_wrap>div.audio_page_sections._audio_page_sections.clear_fix>div.audio_section.audio_w_covers._audio_section._audio_section__all.audio_section__all>div>div:nth-child(3) {
+#content > div > div._audio_page_content_block_wrap.audio_page_content_block_wrap > div.audio_page_sections._audio_page_sections.clear_fix > div.audio_section.audio_w_covers._audio_section._audio_section__all.audio_section__all > div > div:nth-child(3) {
 	display: none;
 }
 
@@ -2595,7 +2633,148 @@ display: none;
 }
 
 .BestFriendsSettingsEntrypoint__button, .SitpostingEntrypoint__button {
-    color: #d4d8dd;
+    color: var(--BestFriends_button);
+	opacity: 0.76;
+}
+
+/* Переход в режим окна в видеоплеере */
+.videoplayer_controls_item.videoplayer_btn.videoplayer_btn_expand {
+    background: url("data:image/svg+xml,%3Csvg class='videoplayer_btn_icon videoplayer_expand_icon' viewBox='729 480 16 16' xmlns='http://www.w3.org/2000/svg' focusable='false'%3E%3Cpath d='M729 481.994c0-1.1.895-1.994 1.994-1.994h12.012c1.1 0 1.994.895 1.994 1.994v12.012c0 1.1-.895 1.994-1.994 1.994h-12.012c-1.1 0-1.994-.895-1.994-1.994v-12.012zm2 4.004c0-.55.456-.998 1.002-.998h9.996c.553 0 1.002.446 1.002.998v7.004c0 .55-.456.998-1.002.998h-9.996c-.553 0-1.002-.446-1.002-.998v-7.004z' fill='%23FFF' fill-rule='evenodd'%3E%3C/path%3E%3C/svg%3E") no-repeat;
+    background-size: 18px;
+    background-position: center;
+    width: 24px;
+}
+.videoplayer_controls_item.videoplayer_btn.videoplayer_btn_expand svg {
+    opacity: 0;
+}
+div.videoplayer_controls_item.videoplayer_timecode {
+    min-width: 0px;
+}
+#video_player > div > div.videoplayer_ui > div.videoplayer_controls._has_fullscreen._hide_time_code > div.videoplayer_controls_item.videoplayer_time {
+    min-width: 0px !important;
+}
+
+/* Исправление надписи при переключении тем */
+#top_profile_menu > a.top_profile_mrow.TopProfileItem--appearance > span > div > div > div.idd_selected_value:before {
+	content: var(--top_profile_menu_content) !important;
+    visibility: visible;
+}
+#top_profile_menu > a.top_profile_mrow.TopProfileItem--appearance > span > div > div > div.idd_selected_value {
+    visibility: hidden;
+}
+#light:before {
+    content: var(--top_profile_menu_content) !important;
+    visibility: visible;
+}
+#light {
+    visibility: hidden;
+}
+#top_profile_menu > a.top_profile_mrow.TopProfileItem--appearance > span > div > div {
+    width: 0px;
+}
+
+/* Отключение иконнок "Пропустить" и "Воспроизвести следующей" в Vk Opt */
+#audio_layer_tt > div.eltt_content._eltt_content > div > div > div._audio_page_content_block_wrap.audio_page_content_block_wrap.ui_scroll_container.ui_scroll_default_theme > div.ui_scroll_overflow > div.ui_scroll_blocker > div > div > div.ui_scroll_content.clear_fix > div.audio_page_sections._audio_page_sections.clear_fix > div.audio_section.audio_w_covers._audio_section._audio_section__current.audio_section__current > div > div > div.CatalogBlock__content.CatalogBlock__placeholder_audios_wrapper.CatalogBlock__layout--list > div > div > div > div > div > div.audio_row.audio_row_with_cover._audio_row.audio_can_add.audio_row2.audio_row_playable.audio_row__current > div > div.audio_row__inner > div.audio_row__info._audio_row__info > div._audio_row__actions.audio_row__actions.vk_acts_added > button.audio_row__action.audio_row__action_next._audio_row__action_next,
+#audio_layer_tt > div.eltt_content._eltt_content > div > div > div._audio_page_content_block_wrap.audio_page_content_block_wrap.ui_scroll_container.ui_scroll_default_theme > div.ui_scroll_overflow > div.ui_scroll_blocker > div > div > div.ui_scroll_content.clear_fix > div.audio_page_sections._audio_page_sections.clear_fix > div.audio_section.audio_w_covers._audio_section._audio_section__current.audio_section__current > div > div > div.CatalogBlock__content.CatalogBlock__placeholder_audios_wrapper.CatalogBlock__layout--list > div > div > div > div > div > div.audio_row.audio_row_with_cover._audio_row.audio_can_add.audio_row2.audio_row_playable > div > div.audio_row__inner > div.audio_row__info._audio_row__info > div._audio_row__actions.audio_row__actions.vk_acts_added > button.audio_row__action.audio_row__action_next._audio_row__action_next,
+#audio_layer_tt > div.eltt_content._eltt_content > div > div > div._audio_page_content_block_wrap.audio_page_content_block_wrap.ui_scroll_container.ui_scroll_default_theme > div.ui_scroll_overflow > div.ui_scroll_blocker > div > div > div.ui_scroll_content.clear_fix > div.audio_page_sections._audio_page_sections.clear_fix > div.audio_section.audio_w_covers._audio_section._audio_section__current.audio_section__current > div > div > div.CatalogBlock__content.CatalogBlock__placeholder_audios_wrapper.CatalogBlock__layout--list > div > div > div > div > div > div.audio_row.audio_row_with_cover.audio_can_add.audio_row2.audio_row_playable > div > div.audio_row__inner > div.audio_row__info._audio_row__info > div._audio_row__actions.audio_row__actions.vk_acts_added > button.audio_row__action.audio_row__action_skip_track._audio_row__action_skip_track
+{
+    display: none !important;
+}
+
+/* Иконка ответа на своё сообщение */
+.im-mess.im-mess_out .im-mess--reply:not(.im-mess--reply-show), .im-mess.im-mess_editable .im-mess--reply:not(.im-mess--reply-show) {
+    display: inline-flex!important;
+}
+
+/* Отключение раздела со стикерами и прочим в пустом диалоге */
+#content > div > div.im-page.js-im-page.im-page_classic.im-page_history-show > div.im-page--history.page_block._im_page_history.im-page--history_empty-hist > div.im-page-history-w > div.im-page--chat-body > div > div > div.im-page--chat-body-wrap-inner-2 > div > div._im_peer_history.im-page-chat-contain > div.EmptyDialogStickers,
+#content > div > div.im-page.js-im-page.im-page_classic.im-page_history-show > div.im-page--history.page_block._im_page_history.im-page--history_empty-hist > div.im-page-history-w > div.im-page--chat-body > div > div > div.im-page--chat-body-wrap-inner-2 > div > div._im_peer_history.im-page-chat-contain > div.EmptyDialogStub.EmptyDialogStub--classic {
+    display: none;
+}
+
+/* Белые иконки в разделе настроек */
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_profile > div > span.olist_item_photo.fl_l > svg {
+    background: var(--l_pr) no-repeat center;
+}
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_news > div > span.olist_item_photo.fl_l > svg {
+    background: var(--l_nwsf) no-repeat center;
+}
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_mail > div > span.olist_item_photo.fl_l > svg {
+    background: var(--l_msg) no-repeat center;
+}
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_no_calls > div > span.olist_item_photo.fl_l > svg {
+    background: var(--l_ca) no-repeat center;
+    background-size: 17px;
+    opacity: var(--l_ca_svg_opacity);
+}
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_friends > div > span.olist_item_photo.fl_l > svg {
+    background: var(--l_fr) no-repeat center;
+}
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_groups > div > span.olist_item_photo.fl_l > svg {
+    background: var(--l_gr) no-repeat center;
+}
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_photos > div > span.olist_item_photo.fl_l > svg {
+    background: var(--l_ph) no-repeat center;
+}
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_audio > div > span.olist_item_photo.fl_l > svg {
+    background: var(--l_aud) no-repeat center;
+}
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_video > div > span.olist_item_photo.fl_l > svg {
+    background: var(--l_vid) no-repeat center;
+}
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_no_clips > div > span.olist_item_photo.fl_l > svg {
+    background: var(--l_svd) no-repeat center;
+    filter: saturate(135%);
+}
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_no_apps > div > span.olist_item_photo.fl_l > svg {
+    background: var(--l_ap) no-repeat center;
+}
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_no_stickers > div > span.olist_item_photo.fl_l > svg {
+    background: var(--l_stickers) no-repeat center;
+    filter: saturate(135%);
+}
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_no_market > div > span.olist_item_photo.fl_l > svg {
+    background: var(--l_mk) no-repeat center;
+}
+#l_checkback_fest > a > div > svg, #settings_menu_0 > a.olist_item_wrap.olist_item_menu > div > span.olist_item_photo.fl_l > svg {
+    background-image: var(--checkback_svg);
+}
+#l_checkback_fest > a > div > svg > g,  #settings_menu_0 > a.olist_item_wrap.olist_item_menu > div > span.olist_item_photo.fl_l > svg > g {
+    display: none;
+}
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_no_mini_apps > div > span.olist_item_photo.fl_l > svg {
+    background: var(--l_mini_apps) no-repeat center;
+}
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_no_vkpay > div > span.olist_item_photo.fl_l > svg {
+    background: var(--l_vkp) no-repeat center;
+}
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_faves > div > span.olist_item_photo.fl_l > svg {
+    background: var(--l_fav) no-repeat center;
+}
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_docs > div > span.olist_item_photo.fl_l > svg {
+    background: var(--l_doc) no-repeat center;
+}
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_no_ads_link > div > span.olist_item_photo.fl_l > svg {
+    background: var(--l_ads) no-repeat center;
+}
+#settings_menu_0 > a.olist_item_wrap.olist_item_menu.olist_item_no_apps_manage > div > span.olist_item_photo.fl_l > svg {
+    background: var(--l_apm) no-repeat center;
+}
+.olist_item_name {
+    color: var(--settings_text);
+}
+
+/* Убирание эмодзи-статусов */
+#content > div > div.im-page.js-im-page.im-page_classic.im-page_history-show > div.im-page--history.page_block._im_page_history > div.im-page-history-w > div.im-page--chat-body > div > div > div.im-page--chat-body-wrap-inner-2 > div > div._im_peer_history.im-page-chat-contain > div > div.im-mess-stack--content > div > div > a > span,
+#page_info_wrap > div.page_top > h1 > span,
+div.friends_user_info.friends_user_info--fullRow > div.friends_field.friends_field_title > span,
+#im_dialogs > li.nim-dialog._im_dialog.nim-dialog_classic > div.nim-dialog--content > div > div._im_dialog_title > div.nim-dialog--name > span.nim-dialog--name-w._im_dialog_name_w > span > span {
+    display: none;
+}
+
+/* Отключение блока о дате регистрации в vk opt */
+#profile_short > div:nth-child(6) {
+    display: none;
 }
 
 /* Элементы для тёмной темы */
@@ -2610,7 +2789,7 @@ display: none;
 	--profile_menu_separator: var(--separator_common);
 	--postBottomActionLikeBtns_separator: 1px solid var(--separator_common);
 	--postBottomAction_count: var(--text_secondary);
-	--left_count_wrap_background: var(--counter_secondary_background);
+	--left_count_wrap_background: #424242;
 	--side_bar_left_count_wrap_left_count: var(--white);
 	--profile_aside_font: var(--button_secondary_foreground);
 	--profile_aside_font2: var(--button_secondary_foreground);
@@ -2639,8 +2818,10 @@ display: none;
 	--ui_crumb_count: #f2f3f4;
 	--scrollbar_track: #191919;
 	--scrollbar_thumb: #424242;
-	--page_scrollbar_track: var(--background_page);
 	--page_scrollbar_thumb: #424242;
+    --wk_layer_scrollbar_thumb: #424242;
+    --link_value_thumb: #656565;
+    --photos_choose_background: #424242;
 	--cal_table_background: var(--modal_card_background);
 	--cal_table_count: var(--text_primary);
 	--cal_table_arrows: var(--icon_secondary);
@@ -2673,12 +2854,18 @@ display: none;
 	--vk_lang_selected_font: #e5ebf1;
 	--top-icon: url(https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1TdVi7Hao55HYUGjUK-otWlD_uREJ4qwG) no-repeat;
 	--icon-source: url('data:image/png;base64,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');
-	--icon-money: url(https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1WSWHW60tqUugr-oxWHV6oSmC1v8jMerO);
+	--icon-gift: url(https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1BEyBobk4Rz6P6j53__f-ZeJ0SE2TiA-n);
+    --icon-money: url(https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1WSWHW60tqUugr-oxWHV6oSmC1v8jMerO);
 	--icon-poll: url(https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1xWXnZdJiaILyyN3D9nmtiRJ7v7cVc8X_);
 	--icon-doc: url(https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1FiZvjkDtnNXNoA7ghSAmEDwGpBpgcUyN);
 	--icon-map: url(https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1-acQ7dBp3R_Pix6rPgeCA2llgWGDn2as);
     --article_icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Crect width='24' height='24'/%3E%3Cpath fill='rgb(225,227,230)' d='M8,6 L8,13 C8,13.5522847 7.55228475,14 7,14 C6.44771525,14 6,13.5522847 6,13 L6,6 L4,6 C3.44771525,6 3,5.55228475 3,5 L3,5 L3,5 C3,4.44771525 3.44771525,4 4,4 L4,4 L10,4 C10.5522847,4 11,4.44771525 11,5 L11,5 C11,5.55228475 10.5522847,6 10,6 L8,6 Z M12,12 L20,12 C20.5522847,12 21,12.4477153 21,13 C21,13.5522847 20.5522847,14 20,14 L12,14 C11.4477153,14 11,13.5522847 11,13 C11,12.4477153 11.4477153,12 12,12 Z M14,7 L20,7 C20.5522847,7 21,7.44771525 21,8 C21,8.55228475 20.5522847,9 20,9 L14,9 C13.4477153,9 13,8.55228475 13,8 C13,7.44771525 13.4477153,7 14,7 Z M6,17 L20,17 C20.5522847,17 21,17.4477153 21,18 C21,18.5522847 20.5522847,19 20,19 L6,19 C5.44771525,19 5,18.5522847 5,18 C5,17.4477153 5.44771525,17 6,17 Z' style='&%2310;'/%3E%3C/g%3E%3C/svg%3E");
 	--news-color: rgb(225, 227, 230);
+    --BestFriends_button: #d4d8dd;
+    --top_profile_menu_content: 'Тёмная';
+    --settings_text: white;
+    --checkback_svg: url("data:image/svg+xml,%3Csvg width='20' height='20' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(%23stars_20__clip0)' fill='rgb(225,227,230)'%3E%3Cpath fill-rule='nonzero' clip-rule='evenodd' d='M12 8.13a7.85 7.85 0 0 1-1.5 2.37A7.83 7.83 0 0 1 8.13 12c.83.37 1.72.86 2.37 1.51a7.83 7.83 0 0 1 1.5 2.37c.37-.84.86-1.72 1.51-2.37a7.83 7.83 0 0 1 2.37-1.5 7.85 7.85 0 0 1-2.37-1.51 7.83 7.83 0 0 1-1.5-2.37zm-.78-2.18c-.42 1.32-1.02 2.72-1.78 3.49-.77.77-2.17 1.36-3.49 1.78a21.07 21.07 0 0 1-1.16.34c-.38.1-.38.79 0 .9a27.15 27.15 0 0 1 .91.25l.25.08c1.32.42 2.72 1.01 3.49 1.78.76.77 1.36 2.17 1.78 3.49a20.84 20.84 0 0 1 .27.9l.07.26c.1.38.79.38.9 0a27.49 27.49 0 0 1 .25-.91l.08-.25c.42-1.32 1.01-2.72 1.78-3.49s2.17-1.36 3.49-1.78a20.84 20.84 0 0 1 .9-.27l.26-.07c.38-.1.38-.8 0-.9a27.49 27.49 0 0 1-.91-.25 20.84 20.84 0 0 1-.25-.08c-1.32-.42-2.72-1.01-3.49-1.78s-1.36-2.17-1.78-3.49a21.13 21.13 0 0 1-.34-1.16c-.1-.38-.8-.38-.9 0a27.15 27.15 0 0 1-.25.91 21.13 21.13 0 0 1-.08.25z'%3E%3C/path%3E%3Cpath d='M4.37.76a.39.39 0 0 0-.73 0L3.22 2A1.93 1.93 0 0 1 2 3.22l-1.24.41a.39.39 0 0 0 0 .74l1.24.4A1.93 1.93 0 0 1 3.22 6l.41 1.24a.39.39 0 0 0 .74 0L4.77 6A1.93 1.93 0 0 1 6 4.78l1.24-.42a.39.39 0 0 0 0-.73L6 3.24A1.93 1.93 0 0 1 4.78 2L4.36.76z'%3E%3C/path%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='stars_20__clip0'%3E%3Cpath fill='%23fff' d='M0 0h20v20H0z'%3E%3C/path%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+    --l_ca_svg_opacity: 1.0;
 }
 
 [scheme=vkcom_light],
@@ -2721,8 +2908,10 @@ display: none;
 	--ui_crumb_count: black;
 	--scrollbar_track: #f1f1f1;
 	--scrollbar_thumb: var(--gray_200);
-	--page_scrollbar_track: var(--background_page);
 	--page_scrollbar_thumb: #a5a5a5;
+    --wk_layer_scrollbar_thumb: #737373;
+    --link_value_thumb: var(--gray_200);
+    --photos_choose_background: #f0f2f5;
 	--cal_table_background: var(--button_primary_background);
 	--cal_table_count: var(--button_primary_foreground);
 	--cal_table_arrows: var(--button_primary_foreground);
@@ -2755,10 +2944,16 @@ display: none;
 	--vk_lang_selected_font: #2a5885;
 	--top-icon: url(/images/dev_toplink.png) no-repeat;
 	--icon-source: url(data:image/png;base64,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);
+    --icon-gift: url(https://i.imgur.com/FacOAVf.png);
 	--icon-money: url(https://i.imgur.com/QLrIKPG.png);
 	--icon-poll: url(https://i.imgur.com/dZT8eRJ.png);
 	--icon-doc: url(https://i.imgur.com/rOV0bpk.png);
 	--icon-map: url(https://i.imgur.com/WAJgFXh.png);
     --article_icon: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4NCiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPg0KICAgICAgICA8cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiLz4NCiAgICAgICAgPHBhdGggZmlsbD0iIzcyOEZCNSIgZD0iTTgsNiBMOCwxMyBDOCwxMy41NTIyODQ3IDcuNTUyMjg0NzUsMTQgNywxNCBDNi40NDc3MTUyNSwxNCA2LDEzLjU1MjI4NDcgNiwxMyBMNiw2IEw0LDYgQzMuNDQ3NzE1MjUsNiAzLDUuNTUyMjg0NzUgMyw1IEwzLDUgTDMsNSBDMyw0LjQ0NzcxNTI1IDMuNDQ3NzE1MjUsNCA0LDQgTDQsNCBMMTAsNCBDMTAuNTUyMjg0Nyw0IDExLDQuNDQ3NzE1MjUgMTEsNSBMMTEsNSBDMTEsNS41NTIyODQ3NSAxMC41NTIyODQ3LDYgMTAsNiBMOCw2IFogTTEyLDEyIEwyMCwxMiBDMjAuNTUyMjg0NywxMiAyMSwxMi40NDc3MTUzIDIxLDEzIEMyMSwxMy41NTIyODQ3IDIwLjU1MjI4NDcsMTQgMjAsMTQgTDEyLDE0IEMxMS40NDc3MTUzLDE0IDExLDEzLjU1MjI4NDcgMTEsMTMgQzExLDEyLjQ0NzcxNTMgMTEuNDQ3NzE1MywxMiAxMiwxMiBaIE0xNCw3IEwyMCw3IEMyMC41NTIyODQ3LDcgMjEsNy40NDc3MTUyNSAyMSw4IEMyMSw4LjU1MjI4NDc1IDIwLjU1MjI4NDcsOSAyMCw5IEwxNCw5IEMxMy40NDc3MTUzLDkgMTMsOC41NTIyODQ3NSAxMyw4IEMxMyw3LjQ0NzcxNTI1IDEzLjQ0NzcxNTMsNyAxNCw3IFogTTYsMTcgTDIwLDE3IEMyMC41NTIyODQ3LDE3IDIxLDE3LjQ0NzcxNTMgMjEsMTggQzIxLDE4LjU1MjI4NDcgMjAuNTUyMjg0NywxOSAyMCwxOSBMNiwxOSBDNS40NDc3MTUyNSwxOSA1LDE4LjU1MjI4NDcgNSwxOCBDNSwxNy40NDc3MTUzIDUuNDQ3NzE1MjUsMTcgNiwxNyBaIi8+DQogICAgPC9nPg0KPC9zdmc+);
 	--news-color: #6e9dbb;
+    --BestFriends_button: #6f95af;
+    --top_profile_menu_content: 'Светлая';
+    --settings_text: #2a5885;
+    --checkback_svg: url("data:image/svg+xml,<svg width='20' height='20' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(%23stars_20__clip0)' fill='rgb(110 157 187)'><path fill-rule='nonzero' clip-rule='evenodd' d='M12 8.13a7.85 7.85 0 0 1-1.5 2.37A7.83 7.83 0 0 1 8.13 12c.83.37 1.72.86 2.37 1.51a7.83 7.83 0 0 1 1.5 2.37c.37-.84.86-1.72 1.51-2.37a7.83 7.83 0 0 1 2.37-1.5 7.85 7.85 0 0 1-2.37-1.51 7.83 7.83 0 0 1-1.5-2.37zm-.78-2.18c-.42 1.32-1.02 2.72-1.78 3.49-.77.77-2.17 1.36-3.49 1.78a21.07 21.07 0 0 1-1.16.34c-.38.1-.38.79 0 .9a27.15 27.15 0 0 1 .91.25l.25.08c1.32.42 2.72 1.01 3.49 1.78.76.77 1.36 2.17 1.78 3.49a20.84 20.84 0 0 1 .27.9l.07.26c.1.38.79.38.9 0a27.49 27.49 0 0 1 .25-.91l.08-.25c.42-1.32 1.01-2.72 1.78-3.49s2.17-1.36 3.49-1.78a20.84 20.84 0 0 1 .9-.27l.26-.07c.38-.1.38-.8 0-.9a27.49 27.49 0 0 1-.91-.25 20.84 20.84 0 0 1-.25-.08c-1.32-.42-2.72-1.01-3.49-1.78s-1.36-2.17-1.78-3.49a21.13 21.13 0 0 1-.34-1.16c-.1-.38-.8-.38-.9 0a27.15 27.15 0 0 1-.25.91 21.13 21.13 0 0 1-.08.25z'></path><path d='M4.37.76a.39.39 0 0 0-.73 0L3.22 2A1.93 1.93 0 0 1 2 3.22l-1.24.41a.39.39 0 0 0 0 .74l1.24.4A1.93 1.93 0 0 1 3.22 6l.41 1.24a.39.39 0 0 0 .74 0L4.77 6A1.93 1.93 0 0 1 6 4.78l1.24-.42a.39.39 0 0 0 0-.73L6 3.24A1.93 1.93 0 0 1 4.78 2L4.36.76z'></path></g><defs><clipPath id='stars_20__clip0'><path fill='%23fff' d='M0 0h20v20H0z'></path></clipPath></defs></svg>");
+    --l_ca_svg_opacity: 0.77;
 }
