@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By RAM
 // @namespace    https://github.com/891-2/vk-old-rad/
-// @version      3.9.4
+// @version      3.9.5
 // @description  Вернём старый дизайн вместе
 // @author       RAM
 // @match        *://*.vk.com/*
@@ -21,45 +21,17 @@
 // @updateURL    https://github.com/891-2/vk-old-rad/raw/main/beta.user.js
 // @license MIT
 // ==/UserScript==
+var date_now = Date.now();
+
+
+//alert(commits[0].author.login);
+
 var i, i2, vd, theme_hash_number, theme,j
-var styleNode = document.createElement("style");
-styleNode.id = 'Style'
-styleNode.classList = 'old_style'
+
 var styleNode2 = document.createElement("style");
 styleNode2.id = 'Style'
 var wait = setInterval(wait_form,500)
 
-class_add(`
-.beta_title {
-    position: fixed;
-    color: white;
-    top: 95%;
-    left: 1%;
-    z-index: 100000;
-    user-select: none;
-    font-size: 1.2em;
-    font-weight: 500;
-    opacity: 0.8;
-}
-.beta_version {
-    text-align: center;
-}
-div#dev_top_nav_wrap, .dev_top_link{
-    background: var(--page_header)!important;
-}
-[dir=ltr] body.dev input.dev_top_input {
-background-color: var(--TopSearch__input_background);
-background-image: var(--TopSearch__input_background_image);
-color: var(--TopSearch__input);
-background-position-y: center;
-}
-[dir] body.dev input.dev_top_input {
-    margin: 7px 0;
-}
-.dev_top_profile.fl_r {
-    margin-top: 7px!important;
-}
-`);
 
 var build = `<div class="beta_title">
 VK by RAD beta
@@ -68,6 +40,9 @@ VK by RAD beta
 
 function class_add(css) {
     //console.log(css)
+    var styleNode = document.createElement("style");
+    styleNode.id = 'Style'
+    styleNode.classList = 'old_style'
     css!==undefined||null?styleNode.innerHTML = css:console.log('null')
     document.body.appendChild(styleNode);
 }
@@ -87,11 +62,17 @@ document.addEventListener('DOMContentLoaded', function () {
 }, false);
 
 window.onload = function () {
+    css_add()
+    var date =Date.now()
+    var date_temp = date-date_now
+
+
+    console.log(`Скрипт загружен за `+format_ms(date_temp))
+
     var login = document.querySelector('.VkIdForm,form.VkIdForm__form')
     var login_btn = document.querySelector("button.FlatButton.FlatButton--primary.FlatButton--size-l.FlatButton--wide.VkIdForm__button.VkIdForm__signInButton")
     login==null||undefined?(
-    initial(),
-    styleNode = null
+    initial()
     ):(
         login_btn.outerHTML = login_btn.outerHTML,
         login_btn = document.querySelector("button.FlatButton.FlatButton--primary.FlatButton--size-l.FlatButton--wide.VkIdForm__button.VkIdForm__signInButton"),
@@ -99,6 +80,26 @@ window.onload = function () {
         wait
     )
 };
+
+function format_ms(ms){
+    if (ms>1000){
+        let ms_s = ms/1000
+        return `${ms_s} сек`
+    }else{
+        return `${ms} мс`
+    }
+}
+
+async function css_add(){
+    let url = 'https://raw.githubusercontent.com/891-2/vk-old-rad/main/style.css';
+    let response = await fetch(url);
+    let commits = await response.text();
+
+    if (commits!==null|undefined){
+        class_add(commits)
+        //console.log(commits)
+}
+}
 
 function wait_form(){
      var form =document.querySelector('form#login_submit')
