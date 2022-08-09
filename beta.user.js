@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By RAM
 // @namespace    https://github.com/891-2/vk-old-rad/
-// @version      3.9.3
+// @version      3.9.4
 // @description  Вернём старый дизайн вместе
 // @author       RAM
 // @match        *://*.vk.com/*
@@ -142,7 +142,7 @@ function initial() {
     fix_name();
    document.body.appendChild(styleNode2);
     beta();
-    setInterval(extra,1000);
+    //setInterval(extra,1000);
     }
 function extra(){
     var user = document.querySelector('img.page_avatar_img')
@@ -756,8 +756,8 @@ function toggle_favor(){
 }
 
 // Фикс в видео
-function check_vid() {
-    var h2
+function check_vid() {/*
+      var h2
     var myvd = document.querySelector('li#l_pr a.left_row')
     if (myvd) {
         var h = myvd.href
@@ -780,7 +780,7 @@ function check_vid() {
     }
     if (window.location.href.includes('https://vk.com/video/@') && !window.location.href.includes(h2)) {
         seacrh3();
-    }
+    }**/
 }
 
 function seacrh() {
