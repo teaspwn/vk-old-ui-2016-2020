@@ -2776,6 +2776,11 @@ div.friends_user_info.friends_user_info--fullRow > div.friends_field.friends_fie
     display: none;
 }
 
+/* Фикс поиска в разделе музыки в шапке */
+[dir] .audio_layer_container .audio_page_layout .audio_search {
+    margin: 0px 0px 5px 0px;
+}
+
 /* Элементы для тёмной темы */
 [scheme=vkcom_dark] {
 	/* Тёмная тема */
