@@ -2762,6 +2762,9 @@ div.videoplayer_controls_item.videoplayer_timecode {
 .olist_item_name {
     color: var(--settings_text);
 }
+a.olist_item_wrap.olist_item_menu.olist_item_wrap_on > div > span.olist_checkbox.fl_r {
+    background-image: var(--olist_checkbox);
+}
 
 /* Убирание эмодзи-статусов */
 #content > div > div.im-page.js-im-page.im-page_classic.im-page_history-show > div.im-page--history.page_block._im_page_history > div.im-page-history-w > div.im-page--chat-body > div > div > div.im-page--chat-body-wrap-inner-2 > div > div._im_peer_history.im-page-chat-contain > div > div.im-mess-stack--content > div > div > a > span,
@@ -2777,8 +2780,14 @@ div.friends_user_info.friends_user_info--fullRow > div.friends_field.friends_fie
 }
 
 /* Фикс поиска в разделе музыки в шапке */
-[dir] .audio_layer_container .audio_page_layout .audio_search {
+#audio_layer_tt > div.eltt_content._eltt_content > div > div > div._audio_page_content_block_wrap.audio_page_content_block_wrap.ui_scroll_container.ui_scroll_default_theme > div.ui_scroll_overflow > div.ui_scroll_blocker > div > div > div.ui_scroll_content.clear_fix > div.page_block._audio_page_content_block > div > div {
     margin: 0px 0px 5px 0px;
+}
+#audio_layer_tt > div.eltt_content._eltt_content > div > div > div._audio_page_content_block_wrap.audio_page_content_block_wrap.ui_scroll_container.ui_scroll_default_theme > div.ui_scroll_overflow > div.ui_scroll_blocker > div > div > div.ui_scroll_content.clear_fix > div.page_block._audio_page_content_block > div > div > div.ui_search_input_block > div {
+    border-radius: 2px 0 0 2px;
+}
+#audio_layer_tt > div.eltt_content._eltt_content > div > div > div._audio_page_content_block_wrap.audio_page_content_block_wrap.ui_scroll_container.ui_scroll_default_theme > div.ui_scroll_overflow > div.ui_scroll_blocker > div > div > div.ui_scroll_content.clear_fix > div.page_block._audio_page_content_block > div > div > div.ui_search_input_block > button {
+     border-radius: 0 2px 2px 0;
 }
 
 /* Элементы для тёмной темы */
@@ -2870,6 +2879,7 @@ div.friends_user_info.friends_user_info--fullRow > div.friends_field.friends_fie
     --settings_text: white;
     --checkback_svg: url("data:image/svg+xml,%3Csvg width='20' height='20' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(%23stars_20__clip0)' fill='rgb(225,227,230)'%3E%3Cpath fill-rule='nonzero' clip-rule='evenodd' d='M12 8.13a7.85 7.85 0 0 1-1.5 2.37A7.83 7.83 0 0 1 8.13 12c.83.37 1.72.86 2.37 1.51a7.83 7.83 0 0 1 1.5 2.37c.37-.84.86-1.72 1.51-2.37a7.83 7.83 0 0 1 2.37-1.5 7.85 7.85 0 0 1-2.37-1.51 7.83 7.83 0 0 1-1.5-2.37zm-.78-2.18c-.42 1.32-1.02 2.72-1.78 3.49-.77.77-2.17 1.36-3.49 1.78a21.07 21.07 0 0 1-1.16.34c-.38.1-.38.79 0 .9a27.15 27.15 0 0 1 .91.25l.25.08c1.32.42 2.72 1.01 3.49 1.78.76.77 1.36 2.17 1.78 3.49a20.84 20.84 0 0 1 .27.9l.07.26c.1.38.79.38.9 0a27.49 27.49 0 0 1 .25-.91l.08-.25c.42-1.32 1.01-2.72 1.78-3.49s2.17-1.36 3.49-1.78a20.84 20.84 0 0 1 .9-.27l.26-.07c.38-.1.38-.8 0-.9a27.49 27.49 0 0 1-.91-.25 20.84 20.84 0 0 1-.25-.08c-1.32-.42-2.72-1.01-3.49-1.78s-1.36-2.17-1.78-3.49a21.13 21.13 0 0 1-.34-1.16c-.1-.38-.8-.38-.9 0a27.15 27.15 0 0 1-.25.91 21.13 21.13 0 0 1-.08.25z'%3E%3C/path%3E%3Cpath d='M4.37.76a.39.39 0 0 0-.73 0L3.22 2A1.93 1.93 0 0 1 2 3.22l-1.24.41a.39.39 0 0 0 0 .74l1.24.4A1.93 1.93 0 0 1 3.22 6l.41 1.24a.39.39 0 0 0 .74 0L4.77 6A1.93 1.93 0 0 1 6 4.78l1.24-.42a.39.39 0 0 0 0-.73L6 3.24A1.93 1.93 0 0 1 4.78 2L4.36.76z'%3E%3C/path%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='stars_20__clip0'%3E%3Cpath fill='%23fff' d='M0 0h20v20H0z'%3E%3C/path%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
     --l_ca_svg_opacity: 1.0;
+    --olist_checkbox: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Crect width='22' height='22' fill='rgb(225,227,230)' rx='11'/%3E%3Cpath stroke='%23222323' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M6 12l3 3 7-7'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 [scheme=vkcom_light],
@@ -2960,6 +2970,7 @@ div.friends_user_info.friends_user_info--fullRow > div.friends_field.friends_fie
     --settings_text: #2a5885;
     --checkback_svg: url("data:image/svg+xml,<svg width='20' height='20' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(%23stars_20__clip0)' fill='rgb(110 157 187)'><path fill-rule='nonzero' clip-rule='evenodd' d='M12 8.13a7.85 7.85 0 0 1-1.5 2.37A7.83 7.83 0 0 1 8.13 12c.83.37 1.72.86 2.37 1.51a7.83 7.83 0 0 1 1.5 2.37c.37-.84.86-1.72 1.51-2.37a7.83 7.83 0 0 1 2.37-1.5 7.85 7.85 0 0 1-2.37-1.51 7.83 7.83 0 0 1-1.5-2.37zm-.78-2.18c-.42 1.32-1.02 2.72-1.78 3.49-.77.77-2.17 1.36-3.49 1.78a21.07 21.07 0 0 1-1.16.34c-.38.1-.38.79 0 .9a27.15 27.15 0 0 1 .91.25l.25.08c1.32.42 2.72 1.01 3.49 1.78.76.77 1.36 2.17 1.78 3.49a20.84 20.84 0 0 1 .27.9l.07.26c.1.38.79.38.9 0a27.49 27.49 0 0 1 .25-.91l.08-.25c.42-1.32 1.01-2.72 1.78-3.49s2.17-1.36 3.49-1.78a20.84 20.84 0 0 1 .9-.27l.26-.07c.38-.1.38-.8 0-.9a27.49 27.49 0 0 1-.91-.25 20.84 20.84 0 0 1-.25-.08c-1.32-.42-2.72-1.01-3.49-1.78s-1.36-2.17-1.78-3.49a21.13 21.13 0 0 1-.34-1.16c-.1-.38-.8-.38-.9 0a27.15 27.15 0 0 1-.25.91 21.13 21.13 0 0 1-.08.25z'></path><path d='M4.37.76a.39.39 0 0 0-.73 0L3.22 2A1.93 1.93 0 0 1 2 3.22l-1.24.41a.39.39 0 0 0 0 .74l1.24.4A1.93 1.93 0 0 1 3.22 6l.41 1.24a.39.39 0 0 0 .74 0L4.77 6A1.93 1.93 0 0 1 6 4.78l1.24-.42a.39.39 0 0 0 0-.73L6 3.24A1.93 1.93 0 0 1 4.78 2L4.36.76z'></path></g><defs><clipPath id='stars_20__clip0'><path fill='%23fff' d='M0 0h20v20H0z'></path></clipPath></defs></svg>");
     --l_ca_svg_opacity: 0.77;
+    --olist_checkbox: url(data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2222%22%20height%3D%2222%22%20viewBox%3D%220%200%2022%2022%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Crect%20width%3D%2222%22%20height%3D%2222%22%20fill%3D%22%235181B8%22%20rx%3D%2211%22%2F%3E%3Cpath%20stroke%3D%22%23FFF%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20d%3D%22M6%2012l3%203%207-7%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E);
 }
 .beta_title {
     position: fixed;
