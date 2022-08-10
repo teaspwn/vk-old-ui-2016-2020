@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By RAM
 // @namespace    https://github.com/891-2/vk-old-rad/
-// @version      3.9.5
+// @version      3.9.9
 // @description  Вернём старый дизайн вместе
 // @author       RAM
 // @match        *://*.vk.com/*
@@ -22,96 +22,28 @@
 // @license MIT
 // ==/UserScript==
 var date_now = Date.now();
-
-
-//alert(commits[0].author.login);
-
 var i, i2, vd, theme_hash_number, theme,j
-
+/*  CSS  **/
 var styleNode2 = document.createElement("style");
 styleNode2.id = 'Style'
-var wait = setInterval(wait_form,500)
 
-
-var build = `<div class="beta_title">
-VK by RAD beta
-<div class="beta_version">Build 3.8.4</div>
-</div>`
-
-function class_add(css) {
-    //console.log(css)
-    var styleNode = document.createElement("style");
-    styleNode.id = 'Style'
-    styleNode.classList = 'old_style'
-    css!==undefined||null?styleNode.innerHTML = css:console.log('null')
-    document.body.appendChild(styleNode);
-}
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    var l = document.querySelector('button.FCPanel__add')
-    l.addEventListener("click", chat, false);
-}, false);
-
-
+//ПЕРЕМЕННЫЕ
+var css_url = 'https://raw.githubusercontent.com/891-2/vk-old-rad/main/style.css';
+var build = `<div class="beta_title">VK by RAD beta<div class="beta_version">Build 3.8.4</div></div>`
+var local_css = localStorage.getItem("css")
 i = 0
 i2 = 0
 vd = 0
-document.addEventListener('DOMContentLoaded', function () {
-    chat();
-}, false);
+
+
+
+
 
 window.onload = function () {
+    loaded_time()
     css_add()
-    var date =Date.now()
-    var date_temp = date-date_now
-
-
-    console.log(`Скрипт загружен за `+format_ms(date_temp))
-
-    var login = document.querySelector('.VkIdForm,form.VkIdForm__form')
-    var login_btn = document.querySelector("button.FlatButton.FlatButton--primary.FlatButton--size-l.FlatButton--wide.VkIdForm__button.VkIdForm__signInButton")
-    login==null||undefined?(
     initial()
-    ):(
-        login_btn.outerHTML = login_btn.outerHTML,
-        login_btn = document.querySelector("button.FlatButton.FlatButton--primary.FlatButton--size-l.FlatButton--wide.VkIdForm__button.VkIdForm__signInButton"),
-        login_btn.setAttribute("onclick",`return location.href = "https://oauth.vk.com/authorize?client_id=6287487&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=friends&response_type=token&v=5.131&state=123456"`),
-        wait
-    )
 };
-
-function format_ms(ms){
-    if (ms>1000){
-        let ms_s = ms/1000
-        return `${ms_s} сек`
-    }else{
-        return `${ms} мс`
-    }
-}
-
-async function css_add(){
-    let url = 'https://raw.githubusercontent.com/891-2/vk-old-rad/main/style.css';
-    let response = await fetch(url);
-    let commits = await response.text();
-
-    if (commits!==null|undefined){
-        class_add(commits)
-        //console.log(commits)
-}
-}
-
-function wait_form(){
-     var form =document.querySelector('form#login_submit')
-     var acess =document.querySelector('img.oauth_app_photo')
-     if (form!==null||undefined&&acess==null){
-         console.log("form")
-     }else if (acess!==null||undefined&&form==null){
-         location.href = "https://vk.com/feed"
-         clearInterval(wait_form)
-         acess.classList = "test"
-     }
-}
 
 window.onblur = function () {
     var a = setInterval(title, 2000);
@@ -123,154 +55,134 @@ window.onblur = function () {
 }
 
 window.onfocus = function () {
-    var ad_n = parseInt(localStorage.getItem("ad"));
-
     setInterval(title, 2000);
     setInterval(ads, 2000);
     setInterval(check, 1000);
-    //fix_name();
 }
 
 function initial() {
-    var ad_n = parseInt(localStorage.getItem("ad"));
-    var settings_n = parseInt(localStorage.getItem("settings"));
-
     console.log('Скрипт запущен');
     setInterval(title, 2000);
     setInterval(ads, 2000);
     setInterval(check, 1000);
     setInterval(video_minim,500)
     fix_name();
-   document.body.appendChild(styleNode2);
+    document.body.appendChild(styleNode2);
     beta();
-    //setInterval(extra,1000);
-    }
+}
 function extra(){
     var user = document.querySelector('img.page_avatar_img')
     if (user!==null&&user!==undefined){
-         new MutationObserver(function () {
-    var vkProfilePage = document.body.querySelector('#profile_short:not(.display_additional_information_in_vk_profile)');
-    if (!vkProfilePage) return;
-    var vkScripts = document.body.querySelectorAll('script');
-    if (!vkScripts) return;
-    var vkProfileId = (vkScripts[vkScripts.length - 1].textContent.match(/("|')user_id("|'):( *)(|"|')(\d+)/i) || [])[5];
-    if (!vkProfileId) return;
-    vkProfilePage.className += ' display_additional_information_in_vk_profile';
-    var vkPageLang = document.body.querySelector('a.ui_actions_menu_item[onclick*="lang_dialog"]');
-    var vkCurrentLang;
-    if (vkPageLang) {
-      vkCurrentLang = vkPageLang.textContent;
-    } else {
-      vkCurrentLang = navigator.language.substring(0, 2);
-    }
-    var vkLang, vkMonthName;
-    if (vkCurrentLang === 'Language: english' || vkCurrentLang === 'en') {
-      vkLang = 'en';
-      vkMonthName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    } else if (vkCurrentLang === 'Язык: русский' || vkCurrentLang === 'ru') {
-      vkLang = 'ru';
-      vkMonthName = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
-    } else if (vkCurrentLang === 'Мова: українська' || vkCurrentLang === 'uk') {
-      vkLang = 'uk';
-      vkMonthName = ['сiчня', 'лютого', 'березня', 'квiтня', 'травня', 'червня', 'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня'];
-    }
-    var i = 0;
-    while (i < 4) {
-      var vkProfilePageElement = document.createElement('div');
-      vkProfilePageElement.style.display = 'none';
-      vkProfilePage.insertBefore(vkProfilePageElement, vkProfilePage.firstChild);
-      i++;
-    }
-    var vkProfileIdElement = document.createElement('div');
-    vkProfileIdElement.className = 'clear_fix profile_info_row';
-    //if (vkLang === 'en') {
-     // vkProfileIdElement.innerHTML = '<div class="label fl_l">Profile ID:</div><div class="labeled">' + vkProfileId + '</div>';
-    //} else if (vkLang === 'ru') {
-    //  vkProfileIdElement.innerHTML = '<div class="label fl_l">Номер страницы:</div><div class="labeled">' + vkProfileId + '</div>';
-    //} else if (vkLang === 'uk') {
-    //  vkProfileIdElement.innerHTML = '<div class="label fl_l">Номер сторінки:</div><div class="labeled">' + vkProfileId + '</div>';
-    //} else {
-    //  vkProfileIdElement.innerHTML = '<div class="label fl_l">Profile ID:</div><div class="labeled">' + vkProfileId + '</div>';
-    //}
-    //vkProfilePage.replaceChild(vkProfileIdElement, vkProfilePage.childNodes[0]);
-    var requestVkFoaf = new XMLHttpRequest();
-    requestVkFoaf.onreadystatechange = function () {
-      if (this.readyState === 4 && this.status === 200) {
-        var vkFoafRegDate = (this.responseText.match(/ya:created dc:date="(.+)"/i) || [])[1];
-        var vkFoafLastProfileEditDate = (this.responseText.match(/ya:modified dc:date="(.+)"/i) || [])[1];
-        var vkFoafLastSeenDate = (this.responseText.match(/ya:lastLoggedIn dc:date="(.+)"/i) || [])[1];
-        if (vkFoafRegDate) {
-          var vkRegDate = new Date(vkFoafRegDate);
-          var vkRegDateElement = document.createElement('div');
-          vkRegDateElement.className = 'clear_fix profile_info_row';
-          if (vkLang === 'en') {
-            vkRegDateElement.innerHTML = '<div class="label fl_l">Registration date:</div><div class="labeled">' + vkMonthName[vkRegDate.getMonth()] + ' ' + vkRegDate.getDate() + ', ' + vkRegDate.getFullYear() + ' at ' + convert24HoursTo12Hours(vkRegDate.getHours()) + ':' + addLeadingZeroToDate(vkRegDate.getMinutes()) + ':' + addLeadingZeroToDate(vkRegDate.getSeconds()) + ' ' + convert24HoursToAmPmLc(vkRegDate.getHours()) + '</div>';
-          } else if (vkLang === 'ru') {
-            vkRegDateElement.innerHTML = '<div class="label fl_l">Дата регистрации:</div><div class="labeled">' + vkRegDate.getDate() + ' ' + vkMonthName[vkRegDate.getMonth()] + ' ' + vkRegDate.getFullYear() + ' в ' + vkRegDate.getHours() + ':' + addLeadingZeroToDate(vkRegDate.getMinutes()) + ':' + addLeadingZeroToDate(vkRegDate.getSeconds()) + '</div>';
-          } else if (vkLang === 'uk') {
-            vkRegDateElement.innerHTML = '<div class="label fl_l">Дата реєстрації:</div><div class="labeled">' + vkRegDate.getDate() + ' ' + vkMonthName[vkRegDate.getMonth()] + ' ' + vkRegDate.getFullYear() + ' о ' + vkRegDate.getHours() + ':' + addLeadingZeroToDate(vkRegDate.getMinutes()) + ':' + addLeadingZeroToDate(vkRegDate.getSeconds()) + '</div>';
-          } else {
-            vkRegDateElement.innerHTML = '<div class="label fl_l">Registration date:</div><div class="labeled">' + addLeadingZeroToDate(vkRegDate.getDate()) + '.' + addLeadingZeroToDate(vkRegDate.getMonth() + 1) + '.' + vkRegDate.getFullYear() + ' ' + addLeadingZeroToDate(vkRegDate.getHours()) + ':' + addLeadingZeroToDate(vkRegDate.getMinutes()) + ':' + addLeadingZeroToDate(vkRegDate.getSeconds()) + '</div>';
-          }
-          vkProfilePage.replaceChild(vkRegDateElement, vkProfilePage.childNodes[1]);
-        } else {
-          console.info('Registration date on VK FOAF profile is empty or unavailable');
-        }
-        if (vkFoafLastSeenDate) {
-          var vkLastSeenDate = new Date(vkFoafLastSeenDate);
-          var vkLastSeenDateElement = document.createElement('div');
-          vkLastSeenDateElement.className = 'clear_fix profile_info_row';
-          if (vkLang === 'en') {
-            vkLastSeenDateElement.innerHTML = '<div class="label fl_l">Last seen:</div><div class="labeled">' + vkMonthName[vkLastSeenDate.getMonth()] + ' ' + vkLastSeenDate.getDate() + ', ' + vkLastSeenDate.getFullYear() + ' at ' + convert24HoursTo12Hours(vkLastSeenDate.getHours()) + ':' + addLeadingZeroToDate(vkLastSeenDate.getMinutes()) + ':' + addLeadingZeroToDate(vkLastSeenDate.getSeconds()) + ' ' + convert24HoursToAmPmLc(vkLastSeenDate.getHours()) + '</div>';
-          } else if (vkLang === 'ru') {
-            vkLastSeenDateElement.innerHTML = '<div class="label fl_l">Последний заход:</div><div class="labeled">' + vkLastSeenDate.getDate() + ' ' + vkMonthName[vkLastSeenDate.getMonth()] + ' ' + vkLastSeenDate.getFullYear() + ' в ' + vkLastSeenDate.getHours() + ':' + addLeadingZeroToDate(vkLastSeenDate.getMinutes()) + ':' + addLeadingZeroToDate(vkLastSeenDate.getSeconds()) + '</div>';
-          } else if (vkLang === 'uk') {
-            vkLastSeenDateElement.innerHTML = '<div class="label fl_l">Останній візит:</div><div class="labeled">' + vkLastSeenDate.getDate() + ' ' + vkMonthName[vkLastSeenDate.getMonth()] + ' ' + vkLastSeenDate.getFullYear() + ' о ' + vkLastSeenDate.getHours() + ':' + addLeadingZeroToDate(vkLastSeenDate.getMinutes()) + ':' + addLeadingZeroToDate(vkLastSeenDate.getSeconds()) + '</div>';
-          } else {
-            vkLastSeenDateElement.innerHTML = '<div class="label fl_l">Last seen:</div><div class="labeled">' + addLeadingZeroToDate(vkLastSeenDate.getDate()) + '.' + addLeadingZeroToDate(vkLastSeenDate.getMonth() + 1) + '.' + vkLastSeenDate.getFullYear() + ' ' + addLeadingZeroToDate(vkLastSeenDate.getHours()) + ':' + addLeadingZeroToDate(vkLastSeenDate.getMinutes()) + ':' + addLeadingZeroToDate(vkLastSeenDate.getSeconds()) + '</div>';
-          }
-          vkProfilePage.replaceChild(vkLastSeenDateElement, vkProfilePage.childNodes[3]);
-        } else {
-          console.info('Last seen date on VK FOAF profile is empty or unavailable');
-        }
-      } else if (this.readyState === 4 && this.status !== 200) {
-        console.error('Failed to get VK FOAF profile (registration date, last profile edit date and last seen date): ' + this.status + ' ' + this.statusText);
-      }
-    };
-    requestVkFoaf.open('GET', '/foaf.php?id=' + vkProfileId, true);
-    requestVkFoaf.send();
-  }).observe(document.body, { childList: true, subtree: true });
+        new MutationObserver(function () {
+            var vkProfilePage = document.body.querySelector('#profile_short:not(.display_additional_information_in_vk_profile)');
+            if (!vkProfilePage) return;
+            var vkScripts = document.body.querySelectorAll('script');
+            if (!vkScripts) return;
+            var vkProfileId = (vkScripts[vkScripts.length - 1].textContent.match(/("|')user_id("|'):( *)(|"|')(\d+)/i) || [])[5];
+            if (!vkProfileId) return;
+            vkProfilePage.className += ' display_additional_information_in_vk_profile';
+            var vkPageLang = document.body.querySelector('a.ui_actions_menu_item[onclick*="lang_dialog"]');
+            var vkCurrentLang;
+            if (vkPageLang) {
+                vkCurrentLang = vkPageLang.textContent;
+            } else {
+                vkCurrentLang = navigator.language.substring(0, 2);
+            }
+            var vkLang, vkMonthName;
+            if (vkCurrentLang === 'Language: english' || vkCurrentLang === 'en') {
+                vkLang = 'en';
+                vkMonthName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            } else if (vkCurrentLang === 'Язык: русский' || vkCurrentLang === 'ru') {
+                vkLang = 'ru';
+                vkMonthName = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+            } else if (vkCurrentLang === 'Мова: українська' || vkCurrentLang === 'uk') {
+                vkLang = 'uk';
+                vkMonthName = ['сiчня', 'лютого', 'березня', 'квiтня', 'травня', 'червня', 'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня'];
+            }
+            var i = 0;
+            while (i < 4) {
+                var vkProfilePageElement = document.createElement('div');
+                vkProfilePageElement.style.display = 'none';
+                vkProfilePage.insertBefore(vkProfilePageElement, vkProfilePage.firstChild);
+                i++;
+            }
+            var vkProfileIdElement = document.createElement('div');
+            vkProfileIdElement.className = 'clear_fix profile_info_row';
+            var requestVkFoaf = new XMLHttpRequest();
+            requestVkFoaf.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    var vkFoafRegDate = (this.responseText.match(/ya:created dc:date="(.+)"/i) || [])[1];
+                    var vkFoafLastProfileEditDate = (this.responseText.match(/ya:modified dc:date="(.+)"/i) || [])[1];
+                    var vkFoafLastSeenDate = (this.responseText.match(/ya:lastLoggedIn dc:date="(.+)"/i) || [])[1];
+                    if (vkFoafRegDate) {
+                        var vkRegDate = new Date(vkFoafRegDate);
+                        var vkRegDateElement = document.createElement('div');
+                        vkRegDateElement.className = 'clear_fix profile_info_row';
+                        if (vkLang === 'en') {
+                            vkRegDateElement.innerHTML = '<div class="label fl_l">Registration date:</div><div class="labeled">' + vkMonthName[vkRegDate.getMonth()] + ' ' + vkRegDate.getDate() + ', ' + vkRegDate.getFullYear() + ' at ' + convert24HoursTo12Hours(vkRegDate.getHours()) + ':' + addLeadingZeroToDate(vkRegDate.getMinutes()) + ':' + addLeadingZeroToDate(vkRegDate.getSeconds()) + ' ' + convert24HoursToAmPmLc(vkRegDate.getHours()) + '</div>';
+                        } else if (vkLang === 'ru') {
+                            vkRegDateElement.innerHTML = '<div class="label fl_l">Дата регистрации:</div><div class="labeled">' + vkRegDate.getDate() + ' ' + vkMonthName[vkRegDate.getMonth()] + ' ' + vkRegDate.getFullYear() + ' в ' + vkRegDate.getHours() + ':' + addLeadingZeroToDate(vkRegDate.getMinutes()) + ':' + addLeadingZeroToDate(vkRegDate.getSeconds()) + '</div>';
+                        } else if (vkLang === 'uk') {
+                            vkRegDateElement.innerHTML = '<div class="label fl_l">Дата реєстрації:</div><div class="labeled">' + vkRegDate.getDate() + ' ' + vkMonthName[vkRegDate.getMonth()] + ' ' + vkRegDate.getFullYear() + ' о ' + vkRegDate.getHours() + ':' + addLeadingZeroToDate(vkRegDate.getMinutes()) + ':' + addLeadingZeroToDate(vkRegDate.getSeconds()) + '</div>';
+                        } else {
+                            vkRegDateElement.innerHTML = '<div class="label fl_l">Registration date:</div><div class="labeled">' + addLeadingZeroToDate(vkRegDate.getDate()) + '.' + addLeadingZeroToDate(vkRegDate.getMonth() + 1) + '.' + vkRegDate.getFullYear() + ' ' + addLeadingZeroToDate(vkRegDate.getHours()) + ':' + addLeadingZeroToDate(vkRegDate.getMinutes()) + ':' + addLeadingZeroToDate(vkRegDate.getSeconds()) + '</div>';
+                        }
+                        vkProfilePage.replaceChild(vkRegDateElement, vkProfilePage.childNodes[1]);
+                    } else {
+                        console.info('Registration date on VK FOAF profile is empty or unavailable');
+                    }
+                    if (vkFoafLastSeenDate) {
+                        var vkLastSeenDate = new Date(vkFoafLastSeenDate);
+                        var vkLastSeenDateElement = document.createElement('div');
+                        vkLastSeenDateElement.className = 'clear_fix profile_info_row';
+                        if (vkLang === 'en') {
+                            vkLastSeenDateElement.innerHTML = '<div class="label fl_l">Last seen:</div><div class="labeled">' + vkMonthName[vkLastSeenDate.getMonth()] + ' ' + vkLastSeenDate.getDate() + ', ' + vkLastSeenDate.getFullYear() + ' at ' + convert24HoursTo12Hours(vkLastSeenDate.getHours()) + ':' + addLeadingZeroToDate(vkLastSeenDate.getMinutes()) + ':' + addLeadingZeroToDate(vkLastSeenDate.getSeconds()) + ' ' + convert24HoursToAmPmLc(vkLastSeenDate.getHours()) + '</div>';
+                        } else if (vkLang === 'ru') {
+                            vkLastSeenDateElement.innerHTML = '<div class="label fl_l">Последний заход:</div><div class="labeled">' + vkLastSeenDate.getDate() + ' ' + vkMonthName[vkLastSeenDate.getMonth()] + ' ' + vkLastSeenDate.getFullYear() + ' в ' + vkLastSeenDate.getHours() + ':' + addLeadingZeroToDate(vkLastSeenDate.getMinutes()) + ':' + addLeadingZeroToDate(vkLastSeenDate.getSeconds()) + '</div>';
+                        } else if (vkLang === 'uk') {
+                            vkLastSeenDateElement.innerHTML = '<div class="label fl_l">Останній візит:</div><div class="labeled">' + vkLastSeenDate.getDate() + ' ' + vkMonthName[vkLastSeenDate.getMonth()] + ' ' + vkLastSeenDate.getFullYear() + ' о ' + vkLastSeenDate.getHours() + ':' + addLeadingZeroToDate(vkLastSeenDate.getMinutes()) + ':' + addLeadingZeroToDate(vkLastSeenDate.getSeconds()) + '</div>';
+                        } else {
+                            vkLastSeenDateElement.innerHTML = '<div class="label fl_l">Last seen:</div><div class="labeled">' + addLeadingZeroToDate(vkLastSeenDate.getDate()) + '.' + addLeadingZeroToDate(vkLastSeenDate.getMonth() + 1) + '.' + vkLastSeenDate.getFullYear() + ' ' + addLeadingZeroToDate(vkLastSeenDate.getHours()) + ':' + addLeadingZeroToDate(vkLastSeenDate.getMinutes()) + ':' + addLeadingZeroToDate(vkLastSeenDate.getSeconds()) + '</div>';
+                        }
+                        vkProfilePage.replaceChild(vkLastSeenDateElement, vkProfilePage.childNodes[3]);
+                    } else {
+                        console.info('Last seen date on VK FOAF profile is empty or unavailable');
+                    }
+                } else if (this.readyState === 4 && this.status !== 200) {
+                    console.error('Failed to get VK FOAF profile (registration date, last profile edit date and last seen date): ' + this.status + ' ' + this.statusText);
+                }
+            };
+            requestVkFoaf.open('GET', '/foaf.php?id=' + vkProfileId, true);
+            requestVkFoaf.send();
+        }).observe(document.body, { childList: true, subtree: true });
     }
 }
 
 function video_minim(){
     var video_arr = document.querySelectorAll('.im-mess-stack._im_mess_stack a#post_media_lnk_0')
     video_arr.forEach(function(elem){
-    let minimaze = document.createElement('div')
-    minimaze.classList='videoplayer_controls_item videoplayer_btn videoplayer_btn_expand old_icon pizda'
-    minimaze.setAttribute('role','button')
-    minimaze.setAttribute('patched','true')
-    minimaze.setAttribute('tabindex',0)
-    minimaze.setAttribute('expand_btn',"true")
+        let minimaze = document.createElement('div')
+        minimaze.classList='videoplayer_controls_item videoplayer_btn videoplayer_btn_expand old_icon pizda'
+        minimaze.setAttribute('role','button')
+        minimaze.setAttribute('patched','true')
+        minimaze.setAttribute('tabindex',0)
+        minimaze.setAttribute('expand_btn',"true")
 
 
-    let closet = elem.closest('.im-mess--text.wall_module._im_log_body')
-    let onclick = elem.getAttribute('onclick')
-    let info = onclick.replace('return','')
-    info = info.replace('"minimized":0','"minimized":1')
-    let video = closet.querySelector('.videoplayer_controls_item.videoplayer_btn.videoplayer_btn_fullscreen')
-    minimaze.setAttribute('onclick',info)
+        let closet = elem.closest('.im-mess--text.wall_module._im_log_body')
+        let onclick = elem.getAttribute('onclick')
+        let info = onclick.replace('return','')
+        info = info.replace('"minimized":0','"minimized":1')
+        let video = closet.querySelector('.videoplayer_controls_item.videoplayer_btn.videoplayer_btn_fullscreen')
+        minimaze.setAttribute('onclick',info)
 
-    var pizda = closet.querySelector('.pizda')
-    if (video!==null&&pizda==null){
-        video.insertAdjacentElement('beforeBegin',minimaze)
-         pizda = closet.querySelector('.pizda')
-    }
+        var pizda = closet.querySelector('.pizda')
+        if (video!==null&&pizda==null){
+            video.insertAdjacentElement('beforeBegin',minimaze)
+            pizda = closet.querySelector('.pizda')
+        }
 
-
-
-    //console.log(video)
-});
+    });
 }
 
 
@@ -336,25 +248,15 @@ async function _class() {
     }
 }
 
-function chat() {
-    var a = document.querySelectorAll('.MEAvatar__online')
-    console.log(a.length)
-    //var b,c
-    //for (b = 0; b < a.length; b++) {
-    //   c = a[b].previousElementSibling.firstElementChild
-    //  console.log(c.alt)
-    //}
-}
-
 function addLeadingZeroToDate (date) {
-  return ('0' + date).slice(-2);
+    return ('0' + date).slice(-2);
 }
 function convert24HoursTo12Hours (hours) {
-  hours = hours % 12;
-  return hours ? hours : 12;
+    hours = hours % 12;
+    return hours ? hours : 12;
 }
 function convert24HoursToAmPmLc (hours) {
-  return hours >= 12 ? 'pm' : 'am';
+    return hours >= 12 ? 'pm' : 'am';
 }
 
 window.addEventListener('scroll', function () {
@@ -385,37 +287,29 @@ function title() {
         document.title = 'Сообщения'
     }else if (document.title == 'Реакции'){
         document.title = 'Понравилось'
-    }else if (document.title == 'Приложения'||document.title == 'Разработчикам'){
-        //let side = document.querySelector('div#side_bar')
-        //side.style.setProperty("display", "none", "important")
-        //console.log('test')
-   }else{
-       //let side = document.querySelector('div#side_bar')
-       //side.style.setProperty("display", "block", "important")
-   }
+    }
 }
 
 // Реклама
 function ads() {
-    var ad_blocks, a
+    let ad_blocks, a
     ad_blocks = document.querySelectorAll('div#ads_left>div,[data-ad-view],div[data-ad-disabled-stat-impression],div#feed_filters a,.page_block.apps_feedRightAppsBlock.apps_feedRightAppsBlock_single_mini_app,.page_block.feed_groups_recomm.feed_groups_likes_block,.page_block.feed_groups_recomm.js-feed_groups_recomm.feed_groups_recomm_friends');
     for (a = 0; a < ad_blocks.length; a++) {
         ad_blocks[a].outerHTML = '';
     }
-  let j = document.querySelectorAll('.wall_marked_as_ads')
+    let j = document.querySelectorAll('.wall_marked_as_ads')
     j.forEach(function(entry) {
         entry.closest('._post_content').remove()
-        //console.log(entry)
     });
 
     let lj = document.querySelectorAll('a.Post__copyrightLink')
     var as = [ "appscent", "Бот", "CcCAb5" ];
     var el;
     lj.forEach(function(entry2) {
-    var index, len;
-    for (index = 0, len = as.length; index < len; ++index) {
+        var index, len;
+        for (index = 0, len = as.length; index < len; ++index) {
             entry2.innerHTML.indexOf(as[index])?entry2.closest('._post_content').remove():console.log('1')
-        //console.log(entry2)
+            //console.log(entry2)
         }
     });
 }
@@ -429,12 +323,9 @@ function dot_check() {
 
 // Три точки установка
 function dot_prof() {
-    var aside, button, stats, stats_hash, stats_elem, stats_elem_parent, temp_a, regular_a, story_href, story
+    let aside, button, stats, stats_hash, stats_elem, stats_elem_parent, temp_a, regular_a, story_href, story
     aside = document.querySelector('.page_block.page_photo.ProfileActions>aside');
     stats = document.querySelector('[href*="/stats?"]')
-    /*if (stats) {
-        stats_hash = stats.href
-    }*/
     stats?stats_hash = stats.href:console.log('test');
 
 
@@ -466,24 +357,24 @@ function dot_prof() {
 // Меню и Имя возле иконки
 function fix_name() {
     try {
-    var parentlnk = document.querySelector('div#top_profile_menu')
-    var lnk = document.querySelector('li#l_pr a')
-    var setlnk = document.querySelector('a#top_settings_link');
-    var suplnk = document.querySelector('a#top_support_link');
-    var loglnk = document.querySelector('a#top_logout_link');
-    var name = document.querySelector('img.TopNavBtn__profileImg');
-    var name2 = document.querySelector('a[href*="connect.vk.com"] div[style="color: var(--text_primary);"]')
-    var name3 = document.querySelector('[style="background-color: var(--content_tint_background); border-radius: 8px; width: 254px; font-family: inherit;"]')
-    var remove = document.querySelector('a[href*="connect.vk.com"] ')
-    var remove2 = document.querySelectorAll('div#top_profile_menu span')
-    var theme_hash = document.querySelector('.idd_wrap.SettingsColorSchemeDropdown')
-    var theme_elem = document.querySelector('a.top_profile_mrow.TopProfileItem--appearance')
-    if (theme_hash) {
-        theme_hash_number = theme_hash.getAttribute('data-hash')
-        console.log(theme_hash_number)
-    }
-    if (theme_elem) {
-        theme_elem.outerHTML = `<a class="top_profile_mrow TopProfileItem--appearance" id="" href="#" style="" onclick="return false">
+        var parentlnk = document.querySelector('div#top_profile_menu')
+        var lnk = document.querySelector('li#l_pr a')
+        var setlnk = document.querySelector('a#top_settings_link');
+        var suplnk = document.querySelector('a#top_support_link');
+        var loglnk = document.querySelector('a#top_logout_link');
+        var name = document.querySelector('img.TopNavBtn__profileImg');
+        var name2 = document.querySelector('a[href*="connect.vk.com"] div[style="color: var(--text_primary);"]')
+        var name3 = document.querySelector('[style="background-color: var(--content_tint_background); border-radius: 8px; width: 254px; font-family: inherit;"]')
+        var remove = document.querySelector('a[href*="connect.vk.com"] ')
+        var remove2 = document.querySelectorAll('div#top_profile_menu span')
+        var theme_hash = document.querySelector('.idd_wrap.SettingsColorSchemeDropdown')
+        var theme_elem = document.querySelector('a.top_profile_mrow.TopProfileItem--appearance')
+        if (theme_hash) {
+            theme_hash_number = theme_hash.getAttribute('data-hash')
+            console.log(theme_hash_number)
+        }
+        if (theme_elem) {
+            theme_elem.outerHTML = `<a class="top_profile_mrow TopProfileItem--appearance" id="" href="#" style="" onclick="return false">
   <div class="menu_item_icon"><svg fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor"><path d="M10.8 6.05a1.25 1.25 0 112.5 0 1.25 1.25 0 01-2.5 0zM14.45 8.2a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zM4.3 9.45a1.25 1.25 0 112.5 0 1.25 1.25 0 01-2.5 0zM7.85 4.8a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z"></path><path clip-rule="evenodd" d="M14.18 14.04c2.14.23 4.32-.75 4.32-4.04A8.47 8.47 0 0010 1.5 8.47 8.47 0 001.5 10a8.47 8.47 0 008.5 8.5c1.13 0 2.25-1 1.98-2.43l-.17-.68c-.25-.94-.43-1.6 1.08-1.49l1.29.14zm.16-1.5l-.25-.02-1.1-.12a3.34 3.34 0 00-1.74.27 2 2 0 00-1.1 1.68 3.8 3.8 0 00.22 1.47l.14.54c.02.13 0 .22 0 .28a.44.44 0 01-.1.17.57.57 0 01-.41.19 6.97 6.97 0 01-7-7 6.97 6.97 0 017-7 6.97 6.97 0 017 7c0 1.3-.41 1.87-.77 2.15-.42.32-1.07.48-1.9.4z" fill-rule="evenodd"></path></g></svg></div>
   <span>
     <div class="TopProfileItem__colorSchemeLabel">
@@ -515,93 +406,73 @@ function fix_name() {
 </a>`
     }
 
-    if (name) {
-        var namealt = name.alt
-    }
-    var s = document.querySelector('a#top_profile_link[aria-label="Настройки страницы"]');
-    var q = document.createElement('div');
-    var w = document.createElement('a');
-    var n = document.createElement('a');
-    var u = document.createElement('div');
-    var k = document.createElement('div');
-    var k2 = document.createElement('span');
-    var b1
+        if (name) {
+            var namealt = name.alt
+            }
+        var s = document.querySelector('a#top_profile_link[aria-label="Настройки страницы"]');
+        var q = document.createElement('div');
+        var w = document.createElement('a');
+        var n = document.createElement('a');
+        var u = document.createElement('div');
+        var k = document.createElement('div');
+        var k2 = document.createElement('span');
+        var b1
 
-    q.innerHTML = `<div style="padding-right:10px;display:inline-block;vertical-align:top;color:white;font-weight: 500;-webkit-font-smoothing: subpixel-antialiased;">` + namealt + `</div>`;
-    w.className = 'top_profile_mrow'
-    w.id = 'top_home_link'
-    if (lnk) {
-        w.href = lnk.href
-    }
-    n.className = 'top_profile_mrow'
-    n.id = 'top_edit_link'
-    n.href = '/edit'
-    k2.style = 'position:absolute;pointer-events:none;height:0px;width:0px;bottom:100%;right:42px;border-width: 6px; border-style: solid; margin: 0px -6px; border-color: transparent transparent white; " class=""'
-    u.innerHTML = '<div style="border-top-color:rgb(219, 228, 236);border-width: 1px medium medium; border-style: solid none none; margin: 4px 13px; "></div>'
-    k.innerHTML = '<div style="border-top-color:rgb(219, 228, 236);border-width: 1px medium medium; border-style: solid none none; margin: 4px 13px; "></div>'
-    w.innerHTML = 'Моя страница'
-    n.innerHTML = 'Редактировать'
-    setlnk!==null?setlnk.innerHTML = 'Настройки':console.log('teast')
-    suplnk!==null?suplnk.innerHTML = 'Помощь':console.log('teast')
-    loglnk!==null?loglnk.innerHTML = 'Выйти':console.log('teast')
-
-
-    if (namealt != null) {
-
-        s.insertBefore(q, s.firstChild)
-        setlnk.insertAdjacentElement('beforeBegin', w);
-        var home = document.querySelector('a#top_home_link')
-        parentlnk.insertBefore(u, setlnk)
-        parentlnk.insertBefore(k, loglnk)
-        parentlnk.insertBefore(n, setlnk)
-        parentlnk.insertBefore(k2, home)
-
-        for (b1 = 0; b1 < remove2.length; b1++) {
-            remove2[b1].remove();
+        q.innerHTML = `<div style="padding-right:10px;display:inline-block;vertical-align:top;color:white;font-weight: 500;-webkit-font-smoothing: subpixel-antialiased;">` + namealt + `</div>`;
+        w.className = 'top_profile_mrow'
+        w.id = 'top_home_link'
+        if (lnk) {
+            w.href = lnk.href
         }
-    }
+        n.className = 'top_profile_mrow'
+        n.id = 'top_edit_link'
+        n.href = '/edit'
+        k2.style = 'position:absolute;pointer-events:none;height:0px;width:0px;bottom:100%;right:42px;border-width: 6px; border-style: solid; margin: 0px -6px; border-color: transparent transparent white; " class=""'
+        u.innerHTML = '<div style="border-top-color:rgb(219, 228, 236);border-width: 1px medium medium; border-style: solid none none; margin: 4px 13px; "></div>'
+        k.innerHTML = '<div style="border-top-color:rgb(219, 228, 236);border-width: 1px medium medium; border-style: solid none none; margin: 4px 13px; "></div>'
+        w.innerHTML = 'Моя страница'
+        n.innerHTML = 'Редактировать'
+        setlnk!==null?setlnk.innerHTML = 'Настройки':null
+        suplnk!==null?suplnk.innerHTML = 'Помощь':null
+        loglnk!==null?loglnk.innerHTML = 'Выйти':null
 
 
+        if (namealt != null) {
 
+            s.insertBefore(q, s.firstChild)
+            setlnk.insertAdjacentElement('beforeBegin', w);
+            var home = document.querySelector('a#top_home_link')
+            parentlnk.insertBefore(u, setlnk)
+            parentlnk.insertBefore(k, loglnk)
+            parentlnk.insertBefore(n, setlnk)
+            parentlnk.insertBefore(k2, home)
 
-
-    var theme_select = document.querySelector('.idd_selected_value')
-    var selected_head = document.querySelector('[dir=ltr] .idd_popup .idd_header')
-    var dark_elem = document.querySelector('div#idd_item_dark')
-    var light_elem = document.querySelector('div#idd_item_light')
-    if (document.body.getAttribute('scheme') == 'vk_light' || document.body.getAttribute('scheme') == 'vkcom_light') {
-        if (theme_select !== null) {
-            theme_select.innerHTML = 'Светлая'
-            selected_head.innerHTML = 'Светлая'
-            light_elem.classList = 'idd_item idd_hl'
-            dark_elem.classList = 'idd_item'
+            for (b1 = 0; b1 < remove2.length; b1++) {
+                remove2[b1].remove();
+            }
         }
-    } else {
-        if (theme_select !== null) {
-            theme_select.innerHTML = 'Темная'
-            selected_head.innerHTML = 'Темная'
-            light_elem.classList = 'idd_item'
-            dark_elem.classList = 'idd_item idd_hl'
+        var theme_select = document.querySelector('.idd_selected_value')
+        var selected_head = document.querySelector('[dir=ltr] .idd_popup .idd_header')
+        var dark_elem = document.querySelector('div#idd_item_dark')
+        var light_elem = document.querySelector('div#idd_item_light')
+        if (document.body.getAttribute('scheme') == 'vk_light' || document.body.getAttribute('scheme') == 'vkcom_light') {
+            if (theme_select !== null) {
+                theme_select.innerHTML = 'Светлая'
+                selected_head.innerHTML = 'Светлая'
+                light_elem.classList = 'idd_item idd_hl'
+                dark_elem.classList = 'idd_item'
+            }
+        } else {
+            if (theme_select !== null) {
+                theme_select.innerHTML = 'Темная'
+                selected_head.innerHTML = 'Темная'
+                light_elem.classList = 'idd_item'
+                dark_elem.classList = 'idd_item idd_hl'
+            }
         }
-    }
     }catch(e){
-    log ( e, 'warn' );
+        console.log(e)
     }
-    //console.log('Фикс прошёл успешно')
-}
-
-function log ( msg, style ) {
-var consoleStyles = {
- 'h1': 'font: 2.5em/1 Arial; color: crimson;',
- 'h2': 'font: 2em/1 Arial; color: orangered;',
- 'h3': 'font: 1.5em/1 Arial; color: olivedrab;',
- 'bold': 'font: bold 1.3em/1 Arial; color: midnightblue;',
- 'warn': 'padding: 0 .5rem; background: crimson; font: 1.6em/1 Arial; color: white;'
-};
-  if ( !style || !consoleStyles[ style ] ) {
-    style = 'bold';
-  }
-  console.log ( '%c' + msg, consoleStyles[ style ] );
 }
 
 //три точки друзья и т д
@@ -610,34 +481,34 @@ function dot_prof_friends(){
     if (document.querySelector('a.PageActionCell.PageActionCell--more')!==null){
         if (more.style.display!=='none'){
             more.click();
-    }}
+        }}
     var data,subs,live,favor,favor_state,ignore,user,fri,fri_new,fri_obj,subs_hash,subs_state,subs_str,live_hash,favor_hash,ignore_hash,user_id,fri_onclick
 
     if (document.querySelector('.page_actions_expanded._page_actions_container').style.patch!=='yes'){
         live = document.querySelector('a.PageActionCell[data-task-click="ProfileAction/toggle_live_subscription"]')
         if (live!==null){
-        subs = document.querySelector('a.PageActionCell[data-task-click="ProfileAction/toggle_subscription"]')
-        favor = document.querySelector('a.PageActionCell[data-task-click="ProfileAction/toggle_fave"]')
-        ignore = document.querySelector('a.PageActionCel[data-task-click="ProfileAction/toggle_feed_ignored"]')
-        user = document.querySelector('a.PageActionCell[data-task-click="ProfileAction/abuse"]')
-        fri = document.querySelector('button#page_actions_btn')
-        if (subs!==null){
-            subs_hash = subs.getAttribute('data-hash');
-            subs_state = subs.getAttribute('data-act');
-            subs_state==1?subs_str = "Уведомлять о записях":subs_str = "Не уведомлять о записях";}
-        if (live!==null){live_hash = live.getAttribute('data-hash')}
-        if (favor!==null){favor_hash = favor.getAttribute('data-hash'); favor_state = favor.getAttribute('data-act')}
-        if (fri!==null){ignore_hash = document.querySelector('a.PageActionCell[data-task-click="ProfileAction/toggle_feed_ignored"]').getAttribute('data-hash')}
-        if (user!==null){user_id = user.getAttribute('data-user_id')}
-        if (fri!==null){fri_onclick = fri.getAttribute('onclick')}
-        console.log("SUBS HASH:"+subs_hash,"SUBS STATE:"+subs_state,"LIVE HASH:"+live_hash,"FAVOR HASH:"+favor_hash,"IGNORE HASH:"+ignore_hash,"USER ID:"+user_id,"FRI ONCLICK:"+fri_onclick)
-        console.log(subs_str)
+            subs = document.querySelector('a.PageActionCell[data-task-click="ProfileAction/toggle_subscription"]')
+            favor = document.querySelector('a.PageActionCell[data-task-click="ProfileAction/toggle_fave"]')
+            ignore = document.querySelector('a.PageActionCel[data-task-click="ProfileAction/toggle_feed_ignored"]')
+            user = document.querySelector('a.PageActionCell[data-task-click="ProfileAction/abuse"]')
+            fri = document.querySelector('button#page_actions_btn')
+            if (subs!==null){
+                subs_hash = subs.getAttribute('data-hash');
+                subs_state = subs.getAttribute('data-act');
+                subs_state==1?subs_str = "Уведомлять о записях":subs_str = "Не уведомлять о записях";}
+            if (live!==null){live_hash = live.getAttribute('data-hash')}
+            if (favor!==null){favor_hash = favor.getAttribute('data-hash'); favor_state = favor.getAttribute('data-act')}
+            if (fri!==null){ignore_hash = document.querySelector('a.PageActionCell[data-task-click="ProfileAction/toggle_feed_ignored"]').getAttribute('data-hash')}
+            if (user!==null){user_id = user.getAttribute('data-user_id')}
+            if (fri!==null){fri_onclick = fri.getAttribute('onclick')}
+            console.log("SUBS HASH:"+subs_hash,"SUBS STATE:"+subs_state,"LIVE HASH:"+live_hash,"FAVOR HASH:"+favor_hash,"IGNORE HASH:"+ignore_hash,"USER ID:"+user_id,"FRI ONCLICK:"+fri_onclick)
+            console.log(subs_str)
         }
         if (fri==null&&fri_new!==null&&live!==null){let temp_fri = document.querySelector('a.PageActionCell.PageActionItem--are-friends-blue.page_actions_expanded.PageActionCell--md-accent').getAttribute('data-tooltipparams');let temp_fri_1 = JSON.parse(temp_fri);fri_onclick = "Page.actionsDropdown(ge('page_actions_wrap'), Profile.frDropdownPreload.pbind(this, true, '"+temp_fri_1.friendsHash+"'))"}
         if (live!==null){
-        document.querySelector('.page_action_left.fl_l').outerHTML = `<div class="page_actions_wide_old ">
+            document.querySelector('.page_action_left.fl_l').outerHTML = `<div class="page_actions_wide_old ">
         <div class="page_actions_wide_old_div">
-            <div class="page_actions_wide_old_div_friends" `+'onclick="'+fri_onclick+'"'+`>
+            <div class="page_actions_wide_old_div_friends" `+'onclick="'+fri_onclick+'"'`>
                 <span class="page_actions_wide_old_div_friends_span">У вас в друзьях</span>
             </div>
         </div>
@@ -670,34 +541,33 @@ function dot_prof_friends(){
 `
         var dot,dot_visible,sub,favor_elem
         if (fri!==null&&fri_new==null){
-        dot = document.querySelector('.page_actions_wide_old_div_friends_right')
-        dot_visible = document.querySelector('.actions_block_div')
-        sub = document.querySelector('a.action_a.subs')
-        favor_elem = document.querySelector('a.action_a.favor')
-        dot.addEventListener('click', toggle_menu)
-        dot_visible.addEventListener('click', toggle_menu)
-        sub.addEventListener('click', toggle_subs)
-        favor_elem.addEventListener('click', toggle_favor)
+            dot = document.querySelector('.page_actions_wide_old_div_friends_right')
+            dot_visible = document.querySelector('.actions_block_div')
+            sub = document.querySelector('a.action_a.subs')
+            favor_elem = document.querySelector('a.action_a.favor')
+            dot.addEventListener('click', toggle_menu)
+            dot_visible.addEventListener('click', toggle_menu)
+            sub.addEventListener('click', toggle_subs)
+            favor_elem.addEventListener('click', toggle_favor)
         }else{
-        dot = document.querySelector('.page_actions_wide_old_div_friends_right')
-        dot_visible = document.querySelector('.actions_block_div')
-        sub = document.querySelector('a.action_a.subs')
-        favor_elem = document.querySelector('a.action_a.favor')
-        dot.addEventListener('click', toggle_menu)
-        dot_visible.addEventListener('click', toggle_menu)
-        sub.addEventListener('click', toggle_subs)
-        favor_elem.addEventListener('click', toggle_favor)
+            dot = document.querySelector('.page_actions_wide_old_div_friends_right')
+            dot_visible = document.querySelector('.actions_block_div')
+            sub = document.querySelector('a.action_a.subs')
+            favor_elem = document.querySelector('a.action_a.favor')
+            dot.addEventListener('click', toggle_menu)
+            dot_visible.addEventListener('click', toggle_menu)
+            sub.addEventListener('click', toggle_subs)
+            favor_elem.addEventListener('click', toggle_favor)
 
-        data = subs = live = favor =favor_state = ignore = user = fri = fri_new =fri_obj = subs_hash = subs_state = subs_str = live_hash =favor_hash = ignore_hash = user_id = fri_onclick = null;
-        dot = dot_visible = sub = favor_elem = null
+            data = subs = live = favor =favor_state = ignore = user = fri = fri_new =fri_obj = subs_hash = subs_state = subs_str = live_hash =favor_hash = ignore_hash = user_id = fri_onclick = null;
+            dot = dot_visible = sub = favor_elem = null
 
-        document.querySelector('.actions_block').classList = 'actions_block2'
+            document.querySelector('.actions_block').classList = 'actions_block2'
         }
-             //document.querySelector('.page_actions_expanded._page_actions_container').style.display='none'
-             document.querySelector('.page_actions_expanded._page_actions_container').style.patch='yes'
+            document.querySelector('.page_actions_expanded._page_actions_container').style.patch='yes'
         }
         else{
-        document.querySelector('.page_action_left.fl_l').outerHTML =document.querySelector('.page_action_left.fl_l').outerHTML+ `    <div class="page_actions_wide_old ">
+            document.querySelector('.page_action_left.fl_l').outerHTML =document.querySelector('.page_action_left.fl_l').outerHTML+ `    <div class="page_actions_wide_old ">
         <div id="friend_status" style="display:block;float:left;position:relative;width:157px;">
             <div class="page_actions_wide_old ">
                 <button class="friend_btn">Добавить в друзья</button>
@@ -728,7 +598,6 @@ function dot_prof_friends(){
     </div>
     `
     }
-        //document.querySelector('.page_actions_expanded._page_actions_container').style.display='none'
         document.querySelector('.page_actions_expanded._page_actions_container').style.patch='yes'
     }
 }
@@ -750,7 +619,7 @@ function toggle_subs(){
 function toggle_favor(){
     let fav = document.querySelector('a.action_a.favor')
     if (fav.getAttribute('data-act')==1){
-       fav.innerHTML = 'Удалить из закладок'
+        fav.innerHTML = 'Удалить из закладок'
     }else{
         fav.innerHTML = 'Сохранить в закладках'
     }
@@ -865,18 +734,11 @@ function seacrh4() {
 }
 
 
-
-function check_vid_ads() {
-
-}
-
-
 function pop_vid() {
     var head2 = document.querySelector('ul#video_main_tabs')
     var head = document.createElement('ul')
     head.classList = 'gg'
 
-    //console.log(head2)
 
     var slider = document.querySelector('.ui_gallery.VideoTabsSlider.js-video-slider')
     if (slider) {
@@ -998,7 +860,7 @@ KPP = {
             KPP._actions.splice(s, 1);
             if (KPP._list.length < 1){
                 KPP._police.disconnect();
-            return true
+                return true
             }
         }
         return false
@@ -1012,11 +874,70 @@ KPP = {
     }
 };
 
+function class_add(css) {
+    var styleNode = document.createElement("style");
+    styleNode.id = 'Style'
+    styleNode.classList = 'old_style'
+    css!==undefined||null?styleNode.innerHTML = css:console.log('null')
+    document.body.appendChild(styleNode);
+}
+
+
+function loaded_time(){
+    var date =Date.now()
+    var date_temp = date-date_now
+    console.log(msToTime(date_temp)+` Скрипт загружен`)
+}
+
+function msToTime(duration) {
+    if (duration!==null||undefined){
+        var sec = Math.round(duration/1000)
+        var sec_ost = duration%1000
+         if (duration>999){
+             if (sec_ost<100){
+                 if (sec_ost<90){
+                     return `[${sec}.00${sec_ost}]`
+                 }else{
+                     return `[${sec}.0${sec_ost}]`
+                 }
+             }else{
+                 return `[${sec}.${sec_ost}]`
+             }
+         }else{
+             if (duration<100){
+                 if (duration<90){
+                     return `[0.00${duration}]`
+                 }else{
+                     return `[0.0${duration}]`
+                 }
+             }else{
+                 return `[0.${duration}]`
+             }
+         }
+    }
+}
+
+async function css_add(){
+     let response = await fetch(css_url);
+     let commits = await response.text();
+
+    if (local_css==null||undefined||local_css!==commits){
+     if (commits!==null|undefined){
+        class_add(commits)
+         localStorage.setItem("css",commits)
+        console.log('new')
+     }
+    }else{
+        class_add(local_css)
+        console.log('local')
+    }
+}
+
 // Изменение ссылки на раздел музыки
 (function() {
-const search = 'audios';
-const elem = Array.from(document.querySelectorAll('a')).find(
-el=>el.href.includes(search)
-);
-if(elem) elem.href="/audio?section=all";
+    const search = 'audios';
+    const elem = Array.from(document.querySelectorAll('a')).find(
+        el=>el.href.includes(search)
+    );
+    if(elem) elem.href="/audio?section=all";
 })();
