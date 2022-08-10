@@ -2785,7 +2785,7 @@ div.friends_user_info.friends_user_info--fullRow > div.friends_field.friends_fie
 
 /* Фикс поиска в разделе музыки в шапке */
 #audio_layer_tt > div.eltt_content._eltt_content > div > div > div._audio_page_content_block_wrap.audio_page_content_block_wrap.ui_scroll_container.ui_scroll_default_theme > div.ui_scroll_overflow > div.ui_scroll_blocker > div > div > div.ui_scroll_content.clear_fix > div.page_block._audio_page_content_block > div > div {
-    margin: 0px 0px 5px 0px;
+    margin: 0px 0px 3px 0px;
 }
 #audio_layer_tt > div.eltt_content._eltt_content > div > div > div._audio_page_content_block_wrap.audio_page_content_block_wrap.ui_scroll_container.ui_scroll_default_theme > div.ui_scroll_overflow > div.ui_scroll_blocker > div > div > div.ui_scroll_content.clear_fix > div.page_block._audio_page_content_block > div > div > div.ui_search_input_block > div {
     border-radius: 2px 0 0 2px;
