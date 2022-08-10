@@ -2182,13 +2182,16 @@ a.action_a_a:hover {
 
 #profile_message_send>a.FlatButton.FlatButton--primary.FlatButton--size-m.FlatButton--wide.FlatButton--cutRight,
 #profile_send_gift_btn,
-#friend_status>div>button {
+#friend_status>div>button,
+#friend_status > div > div.profile_action_btn.Profile__callFriendButton > button {
 	background-color: var(--profile_message_send);
 }
 
 #profile_message_send>a.FlatButton.FlatButton--primary.FlatButton--size-m.FlatButton--wide.FlatButton--cutRight>span>span,
 #profile_send_gift_btn>span>span.FlatButton__content,
-#friend_status>div>button>span>span {
+#friend_status>div>button>span>span,
+#friend_status > div > div.profile_action_btn.Profile__callFriendButton > button > span > span.FlatButton__content,
+#friend_status > div > div.profile_action_btn.Profile__callFriendButton > button > span > span.FlatButton__after {
 	color: #e1e3e6;
 	font-size: 12.5px;
 	margin-bottom: 0px;
@@ -2385,7 +2388,8 @@ a.action_a_a:hover {
 #profile_send_gift_btn:hover,
 #profile_message_send>a.FlatButton.FlatButton--primary.FlatButton--size-m.FlatButton--wide.FlatButton--cutRight:hover,
 .friend_btn:hover,
-#friend_status>div>button:hover {
+#friend_status>div>button:hover,
+#friend_status > div > div.profile_action_btn.Profile__callFriendButton > button:hover {
 	background-color: var(--blue_hover);
 }
 
