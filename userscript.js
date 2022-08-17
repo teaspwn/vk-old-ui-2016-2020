@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Tresha
-// @namespace    https://github.com/RemoteCaller-Exiled/vk-old-2021
-// @version      0.2
+// @namespace    http://tampermonkey.net/
+// @version      0.3
 // @description  Дизайн вк за 2021 год
 // @author       Tresha
 // @match        *://*.vk.com/*
@@ -370,7 +370,7 @@ window.onload = function () {
     ):(
         login_btn.outerHTML = login_btn.outerHTML,
         login_btn = document.querySelector("button.FlatButton.FlatButton--primary.FlatButton--size-l.FlatButton--wide.VkIdForm__button.VkIdForm__signInButton"),
-        login_btn.setAttribute("onclick",`return location.href = "https://oauth.vk.com/authorize?client_id=6287487&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=friends&response_type=token&v=5.131&state=123456"`),
+        login_btn.setAttribute("onclick",`return location.href = "https://vk.com/login?classic_flow=1"`),
         wait
     )
 };
@@ -389,10 +389,8 @@ function wait_form(){
 
 window.onblur = function () {
     var a = setInterval(title, 2000);
-    var b = setInterval(ads, 2000);
     var c = setInterval(check, 1000);
     clearInterval(a);
-    clearInterval(b);
     clearInterval(c);
 }
 
@@ -400,7 +398,6 @@ window.onfocus = function () {
     var ad_n = parseInt(localStorage.getItem("ad"));
 
     setInterval(title, 2000);
-    setInterval(ads, 2000);
     setInterval(check, 1000);
     //fix_name();
 }
@@ -411,7 +408,6 @@ function initial() {
 
     console.log('Скрипт запущен');
     setInterval(title, 2000);
-    setInterval(ads, 2000);
     setInterval(check, 1000);
     fix_name();
    document.body.appendChild(styleNode2);
@@ -506,31 +502,6 @@ function title() {
    }
 }
 
-// Реклама
-function ads() {
-    var ad_blocks, a
-    ad_blocks = document.querySelectorAll('div#ads_left>div,[data-ad-view],div[data-ad-disabled-stat-impression],div#feed_filters a,.page_block.apps_feedRightAppsBlock.apps_feedRightAppsBlock_single_mini_app');
-    for (a = 0; a < ad_blocks.length; a++) {
-        ad_blocks[a].outerHTML = '';
-    }
-  let j = document.querySelectorAll('.wall_marked_as_ads')
-    j.forEach(function(entry) {
-        entry.closest('._post_content').remove()
-        //console.log(entry)
-    });
-
-    let lj = document.querySelectorAll('a.Post__copyrightLink')
-    var as = [ "appscent", "Бот", "CcCAb5" ];
-    var el;
-    lj.forEach(function(entry2) {
-    var index, len;
-    for (index = 0, len = as.length; index < len; ++index) {
-            entry2.innerHTML.indexOf(as[index])?entry2.closest('._post_content').remove():console.log('1')
-        //console.log(entry2)
-        }
-    });
-}
-
 // Меню и Имя возле иконки
 function fix_name() {
     try {
@@ -596,9 +567,6 @@ function check_vid() {
     if (window.location.href.includes(h2)) {
         my_vid();
         seacrh();
-    }
-    if (window.location.href.includes('/video?z=') && (vd = 0)) {
-        check_vid_ads();
     }
     if (window.location.href.includes('https://vk.com/video/@') && !window.location.href.includes(h2)) {
         seacrh3();
@@ -684,13 +652,6 @@ function seacrh4() {
         parent.after(child)
     }
 }
-
-
-
-function check_vid_ads() {
-
-}
-
 
 function pop_vid() {
     var head2 = document.querySelector('ul#video_main_tabs')
