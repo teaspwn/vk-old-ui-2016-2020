@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By RAM
 // @namespace    https://github.com/891-2/vk-old-rad/
-// @version      3.9.9
+// @version      3.9.4.1
 // @description  Вернём старый дизайн вместе
 // @author       RAM
 // @match        *://*.vk.com/*
@@ -21,6 +21,7 @@
 // @updateURL    https://github.com/891-2/vk-old-rad/raw/main/beta.user.js
 // @license MIT
 // ==/UserScript==
+
 var date_now = Date.now();
 var i, i2, vd, theme_hash_number, theme,j
 /*  CSS  **/
@@ -29,11 +30,11 @@ styleNode2.id = 'Style'
 
 //ПЕРЕМЕННЫЕ
 var css_url = 'https://raw.githubusercontent.com/891-2/vk-old-rad/main/style.css';
+var js_url = `https://github.com/891-2/vk-old-rad/raw/main/beta.user.js`
+var version = GM_info.version
 var build = `<div class="beta_title">VK by RAD beta<div class="beta_version">Build 3.8.4</div></div>`
 var local_css = localStorage.getItem("css")
-i = 0
-i2 = 0
-vd = 0
+i = i2 = vd = 0
 
 
 
@@ -70,6 +71,7 @@ function initial() {
     document.body.appendChild(styleNode2);
     beta();
 }
+
 function extra(){
     var user = document.querySelector('img.page_avatar_img')
     if (user!==null&&user!==undefined){
@@ -508,7 +510,7 @@ function dot_prof_friends(){
         if (live!==null){
             document.querySelector('.page_action_left.fl_l').outerHTML = `<div class="page_actions_wide_old ">
         <div class="page_actions_wide_old_div">
-            <div class="page_actions_wide_old_div_friends" `+'onclick="'+fri_onclick+'"'`>
+            <div class="page_actions_wide_old_div_friends" `+'onclick="'+fri_onclick+'"'+`>
                 <span class="page_actions_wide_old_div_friends_span">У вас в друзьях</span>
             </div>
         </div>
@@ -921,16 +923,24 @@ async function css_add(){
      let response = await fetch(css_url);
      let commits = await response.text();
 
+
     if (local_css==null||undefined||local_css!==commits){
      if (commits!==null|undefined){
-        class_add(commits)
+         local_css?console.log(findChanged(local_css,commits)):null
+
+         class_add(commits)
          localStorage.setItem("css",commits)
-        console.log('new')
+         console.log('new')
      }
     }else{
         class_add(local_css)
         console.log('local')
     }
+}
+
+function findChanged (orig,changed) {
+  [orig,changed] = [orig,changed].map((text) => text.split(""))
+  return changed.filter( (char) => orig.indexOf(char) === -1 ).join("")
 }
 
 // Изменение ссылки на раздел музыки
