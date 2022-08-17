@@ -1,7 +1,7 @@
 <div>
   
-#  **Старый дизайн VK by RAD**
-## Превью
+#  **Старый дизайн VK by Tresha**
+## Превью (старые скоро будут новые)
   
 <details><summary>СВОЯ СТРАНИЦА</summary>
   <img src="https://i.ibb.co/FV3djdx/image.png" alt="image" border="0">
