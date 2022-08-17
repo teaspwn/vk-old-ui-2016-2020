@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         VK By Tresha
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/RemoteCaller-Exiled/vk-old-2021
 // @version      0.3
 // @description  Дизайн вк за 2021 год
 // @author       Tresha
