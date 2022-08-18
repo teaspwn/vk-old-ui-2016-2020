@@ -42,7 +42,11 @@
   Скоро
 </details>
   <details><summary>ВИДЕО</summary>
-  Скоро
+Скоро
     </details>
 
-<br>
+  ### Установить скрипт
+<a href="https://github.com/RemoteCaller-Exiled/vk-old-2021/raw/main/userscript.js">
+  <img src="https://img.shields.io/badge/-%D0%9D%D0%B5%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BD%D0%BE-red?style=for-the-badge&link=#">
+</a>
+<div>
