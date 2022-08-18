@@ -25,7 +25,7 @@
 </a>
 <div>
   
-#  **Старый дизайн VK 2016 (Скоро)**
+#  **Старый дизайн VK 2019 **
 ## Отличия от VK By Ram И Ash defenders08
 ``` 
  * За основу был взят стиль от Ash defenders08
@@ -46,7 +46,7 @@
     </details>
 
   ### Установить скрипт
-<a href="https://github.com/RemoteCaller-Exiled/vk-old-2021/raw/main/userscript.js">
-  <img src="https://img.shields.io/badge/-%D0%9D%D0%B5%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BD%D0%BE-red?style=for-the-badge&link=#">
+<a href="https://github.com/RemoteCaller-Exiled/vk-old-2021/raw/main/userscript-2019.js">
+  <img src="https://img.shields.io/badge/-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-green?style=for-the-badge&link=#">
 </a>
 <div>
