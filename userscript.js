@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Tresha
 // @namespace    https://github.com/RemoteCaller-Exiled/vk-old-2021
-// @version      0.3
+// @version      0.4
 // @description  Дизайн вк за 2021 год
 // @author       Tresha
 // @match        *://*.vk.com/*
@@ -161,6 +161,24 @@ div.VideoCard__additionalInfo.video_item_add_info {
 #l_aud > .left_row > .LeftMenu__icon > svg path {
     d: path('M14.73 2.05a2.28 2.28 0 012.75 2.23v7.99c0 3.57-3.5 5.4-5.39 3.51-1.9-1.9-.06-5.38 3.52-5.38h.37V6.76L8 8.43v5.82c0 3.5-3.35 5.34-5.27 3.62l-.11-.1c-1.9-1.9-.06-5.4 3.51-5.4h.37V6.24c0-.64.05-1 .19-1.36l.05-.13c.17-.38.43-.7.76-.93.36-.26.7-.4 1.41-.54zM6.5 13.88h-.37c-2.32 0-3.34 1.94-2.45 2.82.88.89 2.82-.13 2.82-2.45v-.37zm9.48-1.98h-.37c-2.32 0-3.34 1.94-2.46 2.82.89.89 2.83-.13 2.83-2.45v-.37zm-.02-7.78a.78.78 0 00-.92-.6L9.06 4.77c-.4.09-.54.15-.68.25a.8.8 0 00-.27.33c-.08.18-.1.35-.1.88v.67l7.97-1.67v-.95-.08z') !important;
 }
+.TopHomeLink > svg {
+    visibility: hidden;
+}
+.TopHomeLink {
+background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAABZVBMVEUAAABAgP8zmf8nhvYmiPcmhvcliPcpifQoh/QoiPQmiPUmhvUliPUohvUniPYmh/Yoh/QniPQnh/Unh/UnhvUnh/Unh/UniPUoh/UniPUnh/Ynh/Qnh/Qmh/UnhvUnh/UniPUnh/Unh/Unh/UniPUnh/Unh/Unh/Unh/Unh/Unh/Unh/Unh/Unh/Uoh/UpiPUqiPUqifUxjfU0jvY1j/Y4kPY6kfY6kvY8k/Y/lPZAlfZDl/ZFl/ZGmPZImfdLm/dPnfdSn/dVoPdWofdXovdfpvhgp/hhp/hnq/hsrvh4tPl5tfl8tvmBufmDuvmEu/mIvfqMv/qOwPqax/qdyPqjzPukzPumzvupz/uu0vu01vy/2/zC3fzN4/3Q5f3V5/3X6f3b6/3d7P3h7/7j7/7k8P7m8f7o8v7p8/7q8/7s9P7u9v7v9v7w9/71+f/2+v/3+v/3+//6/P/7/f/8/v/+///////g0zmvAAAALXRSTlMABAU7PD0+RUZHSUpLTIuMjo+2t7i5zM3Oz9jZ2tvc3d7f4O7v8Pf5+vv8/f7pN1BTAAAAAWJLR0R2MWPJQQAAAWZJREFUGBl9wftfS3Ecx/HPqYlCF602FTa1TrVeERFzSSWU3HLp5JLrwRCm9v77fc/Z9PBD+z6f5rQd68vmiyX2lYr5bG9XYKmO0xxoJGNOR0gLYcas7RQtDQd2HI9O68OjxwbwyNpJPHJ2Fo+ClXDWo+gxsBZF0SNgZiOK1nHGLMR5LWkJHkj6BKxKeo4zbhM4DyVtwexvKYZzb6XdGzihTeFcrkm1eYilGO5LekZi0qZJvJC0CbEUU/khxRdIlI1UpSbtLhJL1bltqb5Cg9HwRNLHK98l/ZL0iiabJjX7TtKemnYWSJVtioZbP5Wqv/kjqXqdxKRN0HRvT4kvLH+V9OEiTmgh/9z5JieGymdJL3HGrcS++ac70nvgZlWqXwXGrMh/zl+7fQlnbuXuMs4Zy+MxaAN4ZK0Xj247isdhC0ZoaSgwOxTSQthuTmaYAw21Wyro7OnPFUbLNJVHC7kT3UcCM/sLJGy55tgVVwkAAAAASUVORK5CYII=");
+background-repeat: no-repeat;
+background-position: left;
+}
+.TopHomeLink {
+    width: 165px;
+    height: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    color: var(--text_primary);
+}
+
 /* Реакции */
 .ReactionsMenu, .ReactionsMenu--extraHoverArea, .ReactionsMenu--extraHoverAreaToTop, div.ReactionsPreview__items
   {
@@ -326,6 +344,10 @@ display: none;
 /* Кнопка Сервисы VK */
 #react_rootEcosystemServicesNavigationEntry {
 display: none;
+}
+/* Фикс лого */
+a.TopHomeLink rect {
+	display: none !important;
 }
 ` );
 
