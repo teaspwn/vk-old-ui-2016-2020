@@ -36,13 +36,13 @@
 ## Превью
   
 <details><summary>СВОЯ СТРАНИЦА</summary>
-  Скоро
+  <img src="https://go.on-server.ru/styles/github/vk-old-2021/Screenshot_4.png" alt="image" border="0">
 </details>
 <details><summary>НОВОСТИ</summary>
-  Скоро
+  <img src="https://go.on-server.ru/styles/github/vk-old-2021/Screenshot_5.png" alt="image" border="0">
 </details>
   <details><summary>ВИДЕО</summary>
-Скоро
+<img src="https://go.on-server.ru/styles/github/vk-old-2021/Screenshot_6.png" alt="image" border="0">
     </details>
 
   ### Установить скрипт
