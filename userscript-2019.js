@@ -5,6 +5,7 @@
 // @description  Дизайн вк за 2019 год
 // @author       Tresha
 // @match        *://*.vk.com/*
+// @match        *://*.vk.ru/*
 // @icon         https://www.google.com/s2/favicons?domain=vk.com
 // @license MIT
 // ==/UserScript==
