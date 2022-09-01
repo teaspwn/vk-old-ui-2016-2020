@@ -5,6 +5,7 @@
 // @description  Дизайн вк за 2021 год
 // @author       Tresha
 // @match        *://*.vk.com/*
+// @match        *://*.vk.ru/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=vk.com
 // @grant        GM_webRequest
 // @downloadURL  https://github.com/RemoteCaller-Exiled/vk-old-2021/raw/main/userscript.js
