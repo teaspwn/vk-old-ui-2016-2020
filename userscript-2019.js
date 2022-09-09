@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Tresha 2019
 // @namespace    https://github.com/RemoteCaller-Exiled/vk-old-2021
-// @version      0.1
+// @version      0.5
 // @description  Дизайн вк за 2019 год
 // @author       Tresha
 // @match        *://*.vk.com/*
