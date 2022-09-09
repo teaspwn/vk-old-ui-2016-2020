@@ -1,11 +1,10 @@
 // ==UserScript==
 // @name         VK By Tresha
 // @namespace    https://github.com/RemoteCaller-Exiled/vk-old-2021
-// @version      0.4
+// @version      0.5
 // @description  Дизайн вк за 2021 год
 // @author       Tresha
 // @match        *://*.vk.com/*
-// @match        *://*.vk.ru/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=vk.com
 // @grant        GM_webRequest
 // @downloadURL  https://github.com/RemoteCaller-Exiled/vk-old-2021/raw/main/userscript.js
@@ -350,6 +349,15 @@ display: none;
 a.TopHomeLink rect {
 	display: none !important;
 }
+.ui_rmenu_vkconnect_row {
+    display: none;
+}
+.top_profile_sep {
+    display: none;
+}
+#profile_editor_vkconnect_notice {
+    display: none;
+}
 ` );
 
 var i, i2, vd, theme_hash_number, theme,j
@@ -359,6 +367,12 @@ styleNode.classList = 'old_style'
 var styleNode2 = document.createElement("style");
 styleNode2.id = 'Style'
 var wait = setInterval(wait_form,500)
+var first_name_back = document.getElementById ("pedit_first_name");
+var last_name_back = document.getElementById ("pedit_last_name");
+first_name_back.classList.remove ("data-disabled");
+last_name_back.classList.remove ("data-disabled");
+first_name_back.disabled = false;
+last_name_back.disabled = false;
 
 class_add(`
 `);
