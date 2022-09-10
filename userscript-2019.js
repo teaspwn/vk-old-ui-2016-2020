@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Tresha 2019
 // @namespace    https://github.com/RemoteCaller-Exiled/vk-old-2021
-// @version      0.6
+// @version      0.7
 // @description  Дизайн вк за 2019 год
 // @author       Tresha
 // @match        *://*.vk.com/*
@@ -1401,15 +1401,6 @@ div#react_rootEcosystemServicesNavigationEntry {
 div#friends_possible_block.page_block.friends_possible_block {
 	display: none !important;
 }
-.ui_rmenu_vkconnect_row {
-    display: none;
-}
-.top_profile_sep {
-    display: none;
-}
-#profile_editor_vkconnect_notice {
-    display: none;
-}
 ` );
 
 var i, i2, vd, theme_hash_number, theme,j
@@ -1419,8 +1410,6 @@ styleNode.classList = 'old_style'
 var styleNode2 = document.createElement("style");
 styleNode2.id = 'Style'
 var wait = setInterval(wait_form,500)
-var first_name_back = document.getElementById ("pedit_first_name");
-var last_name_back = document.getElementById ("pedit_last_name");
 class_add(`
 `);
 
@@ -1477,10 +1466,7 @@ window.onblur = function () {
     clearInterval(a);
     clearInterval(c);
 }
-first_name_back.classList.remove ("data-disabled");
-last_name_back.classList.remove ("data-disabled");
-first_name_back.disabled = false;
-last_name_back.disabled = false;
+
 
 window.onfocus = function () {
     var ad_n = parseInt(localStorage.getItem("ad"));
