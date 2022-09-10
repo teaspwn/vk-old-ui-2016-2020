@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Tresha
 // @namespace    https://github.com/RemoteCaller-Exiled/vk-old-2021
-// @version      0.6
+// @version      0.7
 // @description  Дизайн вк за 2021 год
 // @author       Tresha
 // @match        *://*.vk.com/*
@@ -349,15 +349,6 @@ display: none;
 a.TopHomeLink rect {
 	display: none !important;
 }
-.ui_rmenu_vkconnect_row {
-    display: none;
-}
-.top_profile_sep {
-    display: none;
-}
-#profile_editor_vkconnect_notice {
-    display: none;
-}
 ` );
 
 var i, i2, vd, theme_hash_number, theme,j
@@ -427,10 +418,6 @@ window.onblur = function () {
     clearInterval(a);
     clearInterval(c);
 }
-first_name_back.classList.remove ("data-disabled");
-last_name_back.classList.remove ("data-disabled");
-first_name_back.disabled = false;
-last_name_back.disabled = false;
 
 window.onfocus = function () {
     var ad_n = parseInt(localStorage.getItem("ad"));
