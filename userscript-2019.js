@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Tresha 2019
 // @namespace    https://github.com/RemoteCaller-Exiled/vk-old-2021
-// @version      0.7
+// @version      0.8
 // @description  Дизайн вк за 2019 год
 // @author       Tresha
 // @match        *://*.vk.com/*
@@ -1400,6 +1400,21 @@ div#react_rootEcosystemServicesNavigationEntry {
 /* Отключение блока "Возможные друзья" */
 div#friends_possible_block.page_block.friends_possible_block {
 	display: none !important;
+}
+/* Старый дизайн ошибок и выбора файлов в сообщениях */
+[dir] .box_title_wrap {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    background: #5b88bd;
+    color: #fff;
+    font-size: 14px;
+}
+.box_title {
+color: #fff;
+}
+.box_x_button > svg > path {
+    d: path('m1.7071 0.29289 4.2929 4.2921 4.2929-4.2921c0.36048-0.36048 0.92772-0.38821 1.32-0.083189l0.094207 0.083189c0.39052 0.39052 0.39052 1.0237 0 1.4142l-4.2921 4.2929 4.2921 4.2929c0.39052 0.39052 0.39052 1.0237 0 1.4142s-1.0237 0.39052-1.4142 0l-4.2929-4.2921-4.2929 4.2921c-0.36048 0.36048-0.92772 0.38821-1.32 0.083189l-0.094207-0.083189c-0.39052-0.39052-0.39052-1.0237 0-1.4142l4.2921-4.2929-4.2921-4.2929c-0.39052-0.39052-0.39052-1.0237 0-1.4142s1.0237-0.39052 1.4142 0z') !important;
+fill: rgb(255, 255, 255) !important;
 }
 ` );
 
