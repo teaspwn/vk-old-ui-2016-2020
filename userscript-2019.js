@@ -8,6 +8,8 @@
 // @match        *://*.vk.ru/*
 // @icon         https://www.google.com/s2/favicons?domain=vk.com
 // @license MIT
+// @downloadURL  https://github.com/RemoteCaller-Exiled/vk-old-2021/raw/main/userscript-2019.js
+// @updateURL    https://github.com/RemoteCaller-Exiled/vk-old-2021/raw/main/userscript-2019.js
 // ==/UserScript==
 function GM_addStyle (cssStr) {
     var D               = document;
