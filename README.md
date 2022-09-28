@@ -50,3 +50,26 @@
   <img src="https://img.shields.io/badge/-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-green?style=for-the-badge&link=#">
 </a>
 <div>
+
+#  Старый дизайн VK 2018 ALPHA
+## Отличия от VK By Ram И Ash defenders08
+``` 
+ * Скрипт который скоро придёт на замену 2019
+```
+## Превью
+  
+<details><summary>СВОЯ СТРАНИЦА</summary>
+  <img src="https://images.remotecaller.ru/styles/vk-old-2022/2018/Screenshot_1new.png" alt="image" border="0">
+</details>
+<details><summary>НОВОСТИ</summary>
+  <img src="https://images.remotecaller.ru/styles/vk-old-2022/2018/Screenshot_2new.png" alt="image" border="0">
+</details>
+  <details><summary>ВИДЕО</summary>
+<img src="https://images.remotecaller.ru/styles/vk-old-2022/2018/Screenshot_3.png">
+    </details>
+
+  ### Установить скрипт
+<a href="https://github.com/RemoteCaller-Exiled/vk-old-2021/raw/main/userscript-2018_ALPHA.js">
+  <img src="https://img.shields.io/badge/-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-green?style=for-the-badge&link=#">
+</a>
+<div>
