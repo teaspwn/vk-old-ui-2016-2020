@@ -1,5 +1,9 @@
 <div>
-  
+У меня пока нет времени обновлять этот скрипт
+Используйте этот скрипт: https://github.com/RemoteCaller-Exiled/vk-old-2021/raw/main/VK-OLD-2018-n.js
+в связке с этим стилем: https://userstyles.world/style/6702/vk-2017-2018
+
+
 #  Старый дизайн VK by Tresha
 ## Отличия от VK By Ram
 ``` 
@@ -7,7 +11,7 @@
  * В стиле старые иконки и старые названия
  * Поддерживает VK Next
 ```
-## Превью
+## Превью (умерли)
   
 <details><summary>СВОЯ СТРАНИЦА</summary>
   <img src="https://images.remotecaller.ru/styles/vk-old-2022/Screenshot_1.png" alt="image" border="0">
@@ -33,7 +37,7 @@
  * Пару фиксов от меня
  * Поддерживает VK Next
 ```
-## Превью
+## Превью (умерли)
   
 <details><summary>СВОЯ СТРАНИЦА</summary>
   <img src="https://images.remotecaller.ru/styles/vk-old-2022/Screenshot_5.png" alt="image" border="0">
@@ -56,7 +60,7 @@
 ``` 
  * Скрипт который скоро придёт на замену 2019
 ```
-## Превью
+## Превью (умерли)
   
 <details><summary>СВОЯ СТРАНИЦА</summary>
   <img src="https://images.remotecaller.ru/styles/vk-old-2022/2018/Screenshot_1new.png" alt="image" border="0">
