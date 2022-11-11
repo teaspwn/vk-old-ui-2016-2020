@@ -1,6 +1,6 @@
 <div>
 У меня пока нет времени обновлять этот скрипт
-Используйте этот скрипт: https://github.com/RemoteCaller-Exiled/vk-old-2021/raw/main/VK-OLD-2018-n.js
+Используйте этот скрипт: https://github.com/teaspwn/vk-old-2021/raw/main/VK-OLD-2018-n.js
 в связке с этим стилем: https://userstyles.world/style/6702/vk-2017-2018
 
 
@@ -24,7 +24,7 @@
     </details>
 
   ### Установить скрипт
-<a href="https://github.com/RemoteCaller-Exiled/vk-old-2021/raw/main/userscript.js">
+<a href="https://github.com/teaspwn/vk-old-2021/raw/main/userscript.js">
   <img src="https://img.shields.io/badge/-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-green?style=for-the-badge&link=#">
 </a>
 <div>
@@ -50,7 +50,7 @@
     </details>
 
   ### Установить скрипт
-<a href="https://github.com/RemoteCaller-Exiled/vk-old-2021/raw/main/userscript-2019.js">
+<a href="https://github.com/teaspwn/vk-old-2021/raw/main/userscript-2019.js">
   <img src="https://img.shields.io/badge/-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-green?style=for-the-badge&link=#">
 </a>
 <div>
@@ -73,7 +73,7 @@
     </details>
 
   ### Установить скрипт
-<a href="https://github.com/RemoteCaller-Exiled/vk-old-2021/raw/main/userscript-2018_ALPHA.js">
+<a href="https://github.com/teaspwn/vk-old-2021/raw/main/userscript-2018_ALPHA.js">
   <img src="https://img.shields.io/badge/-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-green?style=for-the-badge&link=#">
 </a>
 <div>
