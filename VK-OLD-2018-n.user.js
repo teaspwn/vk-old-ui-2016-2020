@@ -1,27 +1,14 @@
 // ==UserScript==
-// @name         VK By Tresha 2018 classic
-// @namespace    https://github.com/RemoteCaller-Exiled/vk-old-2021
-// @version      0.1
-// @description  Дизайн вк за 2018 год
+// @name         VK By Teaspwn 2016-2020
+// @namespace    https://github.com/teaspwn/vk-old-2021
+// @version      1.1
+// @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-by-djcreativ4ik
 // @author       Tresha
 // @match        *://*.vk.com/*
 // @match        *://*.vk.ru/*
 // @icon         https://www.google.com/s2/favicons?domain=vk.com
 // @license MIT
 // ==/UserScript==
-function GM_addStyle (cssStr) {
-    var D               = document;
-    var newNode         = D.createElement ('style');
-    newNode.textContent = cssStr;
-
-    var targ    = D.getElementsByTagName ('head')[0] || D.body || D.documentElement;
-    targ.appendChild (newNode);
-}
-
-GM_addStyle ( `
-
-` );
-
 var i, i2, vd, theme_hash_number, theme,j
 var styleNode = document.createElement("style");
 styleNode.id = 'Style'
@@ -54,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
 }, false);
 
 window.onload = function () {
-    var login = document.querySelector('.VkIdForm')
+var login = document.querySelector('.VkIdForm')
     var login_btn = document.querySelector("button.FlatButton.FlatButton--primary.FlatButton--size-l.FlatButton--wide.VkIdForm__button.VkIdForm__signInButton")
     login==null||undefined?(
     initial(),
@@ -78,6 +65,21 @@ function wait_form(){
          acess.classList = "test"
      }
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    var l = document.querySelector('button.FCPanel__add')
+    l.addEventListener("click", chat, false);
+}, false);
+
+
+i = 0
+i2 = 0
+vd = 0
+document.addEventListener('DOMContentLoaded', function () {
+    chat();
+}, false);
+
 
 window.onblur = function () {
     var a = setInterval(title, 2000);
@@ -103,7 +105,6 @@ function initial() {
     setInterval(title, 2000);
     setInterval(check, 1000);
     fix_name();
-   document.body.appendChild(styleNode2);
     }
 
 // Проверка
@@ -214,13 +215,26 @@ function fix_name() {
     var s = document.querySelector('a#top_profile_link[aria-label="Настройки страницы"]');
     var q = document.createElement('div');
     var w = document.createElement('a');
+    var wtext = document.createTextNode("Моя страница");
     var n = document.createElement('a');
+    var ntext = document.createTextNode("Редактировать");
     var u = document.createElement('div');
     var k = document.createElement('div');
     var k2 = document.createElement('span');
     var b1
+w.classList.add("top_profile_mrow");
+n.classList.add("top_profile_mrow");
+w.setAttribute("id", "top_myprofile_link");
+n.setAttribute("id", "top_edit_link");
+n.href = ("https://vk.com/edit");
+u.classList.add("top_profile_sep");
+k.classList.add("top_profile_sep");
+q.classList.add("top_profile_name");
+w.appendChild(wtext);
+n.appendChild(ntext);
 
-    q.innerHTML = `<div style="padding-right:10px;display:inline-block;vertical-align:top;color:white;font-weight: 500;-webkit-font-smoothing: subpixel-antialiased;">` + namealt + `</div>`;
+
+    q.innerHTML = `` + namealt + ``;
     if (lnk) {
         w.href = lnk.href
     }
