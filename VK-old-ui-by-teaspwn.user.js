@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
 // @namespace    https://github.com/teaspwn/vk-old-2021
-// @version      1.1
+// @version      1.2
 // @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-by-djcreativ4ik
 // @author       Tresha
 // @match        *://*.vk.com/*
@@ -233,7 +233,6 @@ q.classList.add("top_profile_name");
 w.appendChild(wtext);
 n.appendChild(ntext);
 
-
     q.innerHTML = `` + namealt + ``;
     if (lnk) {
         w.href = lnk.href
@@ -254,7 +253,13 @@ n.appendChild(ntext);
     }catch(e){
     }
 }
-
+const styleremove = document.createElement('style');
+styleremove.innerHTML = `
+      .ReactionsMenuPopper,.fans_fanph_reaction,li#likes_tab_reactions_0, li#likes_tab_reactions_1, li#likes_tab_reactions_2, li#likes_tab_reactions_3, li#likes_tab_reactions_4, li#likes_tab_reactions_5,.ui_tab.ui_tab_group,.menu_item_icon {
+        display: none !important;
+      }
+    `;
+document.head.appendChild(styleremove);
 // Фикс в видео
 function check_vid() {
     var h2
