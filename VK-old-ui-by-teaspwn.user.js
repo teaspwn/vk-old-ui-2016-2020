@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
 // @namespace    https://github.com/teaspwn/vk-old-2021
-// @version      1.2
+// @version      1.3
 // @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-by-djcreativ4ik
 // @author       Tresha
 // @match        *://*.vk.com/*
@@ -187,6 +187,8 @@ window.addEventListener('scroll', function () {
 function title() {
     if (document.title == 'Мессенджер'){
         document.title = 'Сообщения'
+    }else if (document.title == 'VK Видео — смотреть онлайн бесплатно'){
+        document.title = 'Видеокаталог'
     }else if (document.title == 'Реакции'){
         document.title = 'Понравилось'
     }else if (document.title == 'Приложения'){
@@ -195,7 +197,6 @@ function title() {
         //console.log('test')
    }
 }
-
 // Меню и Имя возле иконки
 function fix_name() {
     try {
@@ -232,6 +233,8 @@ k.classList.add("top_profile_sep");
 q.classList.add("top_profile_name");
 w.appendChild(wtext);
 n.appendChild(ntext);
+document.getElementById("top_profile_menu").classList.remove('top_profile_menu_new');
+document.getElementById("top_profile_menu").classList.add('top_profile_menu');
 
     q.innerHTML = `` + namealt + ``;
     if (lnk) {
@@ -255,7 +258,7 @@ n.appendChild(ntext);
 }
 const styleremove = document.createElement('style');
 styleremove.innerHTML = `
-      .ReactionsMenuPopper,.fans_fanph_reaction,li#likes_tab_reactions_0, li#likes_tab_reactions_1, li#likes_tab_reactions_2, li#likes_tab_reactions_3, li#likes_tab_reactions_4, li#likes_tab_reactions_5,.ui_tab.ui_tab_group,.menu_item_icon {
+      .ReactionsMenuPopper,.fans_fanph_reaction,li#likes_tab_reactions_0, li#likes_tab_reactions_1, li#likes_tab_reactions_2, li#likes_tab_reactions_3, li#likes_tab_reactions_4, li#likes_tab_reactions_5,.ui_tab.ui_tab_group,.menu_item_icon,#react_rootEcosystemAccountMenuEntry {
         display: none !important;
       }
     `;
