@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
-// @namespace    https://github.com/teaspwn/vk-old-2021
-// @version      1.3
+// @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
+// @version      1.4
 // @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-by-djcreativ4ik
 // @author       Tresha
 // @match        *://*.vk.com/*
@@ -213,7 +213,7 @@ function fix_name() {
     if (name) {
         var namealt = name.alt
     }
-    var s = document.querySelector('a#top_profile_link[aria-label="Настройки страницы"]');
+    var s = document.querySelector('a#top_profile_link');
     var q = document.createElement('div');
     var w = document.createElement('a');
     var wtext = document.createTextNode("Моя страница");
@@ -221,7 +221,6 @@ function fix_name() {
     var ntext = document.createTextNode("Редактировать");
     var u = document.createElement('div');
     var k = document.createElement('div');
-    var k2 = document.createElement('span');
     var b1
 w.classList.add("top_profile_mrow");
 n.classList.add("top_profile_mrow");
@@ -248,7 +247,6 @@ document.getElementById("top_profile_menu").classList.add('top_profile_menu');
         parentlnk.insertBefore(u, setlnk)
         parentlnk.insertBefore(k, loglnk)
         parentlnk.insertBefore(n, setlnk)
-        parentlnk.insertBefore(k2, home)
 
 
 
