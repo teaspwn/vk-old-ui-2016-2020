@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      1.4
+// @version      1.5
 // @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-by-djcreativ4ik
 // @author       Tresha
 // @match        *://*.vk.com/*
@@ -217,8 +217,10 @@ function fix_name() {
     var q = document.createElement('div');
     var w = document.createElement('a');
     var wtext = document.createTextNode("Моя страница");
+    var ewtext = document.createTextNode("My profile");
     var n = document.createElement('a');
     var ntext = document.createTextNode("Редактировать");
+    var entext = document.createTextNode("Edit");
     var u = document.createElement('div');
     var k = document.createElement('div');
     var b1
@@ -230,10 +232,17 @@ n.href = ("https://vk.com/edit");
 u.classList.add("top_profile_sep");
 k.classList.add("top_profile_sep");
 q.classList.add("top_profile_name");
-w.appendChild(wtext);
-n.appendChild(ntext);
 document.getElementById("top_profile_menu").classList.remove('top_profile_menu_new');
 document.getElementById("top_profile_menu").classList.add('top_profile_menu');
+ if (document.querySelector('a#top_profile_link[aria-label="Настройки страницы"]')) {
+w.appendChild(wtext);
+n.appendChild(ntext);
+ }
+ if (document.querySelector('a#top_profile_link[aria-label="Profile settings"]')) {
+w.appendChild(ewtext);
+n.appendChild(entext);
+ }
+
 
     q.innerHTML = `` + namealt + ``;
     if (lnk) {
