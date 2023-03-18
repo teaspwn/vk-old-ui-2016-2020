@@ -183,7 +183,7 @@ window.addEventListener('scroll', function () {
         }
     });
 });
-// Старая панель стикеро (Спасибо крутой феликсан)
+// Старая панель стикеров (Спасибо крутой феликсан)
 unsafeWindow.vk.pe.new_sticker_picker = false;
 // Название
 function title() {
