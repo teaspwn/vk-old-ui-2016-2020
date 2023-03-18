@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      1.5
+// @version      1.6
 // @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-by-djcreativ4ik
 // @author       Tresha
+// @grant        unsafeWindow
 // @match        *://*.vk.com/*
 // @match        *://*.vk.ru/*
 // @icon         https://www.google.com/s2/favicons?domain=vk.com
@@ -182,7 +183,8 @@ window.addEventListener('scroll', function () {
         }
     });
 });
-
+// Старая панель стикеро (Спасибо крутой феликсан)
+unsafeWindow.vk.pe.new_sticker_picker = false;
 // Название
 function title() {
     if (document.title == 'Мессенджер'){
@@ -197,6 +199,8 @@ function title() {
         //console.log('test')
    }
 }
+
+
 // Меню и Имя возле иконки
 function fix_name() {
     try {
@@ -208,7 +212,6 @@ function fix_name() {
     var name = document.querySelector('img.TopNavBtn__profileImg');
     var name2 = document.querySelector('a[href*="connect.vk.com"] div[style="color: var(--text_primary);"]')
     var name3 = document.querySelector('[style="background-color: var(--content_tint_background); border-radius: 8px; width: 254px; font-family: inherit;"]')
-
 
     if (name) {
         var namealt = name.alt
