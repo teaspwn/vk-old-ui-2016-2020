@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      1.7
+// @version      1.8
 // @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-by-djcreativ4ik
 // @author       Tresha
-// @grant        unsafeWindow
 // @match        *://*.vk.com/*
 // @match        *://*.vk.ru/*
+// @updateURL    https://github.com/teaspwn/vk-old-2021/raw/main/VK-old-ui-by-teaspwn.user.js
+// @downloadURL  https://github.com/teaspwn/vk-old-2021/raw/main/VK-old-ui-by-teaspwn.user.js
 // @icon         https://www.google.com/s2/favicons?domain=vk.com
 // @license MIT
 // ==/UserScript==
@@ -198,16 +199,15 @@ function title() {
    }
 }
 // Лучше дома
-const besthomediv = `
-<div class="tt_w tt_default CovidTooltip tt_up" style="position: absolute; opacity: 1; width: 356px; top: 48px; left: 15px; pointer-events: auto; display: none;"><div class="wrapped"><div class="tt_text"><div class="CovidTooltip__logo"></div><div class="CovidTooltip__title">Оставайтесь дома</div><div class="CovidTooltip__text">Мойте руки, избегайте скопления людей, по&nbsp;возможности не&nbsp;выходите из&nbsp;дома и&nbsp;проводите <a href="https://vk.com/feed?section=stayhome" onclick="return typeof window.statlogsValueEvent !== 'undefined' &amp;&amp; window.statlogsValueEvent('coronavirus_tooltip_click', 1) || nav.go(this, event)">время&nbsp;с&nbsp;пользой</a>.</div></div></div></div>
-`;
-const besthomelink = document.querySelector("#page_header")
 const besthomelogolink = document.querySelector("#top_nav > li.HeaderNav__item.HeaderNav__item--logo > a.TopHomeLink")
-besthomelink.insertAdjacentHTML('afterbegin', besthomediv);
+if (document.querySelector('a#top_profile_link[aria-label="Настройки страницы"]')) {
 besthomelogolink.setAttribute("onmouseover", `this.className.indexOf(\'bugtracker_logo\') === -1 && bodyNode.className.indexOf(\'WideScreenAppPage\') === -1 && showTooltip(this,\r\n{\r\n  text: \"<div class=\\\"CovidTooltip__logo\\\"><\\\/div><div class=\\\"CovidTooltip__title\\\">\u041E\u0441\u0442\u0430\u0432\u0430\u0439\u0442\u0435\u0441\u044C \u0434\u043E\u043C\u0430<\\\/div><div class=\\\"CovidTooltip__text\\\">\u041C\u043E\u0439\u0442\u0435 \u0440\u0443\u043A\u0438, \u0438\u0437\u0431\u0435\u0433\u0430\u0439\u0442\u0435 \u0441\u043A\u043E\u043F\u043B\u0435\u043D\u0438\u044F \u043B\u044E\u0434\u0435\u0439, \u043F\u043E \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u0438 \u043D\u0435 \u0432\u044B\u0445\u043E\u0434\u0438\u0442\u0435 \u0438\u0437 \u0434\u043E\u043C\u0430 \u0438 \u043F\u0440\u043E\u0432\u043E\u0434\u0438\u0442\u0435 <a href=\\\"\\\/feed?section=stayhome\\\" onclick=\\\"return typeof window.statlogsValueEvent !== &#39;undefined&#39; &amp;&amp; window.statlogsValueEvent(&#39;coronavirus_tooltip_click&#39;, 1) || nav.go(this, event)\\\">\u0432\u0440\u0435\u043C\u044F \u0441 \u043F\u043E\u043B\u044C\u0437\u043E\u0439<\\\/a>.<\\\/div>\",\r\n  className: \'CovidTooltip\',\r\n  width: 356,\r\n  dir: \'top\',\r\n  shift: [0, 0, 6],\r\n  hidedt: 60, showdt: 600,\r\n  hasover: true,\r\n  onShowStart: function() {window.statlogsValueEvent !== \'undefined\' && window.statlogsValueEvent(\'coronavirus_tooltip_show\', 1)}\r\n})
 `);
-
-
+}
+if (document.querySelector('a#top_profile_link[aria-label="Profile settings"]')) {
+besthomelogolink.setAttribute("onmouseover", `this.className.indexOf(\'bugtracker_logo\') === -1 && bodyNode.className.indexOf(\'WideScreenAppPage\') === -1 && showTooltip(this,\r\n{\r\n  text: \"<div class=\\\"CovidTooltip__logo\\\"><\\\/div><div class=\\\"CovidTooltip__title\\\">Stay home<\\\/div><div class=\\\"CovidTooltip__text\\\">Wash your hands, maintain social distancing, stay at home if you can, and <a href=\\\"\\\/feed?section=stayhome\\\" onclick=\\\"return typeof window.statlogsValueEvent !== &#39;undefined&#39; &amp;&amp; window.statlogsValueEvent(&#39;coronavirus_tooltip_click&#39;, 1) || nav.go(this, event)\\\">keep busy<\\\/a>.<\\\/div>\",\r\n  className: \'CovidTooltip\',\r\n  width: 356,\r\n  dir: \'top\',\r\n  shift: [0, 0, 6],\r\n  hidedt: 60, showdt: 600,\r\n  hasover: true,\r\n  onShowStart: function() {window.statlogsValueEvent !== \'undefined\' && window.statlogsValueEvent(\'coronavirus_tooltip_show\', 1)}\r\n})
+`);
+}
 // Меню и Имя возле иконки
 function fix_name() {
     try {
