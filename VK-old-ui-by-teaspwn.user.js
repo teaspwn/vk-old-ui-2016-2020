@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      1.8
+// @version      1.9
 // @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-by-djcreativ4ik
 // @author       Tresha
 // @match        *://*.vk.com/*
 // @match        *://*.vk.ru/*
-// @updateURL    https://github.com/teaspwn/vk-old-2021/raw/main/VK-old-ui-by-teaspwn.user.js
-// @downloadURL  https://github.com/teaspwn/vk-old-2021/raw/main/VK-old-ui-by-teaspwn.user.js
+// @updateURL    https://github.com/teaspwn/vk-old-ui-2016-2020/raw/main/VK-old-ui-by-teaspwn.user.js
+// @downloadURL  https://github.com/teaspwn/vk-old-ui-2016-2020/raw/main/VK-old-ui-by-teaspwn.user.js
 // @icon         https://www.google.com/s2/favicons?domain=vk.com
 // @license MIT
 // ==/UserScript==
