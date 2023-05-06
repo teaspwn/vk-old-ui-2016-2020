@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      1.9
+// @version      2.0
 // @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-by-djcreativ4ik
 // @author       Tresha
 // @match        *://*.vk.com/*
@@ -208,6 +208,38 @@ if (document.querySelector('a#top_profile_link[aria-label="Profile settings"]'))
 besthomelogolink.setAttribute("onmouseover", `this.className.indexOf(\'bugtracker_logo\') === -1 && bodyNode.className.indexOf(\'WideScreenAppPage\') === -1 && showTooltip(this,\r\n{\r\n  text: \"<div class=\\\"CovidTooltip__logo\\\"><\\\/div><div class=\\\"CovidTooltip__title\\\">Stay home<\\\/div><div class=\\\"CovidTooltip__text\\\">Wash your hands, maintain social distancing, stay at home if you can, and <a href=\\\"\\\/feed?section=stayhome\\\" onclick=\\\"return typeof window.statlogsValueEvent !== &#39;undefined&#39; &amp;&amp; window.statlogsValueEvent(&#39;coronavirus_tooltip_click&#39;, 1) || nav.go(this, event)\\\">keep busy<\\\/a>.<\\\/div>\",\r\n  className: \'CovidTooltip\',\r\n  width: 356,\r\n  dir: \'top\',\r\n  shift: [0, 0, 6],\r\n  hidedt: 60, showdt: 600,\r\n  hasover: true,\r\n  onShowStart: function() {window.statlogsValueEvent !== \'undefined\' && window.statlogsValueEvent(\'coronavirus_tooltip_show\', 1)}\r\n})
 `);
 }
+// Старое меню
+const LeftMenu = document.querySelectorAll('.LeftMenuItem-module__container--v2Q9c');
+const LeftMenu1 = document.querySelectorAll('.LeftMenuItem-module__item--dDdjm');
+const LeftMenuIcon = document.querySelectorAll('.LeftMenuItem-module__icon--r9lJV');
+const LeftMenuText = document.querySelectorAll('.LeftMenuItem-module__label--itYtZ');
+const LeftMenuol = document.querySelectorAll('.LeftMenuOld-module__container--G1UQ7');
+const LeftMenuset = document.querySelectorAll('.LeftMenuItem-module__settings--YcqyH');
+const paneltweaks = document.createElement('style');
+paneltweaks.innerHTML = `
+      .LeftMenu__settings {color: transparent; border-width: 0; background-color: transparent;}
+      .LeftMenuLegacySkeleton {display: none !important;}
+    `;
+document.head.appendChild(paneltweaks);
+LeftMenu.forEach(el => {
+  el.setAttribute("class", "LeftMenu__item");
+});
+LeftMenu1.forEach(el => {
+  el.setAttribute("class", "LeftMenu__itemLink");
+});
+LeftMenuIcon.forEach(el => {
+  el.setAttribute("class", "LeftMenu__icon");
+});
+LeftMenuText.forEach(el => {
+  el.setAttribute("class", "LeftMenu__itemLabel");
+});
+LeftMenuol.forEach(el => {
+  el.setAttribute("class", "side_bar_ol");
+});
+LeftMenuset.forEach(el => {
+el.setAttribute("class", "LeftMenu__settings");
+el.innerHTML = `<a class="LeftMenu__settingsIn"><svg aria-hidden="true" display="block" viewBox="0 0 24 24" width="16" height="16" style="width: 16px; height: 16px;"><use xlink:href="#settings_24" style="fill: currentcolor;"></use></svg></a>`
+});
 // Меню и Имя возле иконки
 function fix_name() {
     try {
@@ -304,7 +336,10 @@ function check_vid() {
         seacrh3();
     }
 }
-
+if (window.location.href.includes('https://vk.com/settings?act=classicsecurity')) {
+    var securtiypage = document.querySelector('.wide_column_wrap');
+        securtiypage.innerHTML = `<webview id="securitypage" src="https://id.vk.com/account/#/security" style="display:inline-flex; width:640px; height:480px"></webview>`
+    }
 function seacrh() {
     // Установка старого поиска
     var search = document.querySelector('.ui_search_new.ui_search.ui_search_field_empty.video_search_input.VideoSearchInput.ui_search_custom.ui_search_with_custom_controls._wrap')
