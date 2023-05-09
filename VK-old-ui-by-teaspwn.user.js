@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      2.0
+// @version      2.1
 // @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-by-djcreativ4ik
 // @author       Tresha
 // @match        *://*.vk.com/*
@@ -187,17 +187,21 @@ window.addEventListener('scroll', function () {
 // Название
 function title() {
     if (document.title == 'Мессенджер'){
-        document.title = 'Сообщения'
+        document.title = 'Сообщения';
+        document.querySelector("link[rel='shortcut icon']").href = "data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlElEQVR4AWNwL/BhCGrcURfYuOMpEP8F4v8E8F+QWpAekF6Y5v/kYJBeBqjN/8nETxnwO5uwdxiQBWoWnPz/8v23/3///fuPBkBiIDmwGmQ9yAaAFRAAIDU4DcBmMzaX4DaASECxC2gXBpTHArbwuPHo/f+k3n040wLOhPTu84//2049/B/avBNvQqI4KVOcmSjOzgBou+P2cojtUQAAAABJRU5ErkJggg==";
     }else if (document.title == 'VK Видео — смотреть онлайн бесплатно'){
-        document.title = 'Видеокаталог'
+        document.title = 'Видеокаталог';
+        document.querySelector("link[rel='shortcut icon']").href = "https://vk.com/images/faviconnew.ico?6";
     }else if (document.title == 'Реакции'){
         document.title = 'Понравилось'
     }else if (document.title == 'Приложения'){
         let side = document.querySelector('div#side_bar')
         side.style.setProperty("display", "none", "important")
-        //console.log('test')
-   }
+    }
+        else if (document.title == 'Новости'){
+        document.querySelector("link[rel='shortcut icon']").href = "https://vk.com/images/faviconnew.ico?6";
 }
+   }
 // Лучше дома
 const besthomelogolink = document.querySelector("#top_nav > li.HeaderNav__item.HeaderNav__item--logo > a.TopHomeLink")
 if (document.querySelector('a#top_profile_link[aria-label="Настройки страницы"]')) {
@@ -215,11 +219,13 @@ const LeftMenuIcon = document.querySelectorAll('.LeftMenuItem-module__icon--r9lJ
 const LeftMenuText = document.querySelectorAll('.LeftMenuItem-module__label--itYtZ');
 const LeftMenuol = document.querySelectorAll('.LeftMenuOld-module__container--G1UQ7');
 const LeftMenuset = document.querySelectorAll('.LeftMenuItem-module__settings--YcqyH');
+const LeftMenusep = document.querySelectorAll('.LeftMenuOld-module__separator--uOBJB');
 const paneltweaks = document.createElement('style');
 paneltweaks.innerHTML = `
       .LeftMenu__settings {color: transparent; border-width: 0; background-color: transparent;}
       .LeftMenuLegacySkeleton {display: none !important;}
     `;
+paneltweaks.classList = 'OldPanel';
 document.head.appendChild(paneltweaks);
 LeftMenu.forEach(el => {
   el.setAttribute("class", "LeftMenu__item");
@@ -239,6 +245,10 @@ LeftMenuol.forEach(el => {
 LeftMenuset.forEach(el => {
 el.setAttribute("class", "LeftMenu__settings");
 el.innerHTML = `<a class="LeftMenu__settingsIn"><svg aria-hidden="true" display="block" viewBox="0 0 24 24" width="16" height="16" style="width: 16px; height: 16px;"><use xlink:href="#settings_24" style="fill: currentcolor;"></use></svg></a>`
+});
+LeftMenusep.forEach(el => {
+  el.setAttribute("class", "LeftMenu__separator");
+  el.innerHTML = ``
 });
 // Меню и Имя возле иконки
 function fix_name() {
@@ -311,6 +321,7 @@ styleremove.innerHTML = `
         display: none !important;
       }
     `;
+styleremove.classList = 'NewRemover';
 document.head.appendChild(styleremove);
 // Фикс в видео
 function check_vid() {
@@ -326,7 +337,6 @@ function check_vid() {
     if (!window.location.href.includes(h2) && (!window.location.href.includes('/video/@'))) {
         seacrh2();
         pop_vid();
-
     }
     if (window.location.href.includes(h2)) {
         my_vid();
@@ -338,7 +348,7 @@ function check_vid() {
 }
 if (window.location.href.includes('https://vk.com/settings?act=classicsecurity')) {
     var securtiypage = document.querySelector('.wide_column_wrap');
-        securtiypage.innerHTML = `<webview id="securitypage" src="https://id.vk.com/account/#/security" style="display:inline-flex; width:640px; height:480px"></webview>`
+        securtiypage.innerHTML = ``
     }
 function seacrh() {
     // Установка старого поиска
