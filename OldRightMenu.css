@@ -1,0 +1,132 @@
+    /*by Ash @defenders08 and @teaspwn
+Дизайнеры ВК, вы конченные долбаёбы...
+С любовью, Эш...*/
+    [dir=ltr] .wide_column_left .wide_column_wrap {
+        margin-right: calc(345px + var(--page-block-offset, 15px));
+    }
+    [dir=ltr] .wide_column_left .wide_column_wrap {
+        margin-right: 15px;
+        width: 550px;
+    }
+    #page_body.fl_r {
+        width: 795px !important;
+    }
+    #page_layout,
+    #page_header {
+        width: 960px;
+    }
+    .im-right-menu .ui_rmenu {
+        max-width: 230px;
+    }
+    /* .Profile__column.vkuiSplitCol {
+    width: 230px !important;
+} */
+    .ProfileGroup {
+        width: 230px;
+    }
+    .ProfileGiftsRow {
+        width: 230px;
+    }
+    ._im-page-wrap.im-page-wrapper {
+        width: 911px;
+    }
+    .im-page--chat-body-abs._im_chat_body_abs.ui_scroll_container.ui_scroll_default_theme.ui_scroll_hidden {
+        width: 594px !important;
+    }
+/* Старое правое меню */
+    body.redesign_web {
+        --thin-border: 1px;
+        --wide-column-width: 550px;
+        --narrow-column-width: 230px;
+        --boxes-box-shadow: 0 2px 10pxvar(--black_alpha40);
+        --online-badge-background: var(--background_content);
+        --page-block-shadow: 0 1px 0 0var(--separator_common), 0 0 0 1px var(--separator_alternate);
+        --page-block-offset: 15px;
+        --page-block-header-height: 54px;
+        --page-block-header-button-margin-top: 14px;
+        --page-block-header-font-size: 16px;
+        --h2-font-size: 16px;
+    }
+    body.redesign_web .ui_rmenu_item,
+    .ui_rmenu_subitem {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        height: 32px;
+        line-height: 31px;
+        padding: 0 5px 0 20px;
+        color: var(--link_alternate);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        outline: 0;
+        cursor: pointer;
+    }
+    body.redesign_web .ui_rmenu_item_sel,
+    .ui_rmenu_item_sel:hover {
+        color: var(--text_primary);
+        background-color: var(--background_highlighted);
+        font-weight: 500 !important;
+        -webkit-font-smoothing: subpixel-antialiased !important;
+        -moz-osx-font-smoothing: auto;
+        padding-left: 18px;
+        border-left: 2px solid var(--accent);
+        text-decoration: none;
+        border-radius: 1px!important;
+    }
+    body.redesign_web .ui_rmenu_item_sel .ui_rmenu_item_label {
+            font-weight: 500 !important;
+    }
+    .ui_rmenu_subitem {
+        padding: 0 5px 0 28px;
+        color: var(--text_subhead);
+    }
+    body.redesign_web .ui_rmenu {
+        padding: 6px 0;
+        position: relative;
+    }
+    body.redesign_web .ui_rmenu_slider {
+        display: block;
+    }
+    .ui_rmenu_item_hidden {
+        display: none;
+    }
+    .ui_rmenu_item:hover,
+    .ui_rmenu_subitem:hover,
+    .ui_rmenu_item_sel,
+    .ui_rmenu_item_sel:hover {
+        text-decoration: none;
+        background-color: #f0f2f5;
+    }
+    .ui_rmenu_item,
+    .ui_rmenu_subitem {
+        border-radius: 0;
+    }
+    .ui_rmenu_item, .ui_rmenu_subitem, ._ui_rmenu_sublist {
+    margin-bottom: 0;
+}
+.feed_filter_icon,.feed_lists_icon {
+    float: right;
+    margin: 6px 4px 0 0;
+    width: 20px;
+    height: 20px;
+    /*opacity: 0.75;
+    filter: alpha(opacity=75); */
+}
+
+.ui_rmenu_pr.ui_rmenu_loading .ui_rmenu_item_sel .pr {
+    margin-top: -17px;
+}
+    .ui_calendar_icon {
+      margin-top: -23px; 
+    float:right;
+    width:15px;
+    height:15px;
+    background:url(https://vk.com/images/icons/calendar.png?2) no-repeat 0 0;
+    opacity:0.75
+    }
+    .ui_calendar_icon svg {
+        display: none;
+    }
