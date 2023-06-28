@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      2.2
-// @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-by-djcreativ4ik
-// @author       Tresha
+// @version      2.3
+// @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-2016-2020-by-teaspwn
+// @author       Teaspwn
 // @match        *://*.vk.com/*
 // @match        *://*.vk.ru/*
 // @updateURL    https://github.com/teaspwn/vk-old-ui-2016-2020/raw/main/VK-old-ui-by-teaspwn.user.js
@@ -12,48 +12,13 @@
 // @license MIT
 // ==/UserScript==
 var i, i2, vd, theme_hash_number, theme,j
-var styleNode = document.createElement("style");
-styleNode.id = 'Style'
-styleNode.classList = 'old_style'
-var styleNode2 = document.createElement("style");
-styleNode2.id = 'Style'
 var wait = setInterval(wait_form,500)
-class_add(`
-`);
-
-
-function class_add(css) {
-    //console.log(css)
-    css!==undefined||null?styleNode.innerHTML = css:console.log('null')
-    document.body.appendChild(styleNode);
-}
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    var l = document.querySelector('button.FCPanel__add')
-    l.addEventListener("click", chat, false);
-}, false);
-
-
 i = 0
 i2 = 0
 vd = 0
-document.addEventListener('DOMContentLoaded', function () {
-    chat();
-}, false);
-
 window.onload = function () {
-var login = document.querySelector('.VkIdForm')
-    var login_btn = document.querySelector("button.FlatButton.FlatButton--primary.FlatButton--size-l.FlatButton--wide.VkIdForm__button.VkIdForm__signInButton")
-    login==null||undefined?(
-    initial(),
-    styleNode = null
-    ):(
-        login_btn.outerHTML = login_btn.outerHTML,
-        login_btn = document.querySelector("button.FlatButton.FlatButton--primary.FlatButton--size-l.FlatButton--wide.VkIdForm__button.VkIdForm__signInButton"),
-        login_btn.setAttribute("onclick",`return location.href = "https://vk.com/login?classic_flow=1"`),
-        wait
-    )
+    initial()
+    wait
 };
 
 function wait_form(){
@@ -67,22 +32,9 @@ function wait_form(){
          acess.classList = "test"
      }
 }
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    var l = document.querySelector('button.FCPanel__add')
-    l.addEventListener("click", chat, false);
-}, false);
-
-
 i = 0
 i2 = 0
 vd = 0
-document.addEventListener('DOMContentLoaded', function () {
-    chat();
-}, false);
-
-
 window.onblur = function () {
     var a = setInterval(title, 2000);
     var c = setInterval(check, 1000);
@@ -90,20 +42,16 @@ window.onblur = function () {
     clearInterval(c);
 }
 
-
 window.onfocus = function () {
-    var ad_n = parseInt(localStorage.getItem("ad"));
-
+    setInterval(favicons, 2000);
     setInterval(title, 2000);
     setInterval(check, 1000);
     //fix_name();
 }
 
 function initial() {
-    var ad_n = parseInt(localStorage.getItem("ad"));
-    var settings_n = parseInt(localStorage.getItem("settings"));
-
-    console.log('Скрипт запущен');
+    console.log('VK By Teaspwn 2016-2020 Загружен');
+    setInterval(favicons, 2000);
     setInterval(title, 2000);
     setInterval(check, 1000);
     fix_name();
@@ -188,19 +136,27 @@ window.addEventListener('scroll', function () {
 function title() {
     if (document.title == 'Мессенджер'){
         document.title = 'Сообщения';
-        document.querySelector("link[rel='shortcut icon']").href = "data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlElEQVR4AWNwL/BhCGrcURfYuOMpEP8F4v8E8F+QWpAekF6Y5v/kYJBeBqjN/8nETxnwO5uwdxiQBWoWnPz/8v23/3///fuPBkBiIDmwGmQ9yAaAFRAAIDU4DcBmMzaX4DaASECxC2gXBpTHArbwuPHo/f+k3n040wLOhPTu84//2049/B/avBNvQqI4KVOcmSjOzgBou+P2cojtUQAAAABJRU5ErkJggg==";
     }else if (document.title == 'VK Видео — смотреть онлайн бесплатно'){
         document.title = 'Видеокаталог';
-        document.querySelector("link[rel='shortcut icon']").href = "https://vk.com/images/faviconnew.ico?6";
     }else if (document.title == 'Реакции'){
         document.title = 'Понравилось'
     }else if (document.title == 'Приложения'){
         let side = document.querySelector('div#side_bar')
         side.style.setProperty("display", "none", "important")
     }
-        else if (document.title == 'Новости'){
+    else if (document.title == 'Messenger'){
+        document.title = 'Messages';
+    }
+    else if (document.title == 'VK Video: watch videos online for free'){
+        document.title = 'Videos';
+    }
+   }
+function favicons() {
+    if (document.title == 'Мессенджер'||document.title == 'Messenger'){
+        document.querySelector("link[rel='shortcut icon']").href = "data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlElEQVR4AWNwL/BhCGrcURfYuOMpEP8F4v8E8F+QWpAekF6Y5v/kYJBeBqjN/8nETxnwO5uwdxiQBWoWnPz/8v23/3///fuPBkBiIDmwGmQ9yAaAFRAAIDU4DcBmMzaX4DaASECxC2gXBpTHArbwuPHo/f+k3n040wLOhPTu84//2049/B/avBNvQqI4KVOcmSjOzgBou+P2cojtUQAAAABJRU5ErkJggg==";
+    }else if (document.title == 'VK Видео — смотреть онлайн бесплатно'||document.title == 'VK Video: watch videos online for free'||document.title == 'Новости'||document.title == 'News'){
         document.querySelector("link[rel='shortcut icon']").href = "https://vk.com/images/faviconnew.ico?6";
-}
+    }
    }
 // Лучше дома
 const besthomelogolink = document.querySelector("#top_nav > li.HeaderNav__item.HeaderNav__item--logo > a.TopHomeLink")
@@ -277,14 +233,22 @@ n.appendChild(entext);
     }catch(e){
     }
 }
-const styleremove = document.createElement('style');
-styleremove.innerHTML = `
+const customcss = document.createElement('style');
+customcss.innerHTML = `
       .ReactionsMenuPopper,.fans_fanph_reaction,li#likes_tab_reactions_0, li#likes_tab_reactions_1, li#likes_tab_reactions_2, li#likes_tab_reactions_3, li#likes_tab_reactions_4, li#likes_tab_reactions_5,.ui_tab.ui_tab_group,.menu_item_icon,#react_rootEcosystemAccountMenuEntry {
         display: none !important;
       }
+      .top_profile_name {
+    padding-right: 10px;
+    display: inline-block;
+    vertical-align: top;
+    font-weight: 500;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+}
     `;
-styleremove.classList = 'NewRemover';
-document.head.appendChild(styleremove);
+customcss.classList = 'VKByTeaspwnCSSFixes';
+document.head.appendChild(customcss);
 // Фикс в видео
 function check_vid() {
     var h2
@@ -308,10 +272,6 @@ function check_vid() {
         seacrh3();
     }
 }
-if (window.location.href.includes('https://vk.com/settings?act=classicsecurity')) {
-    var securtiypage = document.querySelector('.wide_column_wrap');
-        securtiypage.innerHTML = ``
-    }
 function seacrh() {
     // Установка старого поиска
     var search = document.querySelector('.ui_search_new.ui_search.ui_search_field_empty.video_search_input.VideoSearchInput.ui_search_custom.ui_search_with_custom_controls._wrap')
