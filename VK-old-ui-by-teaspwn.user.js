@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      2.3
+// @version      2.4
 // @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-2016-2020-by-teaspwn
 // @author       Teaspwn
 // @match        *://*.vk.com/*
@@ -186,13 +186,16 @@ function fix_name() {
     var s = document.querySelector('a#top_profile_link');
     var q = document.createElement('div');
     var w = document.createElement('a');
-    var wtext = document.createTextNode("Моя страница");
-    var ewtext = document.createTextNode("My profile");
+    var ruprofiletext = document.createTextNode("Моя страница");
+    var enprofiletext = document.createTextNode("My profile");
     var n = document.createElement('a');
-    var ntext = document.createTextNode("Редактировать");
-    var entext = document.createTextNode("Edit");
+    var ruedittext = document.createTextNode("Редактировать");
+    var enedittext = document.createTextNode("Edit");
+    var deftext = document.createTextNode("top_myprofile_link");
+    var def1text = document.createTextNode("top_edit_link");
     var u = document.createElement('div');
     var k = document.createElement('div');
+    let langtest;
     var b1
 w.classList.add("top_profile_mrow");
 n.classList.add("top_profile_mrow");
@@ -205,14 +208,22 @@ q.classList.add("top_profile_name");
 document.getElementById("top_profile_menu").classList.remove('top_profile_menu_new');
 document.getElementById("top_profile_menu").classList.add('top_profile_menu');
  if (document.querySelector('a#top_profile_link[aria-label="Настройки страницы"]')) {
-w.appendChild(wtext);
-n.appendChild(ntext);
+w.appendChild(ruprofiletext);
+n.appendChild(ruedittext);
+langtest = true;
  }
  if (document.querySelector('a#top_profile_link[aria-label="Profile settings"]')) {
-w.appendChild(ewtext);
-n.appendChild(entext);
+w.appendChild(enprofiletext);
+n.appendChild(enedittext);
+langtest = true;
  }
-
+if (langtest) {
+    console.log("User Language is supported. activaiting translation...");
+} else {
+    console.log("User Language is not supported. using default value...");
+    w.appendChild(deftext);
+    n.appendChild(def1text);
+}
 
     q.innerHTML = `` + namealt + ``;
     if (lnk) {
