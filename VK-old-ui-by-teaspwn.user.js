@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      2.4
+// @version      2.5
 // @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-2016-2020-by-teaspwn
 // @author       Teaspwn
 // @match        *://*.vk.com/*
@@ -257,9 +257,84 @@ customcss.innerHTML = `
     -webkit-font-smoothing: subpixel-antialiased;
     -moz-osx-font-smoothing: auto;
 }
+.CovidTooltip__logo {
+    width: 64px;
+    height: 64px;
+    background: url(data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cpath%20fill%3D%22%234bb34b%22%20d%3D%22M0%200h64v64H0z%22%2F%3E%3Cpath%20d%3D%22M17.21%2017l12.12-4.07a11.49%2011.49%200%20012-.55%205%205%200%20011.34%200%2011.49%2011.49%200%20012%20.55L46.79%2017A1.78%201.78%200%200148%2018.64v16.59q0%2012-14.6%2018.2a3.58%203.58%200%2001-2.8%200Q16%2047.19%2016%2035.23V18.64A1.78%201.78%200%200117.21%2017z%22%20fill-rule%3D%22evenodd%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20d%3D%22M32.72%2024.34a1%201%200%2000-1.45%200l-7.66%208c-.34.35-.22.64.27.64H26v5.55a.44.44%200%2000.44.45h3.12a.44.44%200%2000.44-.44v-2.76A1.78%201.78%200%200131.78%2034h.44A1.78%201.78%200%200134%2035.78v2.78a.44.44%200%2000.44.44h3.12a.45.45%200%2000.44-.45V33h2.12c.48%200%20.6-.29.27-.64z%22%20fill-rule%3D%22evenodd%22%20fill%3D%22%234bb34b%22%2F%3E%3C%2Fsvg%3E) no-repeat 50%/contain;
+    position: absolute;
+    top: 14px;
+    left: 15px;
+    border-radius: 50%;
+}
+.CovidTooltip__title {
+    margin-bottom: 3px;
+    font-weight: 500;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+}
+.CovidTooltip__text, .CovidTooltip__title {
+    font-size: 13px;
+    line-height: 1.3;
+    padding-left: 76px;
+}
+/* Play button css */
+.top_audio_play__button{
+    position:absolute;
+    display:block;
+    -webkit-appearance:none;
+    cursor:pointer;
+    width:22px;
+    top:11px;
+    left: 52px;
+    height:20px;
+    border:none;
+    border-radius:3px;
+    background-color:#224b7a;
+    overflow:visible
+}
+.top_audio_play__button:before{
+    position:absolute;
+    content:'';
+    display:block;
+    width:8px;
+    height:8px;
+    background-color:#224b7a;
+    -webkit-transform:rotate(45deg);
+    -o-transform:rotate(45deg);
+    transform:rotate(45deg);
+    top:6px;
+    left:-2px;
+    border-radius:1px
+}
+.top_audio_play__button:hover,.top_audio_play__button:hover:before{
+    background-color:#1c416b
+}
+.top_audio_play__button:active{
+    top:12px
+}
+.top_audio_play__button:after{
+    display:block;
+    content:'';
+    position:absolute;
+    width:7px;
+    height:10px;
+    top:5px;
+    left:8px;
+    background:url("data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D%227%22%20height%3D%2210%22%20viewBox%3D%220%200%207%2010%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M.797%209.836c-.44.327-.797.152-.797-.41V.574C0%20.02.353-.166.797.163l5.962%204.42c.31.23.31.603%200%20.833L.797%209.836z%22%20fill%3D%22%23B4C8E0%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E") no-repeat
+}
+.top_audio_play.shuffle .top_audio_play__button:hover:after{
+    background:url("data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D%2213%22%20height%3D%2212%22%20viewBox%3D%220%200%2013%2012%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M10%203.6h-.524c-1.585%200-2.58%201.385-3.717%202.778C4.495%207.928%203.367%2010%20.826%2010H0V8.4h.826c1.519-.037%202.46-1.632%203.575-3C5.666%203.853%206.936%202%209.484%202H10V0l3%202.75-3%202.75V3.6zm0%204.8V6.5l3%202.75L10%2012v-2h-.516c-1.603%200-2.7-.733-3.609-1.662A57.729%2057.729%200%200%201%206.84%206.92c.76.844%201.562%201.48%202.636%201.48H10zM3.282%205.18C2.57%204.32%201.822%203.625.826%203.6H0V2h.826c1.566%200%202.595.787%203.45%201.753l-.494.706c-.168.238-.335.48-.5.722z%22%20fill%3D%22%23B4C8E0%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E") no-repeat;
+    left:5px;
+    top:4px;
+    width:13px;
+    height:13px
+}
     `;
 customcss.classList = 'VKByTeaspwnCSSFixes';
 document.head.appendChild(customcss);
+// Кнопка быстрого воизпроизведение музыки
+var audioplaybutton = document.querySelector("#top_audio_btn_group")
+audioplaybutton.innerHTML +=`<button class="top_audio_play__button" aria-label="" onClick="getAudioPlayer().instantPlay(this)"></button>`
 // Фикс в видео
 function check_vid() {
     var h2
