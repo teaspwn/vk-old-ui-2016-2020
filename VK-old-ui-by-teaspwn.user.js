@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      2.5
+// @version      2.6
 // @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-2016-2020-by-teaspwn
 // @author       Teaspwn
 // @match        *://*.vk.com/*
@@ -329,12 +329,22 @@ customcss.innerHTML = `
     width:13px;
     height:13px
 }
+/* Dark theme fixes */
+[scheme="vkcom_dark"] .top_audio_play__button,[scheme="vkcom_dark"] .top_audio_play__button:before {
+    background-color:#2d2d31;
+}
     `;
-customcss.classList = 'VKByTeaspwnCSSFixes';
+customcss.classList = 'VKByTeaspwnCSS';
 document.head.appendChild(customcss);
 // Кнопка быстрого воизпроизведение музыки
-var audioplaybutton = document.querySelector("#top_audio_btn_group")
-audioplaybutton.innerHTML +=`<button class="top_audio_play__button" aria-label="" onClick="getAudioPlayer().instantPlay(this)"></button>`
+var audioplace = document.querySelector("#top_audio_btn_group")
+let audiofbtn = document.createElement("button");
+audiofbtn.classList.add("top_audio_play__button");
+audiofbtn.setAttribute("onclick", "getAudioPlayer().instantPlay(this)");
+// audioplaybutton.innerHTML +=`<button class="top_audio_play__button" aria-label="" onClick="getAudioPlayer().instantPlay(this)"></button>`
+if(audioplace) {
+audioplace.appendChild(audiofbtn);
+}
 // Фикс в видео
 function check_vid() {
     var h2
