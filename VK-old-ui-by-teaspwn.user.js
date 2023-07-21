@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      2.6
+// @version      2.7
 // @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-2016-2020-by-teaspwn
 // @author       Teaspwn
 // @match        *://*.vk.com/*
 // @match        *://*.vk.ru/*
 // @updateURL    https://github.com/teaspwn/vk-old-ui-2016-2020/raw/main/VK-old-ui-by-teaspwn.user.js
 // @downloadURL  https://github.com/teaspwn/vk-old-ui-2016-2020/raw/main/VK-old-ui-by-teaspwn.user.js
-// @icon         https://www.google.com/s2/favicons?domain=vk.com
+// @icon         https://vk.com/images/faviconnew.ico?6
 // @license MIT
 // ==/UserScript==
 var i, i2, vd, theme_hash_number, theme,j
@@ -152,11 +152,15 @@ function title() {
     }
    }
 function favicons() {
-    if (document.title == 'Мессенджер'||document.title == 'Messenger'){
+    if (document.title == 'Мессенджер'||document.title == 'Messages'){
         document.querySelector("link[rel='shortcut icon']").href = "data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlElEQVR4AWNwL/BhCGrcURfYuOMpEP8F4v8E8F+QWpAekF6Y5v/kYJBeBqjN/8nETxnwO5uwdxiQBWoWnPz/8v23/3///fuPBkBiIDmwGmQ9yAaAFRAAIDU4DcBmMzaX4DaASECxC2gXBpTHArbwuPHo/f+k3n040wLOhPTu84//2049/B/avBNvQqI4KVOcmSjOzgBou+P2cojtUQAAAABJRU5ErkJggg==";
-    }else if (document.title == 'VK Видео — смотреть онлайн бесплатно'||document.title == 'VK Video: watch videos online for free'||document.title == 'Новости'||document.title == 'News'){
+    }
+    else if (document.title == 'VK Видео — смотреть онлайн бесплатно'||document.title == 'VK Video: watch videos online for free'||document.title == 'Новости'||document.title == 'News'){
         document.querySelector("link[rel='shortcut icon']").href = "https://vk.com/images/faviconnew.ico?6";
     }
+   // else if (!(document.title == 'Сообщения' || document.title == 'Messenger')){
+       // document.querySelector("link[rel='shortcut icon']").href = "https://vk.com/images/faviconnew.ico?6";
+    // }
    }
 // Лучше дома
 const besthomelogolink = document.querySelector("#top_nav > li.HeaderNav__item.HeaderNav__item--logo > a.TopHomeLink")
@@ -333,6 +337,8 @@ customcss.innerHTML = `
 [scheme="vkcom_dark"] .top_audio_play__button,[scheme="vkcom_dark"] .top_audio_play__button:before {
     background-color:#2d2d31;
 }
+/* Убрать раздел главное в музыке */
+._audio_section_tab__general {display:none}
     `;
 customcss.classList = 'VKByTeaspwnCSS';
 document.head.appendChild(customcss);
@@ -344,6 +350,11 @@ audiofbtn.setAttribute("onclick", "getAudioPlayer().instantPlay(this)");
 // audioplaybutton.innerHTML +=`<button class="top_audio_play__button" aria-label="" onClick="getAudioPlayer().instantPlay(this)"></button>`
 if(audioplace) {
 audioplace.appendChild(audiofbtn);
+}
+// Кнопка музыки в левом меню
+var leftaudiobutton = document.querySelector("#l_aud > a")
+if(leftaudiobutton) {
+leftaudiobutton.setAttribute('href', '/audio?section=all');
 }
 // Фикс в видео
 function check_vid() {
