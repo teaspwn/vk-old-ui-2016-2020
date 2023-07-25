@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      2.7
+// @version      2.8
 // @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-2016-2020-by-teaspwn
 // @author       Teaspwn
 // @match        *://*.vk.com/*
@@ -11,104 +11,16 @@
 // @icon         https://vk.com/images/faviconnew.ico?6
 // @license MIT
 // ==/UserScript==
-var i, i2, vd, theme_hash_number, theme,j
-var wait = setInterval(wait_form,500)
-i = 0
-i2 = 0
-vd = 0
 window.onload = function () {
     initial()
-    wait
 };
-
-function wait_form(){
-     var form =document.querySelector('form#login_submit')
-     var acess =document.querySelector('img.oauth_app_photo')
-     if (form!==null||undefined&&acess==null){
-         console.log("form")
-     }else if (acess!==null||undefined&&form==null){
-         location.href = "https://vk.com/feed"
-         clearInterval(wait_form)
-         acess.classList = "test"
-     }
-}
-i = 0
-i2 = 0
-vd = 0
-window.onblur = function () {
-    var a = setInterval(title, 2000);
-    var c = setInterval(check, 1000);
-    clearInterval(a);
-    clearInterval(c);
-}
-
-window.onfocus = function () {
-    setInterval(favicons, 2000);
-    setInterval(title, 2000);
-    setInterval(check, 1000);
-    //fix_name();
-}
-
 function initial() {
     console.log('VK By Teaspwn 2016-2020 Загружен');
-    setInterval(favicons, 2000);
-    setInterval(title, 2000);
-    setInterval(check, 1000);
     fix_name();
     }
 
-// Проверка
-function check() {
-    check_vid();
-    feed_check();
-}
-
-function feed_check() {
-    if ((window.location.href.includes('feed'))) {
-        _class();
-        _class2();
-    }
-    var k = document.querySelector('.like_cont.PostBottomActionLikeBtns.PostBottomActionLikeBtns--withBgButtons')
-    if (k) {
-        _class();
-        _class2();
-    }
-}
-
-
-
-function _class2() {
-    var g
-    var k = document.querySelectorAll('.ui_actions_menu._ui_menu.ui_actions_menu--actionSheet');
-    for (g = 0; g < k.length; g++) {
-        k[g].className = 'ui_actions_menu _ui_menu ';
-    }
-}
-
-
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-
-async function _class() {
-    await sleep(2000)
-
-    var u, k
-    var old2 = document.querySelectorAll('.PostButtonReactions__icon.PostButtonReactions__icon--custom.PostButtonReactions__icon--animationActive')
-    for (k = 0; k < old2.length; k++) {
-        old2[k].style.background = `background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m0%200h24v24h-24z%22%20fill%3D%22none%22%2F%3E%3Cpath%20d%3D%22m17%202.9a6.43%206.43%200%200%201%206.4%206.43c0%203.57-1.43%205.36-7.45%2010l-2.78%202.16a1.9%201.9%200%200%201%20-2.33%200l-2.79-2.12c-6.05-4.68-7.45-6.47-7.45-10.04a6.43%206.43%200%200%201%206.4-6.43%205.7%205.7%200%200%201%205%203.1%205.7%205.7%200%200%201%205-3.1z%22%20fill%3D%22%23ff3347%22%2F%3E%3C%2Fsvg%3E);`
-    }
-}
-
-function chat() {
-    var a = document.querySelectorAll('.MEAvatar__online')
-    console.log(a.length)
-    //var b,c
-    //for (b = 0; b < a.length; b++) {
-    //   c = a[b].previousElementSibling.firstElementChild
-    //  console.log(c.alt)
-    //}
 }
 
 window.addEventListener('scroll', function () {
@@ -132,36 +44,6 @@ window.addEventListener('scroll', function () {
         }
     });
 });
-// Название
-function title() {
-    if (document.title == 'Мессенджер'){
-        document.title = 'Сообщения';
-    }else if (document.title == 'VK Видео — смотреть онлайн бесплатно'){
-        document.title = 'Видеокаталог';
-    }else if (document.title == 'Реакции'){
-        document.title = 'Понравилось'
-    }else if (document.title == 'Приложения'){
-        let side = document.querySelector('div#side_bar')
-        side.style.setProperty("display", "none", "important")
-    }
-    else if (document.title == 'Messenger'){
-        document.title = 'Messages';
-    }
-    else if (document.title == 'VK Video: watch videos online for free'){
-        document.title = 'Videos';
-    }
-   }
-function favicons() {
-    if (document.title == 'Мессенджер'||document.title == 'Messages'){
-        document.querySelector("link[rel='shortcut icon']").href = "data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlElEQVR4AWNwL/BhCGrcURfYuOMpEP8F4v8E8F+QWpAekF6Y5v/kYJBeBqjN/8nETxnwO5uwdxiQBWoWnPz/8v23/3///fuPBkBiIDmwGmQ9yAaAFRAAIDU4DcBmMzaX4DaASECxC2gXBpTHArbwuPHo/f+k3n040wLOhPTu84//2049/B/avBNvQqI4KVOcmSjOzgBou+P2cojtUQAAAABJRU5ErkJggg==";
-    }
-    else if (document.title == 'VK Видео — смотреть онлайн бесплатно'||document.title == 'VK Video: watch videos online for free'||document.title == 'Новости'||document.title == 'News'){
-        document.querySelector("link[rel='shortcut icon']").href = "https://vk.com/images/faviconnew.ico?6";
-    }
-   // else if (!(document.title == 'Сообщения' || document.title == 'Messenger')){
-       // document.querySelector("link[rel='shortcut icon']").href = "https://vk.com/images/faviconnew.ico?6";
-    // }
-   }
 // Лучше дома
 const besthomelogolink = document.querySelector("#top_nav > li.HeaderNav__item.HeaderNav__item--logo > a.TopHomeLink")
 if (document.querySelector('a#top_profile_link[aria-label="Настройки страницы"]')) {
@@ -347,7 +229,6 @@ var audioplace = document.querySelector("#top_audio_btn_group")
 let audiofbtn = document.createElement("button");
 audiofbtn.classList.add("top_audio_play__button");
 audiofbtn.setAttribute("onclick", "getAudioPlayer().instantPlay(this)");
-// audioplaybutton.innerHTML +=`<button class="top_audio_play__button" aria-label="" onClick="getAudioPlayer().instantPlay(this)"></button>`
 if(audioplace) {
 audioplace.appendChild(audiofbtn);
 }
@@ -356,29 +237,48 @@ var leftaudiobutton = document.querySelector("#l_aud > a")
 if(leftaudiobutton) {
 leftaudiobutton.setAttribute('href', '/audio?section=all');
 }
-// Фикс в видео
 function check_vid() {
-    var h2
-    var myvd = document.querySelector('li#l_pr a.left_row')
+    var h2;
+    var myvd = document.querySelector('li#l_pr a.left_row');
     if (myvd) {
-        var h = myvd.href
+        var h = myvd.href;
     }
     if (h) {
         h2 = h.split('vk.com/')[1];
     }
-    //console.log(h2)
+
     if (!window.location.href.includes(h2) && (!window.location.href.includes('/video/@'))) {
         seacrh2();
         pop_vid();
     }
+
     if (window.location.href.includes(h2)) {
         my_vid();
         seacrh();
     }
+
     if (window.location.href.includes('https://vk.com/video/@') && !window.location.href.includes(h2)) {
         seacrh3();
     }
 }
+
+function handleDOMChanges(mutationsList) {
+    for (let mutation of mutationsList) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+            const body = document.body;
+            if (body.classList.contains('video_showcase')) {
+                check_vid();
+                //console.log("video page")
+                break;
+            }
+        }
+    }
+}
+
+const observervid = new MutationObserver(handleDOMChanges);
+const targetNode = document.body;
+const observerOptions = { attributes: true };
+observervid.observe(targetNode, observerOptions);
 function seacrh() {
     // Установка старого поиска
     var search = document.querySelector('.ui_search_new.ui_search.ui_search_field_empty.video_search_input.VideoSearchInput.ui_search_custom.ui_search_with_custom_controls._wrap')
@@ -510,9 +410,38 @@ function add1() {
     var h = document.querySelector('.VideoActions__item.VideoActions__item--secondary')
     h.click();
 }
+// Constants
+const dictionary = {
+  "Messenger": "Messages",
+  "Мессенджер": "Сообщения",
+  "VK Видео — смотреть онлайн бесплатно": "Видеокаталог"
+}
+// Function to replace the webpage title
+function replacePageTitle() {
+  const title = document.title;
+  const changeTo = dictionary[title];
+  if (changeTo) {
+    document.title = changeTo;
+  }
+}
 
+// Create a MutationObserver instance
+const titleEl = document.getElementsByTagName("title")[0];
+const observer = new MutationObserver(function(mutationsList) {
+  for (let mutation of mutationsList) {
+    if (mutation.type === 'childList') {
+      // Check if the title element has been added or modified
+      const titleElement = document.querySelector('title');
+      if (titleElement && titleElement.textContent === titleEl.textContent) {
+        replacePageTitle();
+        break;
+      }
+    }
+  }
+});
 
-
+// Start observing changes in the document
+observer.observe(document.documentElement, { childList: true, subtree: true });
 var KPP
 KPP = {
     _list: [],
