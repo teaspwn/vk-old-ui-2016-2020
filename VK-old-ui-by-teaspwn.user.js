@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      2.8
+// @version      2.9
 // @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-2016-2020-by-teaspwn
 // @author       Teaspwn
 // @match        *://*.vk.com/*
@@ -410,6 +410,16 @@ function add1() {
     var h = document.querySelector('.VideoActions__item.VideoActions__item--secondary')
     h.click();
 }
+let isFaviconReplaced = false;
+let isTitleReplaced = false;
+function favicons() {
+  if (document.title == 'Сообщения' || document.title == 'Messages') {
+    document.querySelector("link[rel='shortcut icon']").href = "data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlElEQVR4AWNwL/BhCGrcURfYuOMpEP8F4v8E8F+QWpAekF6Y5v/kYJBeBqjN/8nETxnwO5uwdxiQBWoWnPz/8v23/3///fuPBkBiIDmwGmQ9yAaAFRAAIDU4DcBmMzaX4DaASECxC2gXBpTHArbwuPHo/f+k3n040wLOhPTu84//2049/B/avBNvQqI4KVOcmSjOzgBou+P2cojtUQAAAABJRU5ErkJggg==";
+  } else {
+    document.querySelector("link[rel='shortcut icon']").href = "https://vk.com/images/faviconnew.ico?6";
+  }
+    isFaviconReplaced = true;
+}
 // Constants
 const dictionary = {
   "Messenger": "Messages",
@@ -422,6 +432,7 @@ function replacePageTitle() {
   const changeTo = dictionary[title];
   if (changeTo) {
     document.title = changeTo;
+    isTitleReplaced = true;
   }
 }
 
@@ -434,6 +445,7 @@ const observer = new MutationObserver(function(mutationsList) {
       const titleElement = document.querySelector('title');
       if (titleElement && titleElement.textContent === titleEl.textContent) {
         replacePageTitle();
+        favicons();
         break;
       }
     }
