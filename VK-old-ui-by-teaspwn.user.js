@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      2.9
+// @version      3.0
 // @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-2016-2020-by-teaspwn
 // @author       Teaspwn
 // @match        *://*.vk.com/*
@@ -424,7 +424,9 @@ function favicons() {
 const dictionary = {
   "Messenger": "Messages",
   "Мессенджер": "Сообщения",
-  "VK Видео — смотреть онлайн бесплатно": "Видеокаталог"
+  "VK Видео — смотреть онлайн бесплатно": "Видеокаталог",
+  "Реакции": "Понравилось",
+  "Reactions": "Likes"
 }
 // Function to replace the webpage title
 function replacePageTitle() {
