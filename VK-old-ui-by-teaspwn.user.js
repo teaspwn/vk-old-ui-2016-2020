@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      3.1
+// @version      3.2
 // @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-2016-2020-by-teaspwn
 // @author       Teaspwn
 // @match        *://*.vk.com/*
@@ -22,11 +22,19 @@ const teaOptions = {
  const teai18n = {
     en: {
         Myprofile: "My profile",
-        Edit: "Edit"
+        Edit: "Edit",
+        Myvideos: "My videos",
+        VideoCatalog: "Video catalog",
+        AddVideo: "Create video",
+        LiveNow: "Live stream"
     },
     ru: {
         Myprofile: "Моя страница",
-        Edit: "Редактировать"
+        Edit: "Редактировать",
+        Myvideos: "Мои видео",
+        VideoCatalog: "Видеокаталог",
+        AddVideo: "Добавить видео",
+        LiveNow: "Создать трансляцию"
     }
 };
 /**
@@ -324,23 +332,22 @@ function seacrh3() {
 
 
 function my_vid() {
+    const language = langConfig.locale.split("-")[0] ?? "en";
     var head = document.querySelectorAll('.page_block_header.clear_fix')
     if (head[1]) {
         head[1].outerHTML = `<ul class="ui_tabs clear_fix ui_tabs_header ui_tabs_with_progress ui_my_vid" onmouseover="uiTabs.tryInit(this)" id="video_main_tabs" data-inited="1">
     <li id="videocat_tab_all">
-  <a href="#" class="ui_tab ui_tab_sel" onclick="document.querySelector('a.MenuList__item.MenuList__item--expandable').click();">
-    Мои видео
+  <a href="#" class="ui_tab ui_tab_sel" onclick="document.querySelector('a.MenuList__item.MenuList__item--expandable').click();">${ getString("Myvideos", language) }
   </a>
 </li><li id="videocat_tab_catalog">
-  <a href="/video" class="ui_tab" onclick="return uiTabs.goTab(this, event, 1);">
-    Видеокаталог
+  <a href="/video" class="ui_tab" onclick="return uiTabs.goTab(this, event, 1);">${ getString("VideoCatalog", language) }
   </a>
 </li><li>
   <div class="ui_tab_plain ui_tabs_progress" role="link">
 
 
   </div>
-</li>  <button style="margin-left: 0" class="flat_button">Добавить видео</button><button class="flat_button secondary" id="video_create_live_btn">Создать трансляцию</button>  <button class="flat_button secondary" id="video_add_album_btn" onclick="return Video.createAlbum(event);" style="">Создать альбом</button>
+</li>  <button style="margin-left: 0" class="flat_button">${ getString("AddVideo", language) }</button><button class="flat_button secondary" id="video_create_live_btn">${ getString("LiveNow", language) }</button>  <button class="flat_button secondary" id="video_add_album_btn" onclick="return Video.createAlbum(event);" style="">Создать альбом</button>
     <div class="ui_tabs_slider _ui_tabs_slider" style="width: 83.6875px; margin-left: 14px;"></div>
   </ul>`
         var t = document.querySelector('button.flat_button[style="margin-left: 0"]')
@@ -381,6 +388,7 @@ function seacrh4() {
 }
 
 function pop_vid() {
+    const language = langConfig.locale.split("-")[0] ?? "en";
     var head2 = document.querySelector('ul#video_main_tabs')
     var head = document.createElement('ul')
     head.classList = 'gg'
@@ -399,17 +407,15 @@ function pop_vid() {
             head2 = document.querySelector('ul.gg')
             head2.outerHTML = `<ul class="ui_tabs clear_fix ui_tabs_header ui_tabs_with_progress ui_pop_vid" onmouseover="uiTabs.tryInit(this)" id="video_main_tabs" data-inited="1">
     <li id="videocat_tab_all">
-  <a href="#" class="ui_tab" onclick="document.querySelector('a.MenuList__item.MenuList__item--expandable').click();">
-    Мои видео
+  <a href="#" class="ui_tab" onclick="document.querySelector('a.MenuList__item.MenuList__item--expandable').click();">${ getString("Myvideos", language) }
   </a>
 </li><li id="videocat_tab_catalog">
-  <a href="/video" class="ui_tab ui_tab_sel" onclick="return uiTabs.goTab(this, event, 1);">
-    Видеокаталог
+  <a href="/video" class="ui_tab ui_tab_sel" onclick="return uiTabs.goTab(this, event, 1);">${ getString("VideoCatalog", language) }
   </a>
 </li><li>
   <div class="ui_tab_plain ui_tabs_progress" role="link">
   </div>
-</li>  <button style="margin-left: 0" class="flat_button" onclick="document.querySelectorAll('.VideoActions__item')[0].click();">Добавить видео</button><button class="flat_button secondary" id="video_create_live_btn" onclick="document.querySelector('.VideoActions__item.VideoActions__item--secondary').click();">Создать трансляцию</button>  <button class="flat_button secondary" id="video_add_album_btn" onclick="return Video.createAlbum(event);" style="display: none;">Создать альбом</button>
+</li>  <button style="margin-left: 0" class="flat_button" onclick="document.querySelectorAll('.VideoActions__item')[0].click();">${ getString("AddVideo", language) }</button><button class="flat_button secondary" id="video_create_live_btn" onclick="document.querySelector('.VideoActions__item.VideoActions__item--secondary').click();">${ getString("LiveNow", language) }</button>  <button class="flat_button secondary" id="video_add_album_btn" onclick="return Video.createAlbum(event);" style="display: none;">Создать альбом</button>
     <div class="ui_tabs_slider _ui_tabs_slider" style="width: 103.906px; margin-left: 14px; transform: translateX(92px);"></div>
   </ul>`
             head2 = document.querySelector('ul#video_main_tabs')
