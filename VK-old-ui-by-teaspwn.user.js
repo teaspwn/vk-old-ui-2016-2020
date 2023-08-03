@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      3.0
+// @version      3.1
 // @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-2016-2020-by-teaspwn
 // @author       Teaspwn
 // @match        *://*.vk.com/*
@@ -11,12 +11,52 @@
 // @icon         https://vk.com/images/faviconnew.ico?6
 // @license MIT
 // ==/UserScript==
+/**
+ * Localization strings.
+ */
+const teaOptions = {
+    bestHome: true,     // Окно лучшее дома при наводке на логотипа
+    oldFavicons: true,     // Старые фавиконы (нужен включенный oldTitles для работы!)
+    oldTitles: true     // Старые Заголовки
+}
+ const teai18n = {
+    en: {
+        Myprofile: "My profile",
+        Edit: "Edit"
+    },
+    ru: {
+        Myprofile: "Моя страница",
+        Edit: "Редактировать"
+    }
+};
+/**
+ * Get a string from the localization strings.
+ *
+ * @param {string} string  Name of string to get
+ * @param {string} hl      Language to use.
+ * @returns {string}
+ */
+function getString(string, hl = "en") {
+    if (!string) return "ERROR";
+    if (teai18n[hl]) {
+        if (teai18n[hl][string]) {
+            return teai18n[hl][string];
+        } else if (teai18n.en[string]) {
+            return teai18n.en[string];
+        } else {
+            return "ERROR";
+        }
+    } else {
+        if (teai18n.en[string]) return teai18n.en[string];
+        return "ERROR";
+    }
+}
 window.onload = function () {
-    initial()
+    initial();
 };
 function initial() {
     console.log('VK By Teaspwn 2016-2020 Загружен');
-    fix_name();
+    fix_name()
     }
 
 function sleep(ms) {
@@ -45,6 +85,7 @@ window.addEventListener('scroll', function () {
     });
 });
 // Лучше дома
+if (teaOptions.bestHome) {
 const besthomelogolink = document.querySelector("#top_nav > li.HeaderNav__item.HeaderNav__item--logo > a.TopHomeLink")
 if (document.querySelector('a#top_profile_link[aria-label="Настройки страницы"]')) {
 besthomelogolink.setAttribute("onmouseover", `this.className.indexOf(\'bugtracker_logo\') === -1 && bodyNode.className.indexOf(\'WideScreenAppPage\') === -1 && showTooltip(this,\r\n{\r\n  text: \"<div class=\\\"CovidTooltip__logo\\\"><\\\/div><div class=\\\"CovidTooltip__title\\\">\u041E\u0441\u0442\u0430\u0432\u0430\u0439\u0442\u0435\u0441\u044C \u0434\u043E\u043C\u0430<\\\/div><div class=\\\"CovidTooltip__text\\\">\u041C\u043E\u0439\u0442\u0435 \u0440\u0443\u043A\u0438, \u0438\u0437\u0431\u0435\u0433\u0430\u0439\u0442\u0435 \u0441\u043A\u043E\u043F\u043B\u0435\u043D\u0438\u044F \u043B\u044E\u0434\u0435\u0439, \u043F\u043E \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u0438 \u043D\u0435 \u0432\u044B\u0445\u043E\u0434\u0438\u0442\u0435 \u0438\u0437 \u0434\u043E\u043C\u0430 \u0438 \u043F\u0440\u043E\u0432\u043E\u0434\u0438\u0442\u0435 <a href=\\\"\\\/feed?section=stayhome\\\" onclick=\\\"return typeof window.statlogsValueEvent !== &#39;undefined&#39; &amp;&amp; window.statlogsValueEvent(&#39;coronavirus_tooltip_click&#39;, 1) || nav.go(this, event)\\\">\u0432\u0440\u0435\u043C\u044F \u0441 \u043F\u043E\u043B\u044C\u0437\u043E\u0439<\\\/a>.<\\\/div>\",\r\n  className: \'CovidTooltip\',\r\n  width: 356,\r\n  dir: \'top\',\r\n  shift: [0, 0, 6],\r\n  hidedt: 60, showdt: 600,\r\n  hasover: true,\r\n  onShowStart: function() {window.statlogsValueEvent !== \'undefined\' && window.statlogsValueEvent(\'coronavirus_tooltip_show\', 1)}\r\n})
@@ -54,11 +95,12 @@ if (document.querySelector('a#top_profile_link[aria-label="Profile settings"]'))
 besthomelogolink.setAttribute("onmouseover", `this.className.indexOf(\'bugtracker_logo\') === -1 && bodyNode.className.indexOf(\'WideScreenAppPage\') === -1 && showTooltip(this,\r\n{\r\n  text: \"<div class=\\\"CovidTooltip__logo\\\"><\\\/div><div class=\\\"CovidTooltip__title\\\">Stay home<\\\/div><div class=\\\"CovidTooltip__text\\\">Wash your hands, maintain social distancing, stay at home if you can, and <a href=\\\"\\\/feed?section=stayhome\\\" onclick=\\\"return typeof window.statlogsValueEvent !== &#39;undefined&#39; &amp;&amp; window.statlogsValueEvent(&#39;coronavirus_tooltip_click&#39;, 1) || nav.go(this, event)\\\">keep busy<\\\/a>.<\\\/div>\",\r\n  className: \'CovidTooltip\',\r\n  width: 356,\r\n  dir: \'top\',\r\n  shift: [0, 0, 6],\r\n  hidedt: 60, showdt: 600,\r\n  hasover: true,\r\n  onShowStart: function() {window.statlogsValueEvent !== \'undefined\' && window.statlogsValueEvent(\'coronavirus_tooltip_show\', 1)}\r\n})
 `);
 }
+}
 // Меню и Имя возле иконки
 function fix_name() {
     try {
     var parentlnk = document.querySelector('div#top_profile_menu')
-    var lnk = document.querySelector('li#l_pr a')
+    var Profilelnk = document.querySelector('li#l_pr a')
     var setlnk = document.querySelector('a#top_settings_link');
     var suplnk = document.querySelector('a#top_support_link');
     var loglnk = document.querySelector('a#top_logout_link');
@@ -69,60 +111,39 @@ function fix_name() {
     if (name) {
         var namealt = name.alt
     }
+    const language = langConfig.locale.split("-")[0] ?? "en";
     var s = document.querySelector('a#top_profile_link');
     var q = document.createElement('div');
-    var w = document.createElement('a');
-    var ruprofiletext = document.createTextNode("Моя страница");
-    var enprofiletext = document.createTextNode("My profile");
-    var n = document.createElement('a');
-    var ruedittext = document.createTextNode("Редактировать");
-    var enedittext = document.createTextNode("Edit");
-    var deftext = document.createTextNode("top_myprofile_link");
-    var def1text = document.createTextNode("top_edit_link");
-    var u = document.createElement('div');
-    var k = document.createElement('div');
-    let langtest;
+    var Myprofilebutton = document.createElement('a');
+    var EditButton = document.createElement('a');
+    var sep1 = document.createElement('div');
+    var sep2 = document.createElement('div');
     var b1
-w.classList.add("top_profile_mrow");
-n.classList.add("top_profile_mrow");
-w.setAttribute("id", "top_myprofile_link");
-n.setAttribute("id", "top_edit_link");
-n.href = ("https://vk.com/edit");
-u.classList.add("top_profile_sep");
-k.classList.add("top_profile_sep");
+Myprofilebutton.classList.add("top_profile_mrow");
+EditButton.classList.add("top_profile_mrow");
+Myprofilebutton.setAttribute("id", "top_myprofile_link");
+EditButton.setAttribute("id", "top_edit_link");
+EditButton.href = ("/edit");
+sep1.classList.add("top_profile_sep");
+sep2.classList.add("top_profile_sep");
 q.classList.add("top_profile_name");
 document.getElementById("top_profile_menu").classList.remove('top_profile_menu_new');
 document.getElementById("top_profile_menu").classList.add('top_profile_menu');
- if (document.querySelector('a#top_profile_link[aria-label="Настройки страницы"]')) {
-w.appendChild(ruprofiletext);
-n.appendChild(ruedittext);
-langtest = true;
- }
- if (document.querySelector('a#top_profile_link[aria-label="Profile settings"]')) {
-w.appendChild(enprofiletext);
-n.appendChild(enedittext);
-langtest = true;
- }
-if (langtest) {
-    console.log("User Language is supported. activaiting translation...");
-} else {
-    console.log("User Language is not supported. using default value...");
-    w.appendChild(deftext);
-    n.appendChild(def1text);
-}
 
+Myprofilebutton.innerText = getString("Myprofile", language);
+EditButton.innerText = getString("Edit", language);
     q.innerHTML = `` + namealt + ``;
-    if (lnk) {
-        w.href = lnk.href
+    if (Profilelnk) {
+        Myprofilebutton.href = Profilelnk.href
     }
     if (namealt != null) {
 
         s.insertBefore(q, s.firstChild)
-        setlnk.insertAdjacentElement('beforeBegin', w);
+        setlnk.insertAdjacentElement('beforeBegin', Myprofilebutton);
         var home = document.querySelector('a#top_home_link')
-        parentlnk.insertBefore(u, setlnk)
-        parentlnk.insertBefore(k, loglnk)
-        parentlnk.insertBefore(n, setlnk)
+        parentlnk.insertBefore(sep1, setlnk)
+        parentlnk.insertBefore(sep2, loglnk)
+        parentlnk.insertBefore(EditButton, setlnk)
 
 
 
@@ -412,6 +433,7 @@ function add1() {
 }
 let isFaviconReplaced = false;
 let isTitleReplaced = false;
+if (teaOptions.oldFavicons) {
 function favicons() {
   if (document.title == 'Сообщения' || document.title == 'Messages') {
     document.querySelector("link[rel='shortcut icon']").href = "data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlElEQVR4AWNwL/BhCGrcURfYuOMpEP8F4v8E8F+QWpAekF6Y5v/kYJBeBqjN/8nETxnwO5uwdxiQBWoWnPz/8v23/3///fuPBkBiIDmwGmQ9yAaAFRAAIDU4DcBmMzaX4DaASECxC2gXBpTHArbwuPHo/f+k3n040wLOhPTu84//2049/B/avBNvQqI4KVOcmSjOzgBou+P2cojtUQAAAABJRU5ErkJggg==";
@@ -420,6 +442,8 @@ function favicons() {
   }
     isFaviconReplaced = true;
 }
+}
+if (teaOptions.oldTitles) {
 // Constants
 const dictionary = {
   "Messenger": "Messages",
@@ -456,6 +480,7 @@ const observer = new MutationObserver(function(mutationsList) {
 
 // Start observing changes in the document
 observer.observe(document.documentElement, { childList: true, subtree: true });
+}
 var KPP
 KPP = {
     _list: [],
