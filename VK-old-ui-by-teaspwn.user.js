@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Teaspwn 2016-2020
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      3.2
+// @version      3.3
 // @description  Скрипт старого дизайна https://userstyles.world/style/6702/vk-2016-2020-by-teaspwn
 // @author       Teaspwn
 // @match        *://*.vk.com/*
@@ -16,6 +16,7 @@
  */
 const teaOptions = {
     bestHome: true,     // Окно лучшее дома при наводке на логотипа
+    fastMusic: true,     // Кнопка для быстрого включения музыки
     oldFavicons: true,     // Старые фавиконы (нужен включенный oldTitles для работы!)
     oldTitles: true     // Старые Заголовки
 }
@@ -64,7 +65,13 @@ window.onload = function () {
 };
 function initial() {
     console.log('VK By Teaspwn 2016-2020 Загружен');
-    fix_name()
+    fix_name();
+    if (teaOptions.bestHome) {
+    besthome();
+    }
+    if (teaOptions.fastMusic) {
+    audiobutton();
+    }
     }
 
 function sleep(ms) {
@@ -93,7 +100,7 @@ window.addEventListener('scroll', function () {
     });
 });
 // Лучше дома
-if (teaOptions.bestHome) {
+function besthome() {
 const besthomelogolink = document.querySelector("#top_nav > li.HeaderNav__item.HeaderNav__item--logo > a.TopHomeLink")
 if (document.querySelector('a#top_profile_link[aria-label="Настройки страницы"]')) {
 besthomelogolink.setAttribute("onmouseover", `this.className.indexOf(\'bugtracker_logo\') === -1 && bodyNode.className.indexOf(\'WideScreenAppPage\') === -1 && showTooltip(this,\r\n{\r\n  text: \"<div class=\\\"CovidTooltip__logo\\\"><\\\/div><div class=\\\"CovidTooltip__title\\\">\u041E\u0441\u0442\u0430\u0432\u0430\u0439\u0442\u0435\u0441\u044C \u0434\u043E\u043C\u0430<\\\/div><div class=\\\"CovidTooltip__text\\\">\u041C\u043E\u0439\u0442\u0435 \u0440\u0443\u043A\u0438, \u0438\u0437\u0431\u0435\u0433\u0430\u0439\u0442\u0435 \u0441\u043A\u043E\u043F\u043B\u0435\u043D\u0438\u044F \u043B\u044E\u0434\u0435\u0439, \u043F\u043E \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u0438 \u043D\u0435 \u0432\u044B\u0445\u043E\u0434\u0438\u0442\u0435 \u0438\u0437 \u0434\u043E\u043C\u0430 \u0438 \u043F\u0440\u043E\u0432\u043E\u0434\u0438\u0442\u0435 <a href=\\\"\\\/feed?section=stayhome\\\" onclick=\\\"return typeof window.statlogsValueEvent !== &#39;undefined&#39; &amp;&amp; window.statlogsValueEvent(&#39;coronavirus_tooltip_click&#39;, 1) || nav.go(this, event)\\\">\u0432\u0440\u0435\u043C\u044F \u0441 \u043F\u043E\u043B\u044C\u0437\u043E\u0439<\\\/a>.<\\\/div>\",\r\n  className: \'CovidTooltip\',\r\n  width: 356,\r\n  dir: \'top\',\r\n  shift: [0, 0, 6],\r\n  hidedt: 60, showdt: 600,\r\n  hasover: true,\r\n  onShowStart: function() {window.statlogsValueEvent !== \'undefined\' && window.statlogsValueEvent(\'coronavirus_tooltip_show\', 1)}\r\n})
@@ -153,8 +160,6 @@ EditButton.innerText = getString("Edit", language);
         parentlnk.insertBefore(sep2, loglnk)
         parentlnk.insertBefore(EditButton, setlnk)
 
-
-
     }
     }catch(e){
     }
@@ -194,13 +199,13 @@ customcss.innerHTML = `
 }
 /* Play button css */
 .top_audio_play__button{
-    position:absolute;
+    position:relative;
     display:block;
     -webkit-appearance:none;
     cursor:pointer;
     width:22px;
     top:11px;
-    left: 52px;
+    left: 4px;
     height:20px;
     border:none;
     border-radius:3px;
@@ -254,12 +259,23 @@ customcss.innerHTML = `
 customcss.classList = 'VKByTeaspwnCSS';
 document.head.appendChild(customcss);
 // Кнопка быстрого воизпроизведение музыки
-var audioplace = document.querySelector("#top_audio_btn_group")
+function audiobutton() {
+let audioplace = document.querySelector("#top_audio_btn_group");
+let audiobutton = document.querySelector("#top_audio_btn_group #top_audio")
+if (audioplace) {
+audioplace.classList.remove('TopNavBtn');
+audiobutton.classList.add('TopNavBtn');
+}
+let audionewplace = document.createElement("div");
+audionewplace.id = "top_audio_play";
+audionewplace.classList.add("top_audio_play");
 let audiofbtn = document.createElement("button");
 audiofbtn.classList.add("top_audio_play__button");
 audiofbtn.setAttribute("onclick", "getAudioPlayer().instantPlay(this)");
-if(audioplace) {
-audioplace.appendChild(audiofbtn);
+audionewplace.appendChild(audiofbtn)
+if (audioplace) {
+  audioplace.appendChild(audionewplace);
+}
 }
 // Кнопка музыки в левом меню
 var leftaudiobutton = document.querySelector("#l_aud > a")
